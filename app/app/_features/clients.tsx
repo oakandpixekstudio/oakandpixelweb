@@ -4,12 +4,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowDown, ArrowLeft, ArrowUp, Building2, FolderKanban, Mail, MoreHorizontal, Phone, Plus, Users, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { ClientLogo, PageHero, Pagination, Panel, SearchBox, StatusBadge, Money, Progress, TableCheckbox, ViewToggle } from "@/_components/shared";
+import { ClientLogo, PageHero, Pagination, Panel, SearchBox, StatusBadge, Money, Progress, TableCheckbox, useRowLink, ViewToggle } from "@/_components/shared";
+import { Select } from "@/_components/controls";
 import { useDemoData } from "@/_providers/demo-data-provider";
+import { useDialogs } from "@/_components/dialogs";
 import type { Client } from "@/_types";
 
 export function ClientsView() {
   const { clients, projects, addClient } = useDemoData();
+  const rowLink = useRowLink();
+  const { toast } = useDialogs();
   const [query,setQuery]=useState(""); const [status,setStatus]=useState("All Statuses"); const [service,setService]=useState("All Services"); const [scope,setScope]=useState("All Clients");
   const [selected,setSelected]=useState(clients[0]?.id); const [open,setOpen]=useState(false);
   const [view,setView]=useState<"list"|"grid">("list"); const [page,setPage]=useState(1); const [checked,setChecked]=useState<string[]>([]);
@@ -24,20 +28,20 @@ export function ClientsView() {
   const client=clients.find(c=>c.id===selected)??pageRows[0];
   const sortBy=(key:SortKey)=>{setSort(s=>s?.key===key?{key,dir:s.dir===1?-1:1}:{key,dir:1});setPage(1)};
   const allChecked=pageRows.length>0&&pageRows.every(c=>checked.includes(c.id));
-  function create(form: FormData){const name=String(form.get("name")); const fresh:Client={id:crypto.randomUUID(),name,initials:name.split(" ").map(s=>s[0]).join("").slice(0,2).toUpperCase(),service:String(form.get("service")),status:"Active",contact:String(form.get("contact")),email:String(form.get("email")),phone:String(form.get("phone")),industry:String(form.get("industry")),pipeline:0,billed:0,since:new Date().toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"})};addClient(fresh);setSelected(fresh.id);setOpen(false)}
+  function create(form: FormData){const name=String(form.get("name")); const fresh:Client={id:crypto.randomUUID(),name,initials:name.split(" ").map(s=>s[0]).join("").slice(0,2).toUpperCase(),service:String(form.get("service")),status:"Active",contact:String(form.get("contact")),email:String(form.get("email")),phone:String(form.get("phone")),industry:String(form.get("industry")),pipeline:0,billed:0,since:new Date().toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"})};addClient(fresh);setSelected(fresh.id);setOpen(false);toast(`${fresh.name} added`)}
   const th=(k:SortKey,label:string,icon:"up"|"down")=><th><button type="button" className="th-sort" onClick={()=>sortBy(k)}>{label}{sort?.key===k?(sort.dir===1?<ArrowUp size={13}/>:<ArrowDown size={13}/>):icon==="up"?<ArrowUp size={13}/>:<ArrowDown size={13}/>}</button></th>;
   return <>
     <PageHero eyebrow="Clients" title="Clients" subtitle="Manage your client relationships, projects and communication."/>
     <div className="toolbar"><SearchBox value={query} onChange={v=>{setQuery(v);setPage(1)}} placeholder="Search clients…"/>
-      <select className="select" aria-label="Client scope" value={scope} onChange={e=>{setScope(e.target.value);setPage(1)}}><option>All Clients</option><option>With active projects</option><option>No active projects</option></select>
-      <select className="select" aria-label="Status" value={status} onChange={e=>{setStatus(e.target.value);setPage(1)}}><option>All Statuses</option><option>Active</option><option>Proposal</option><option>Discovery</option><option>On Hold</option></select>
-      <select className="select" aria-label="Service" value={service} onChange={e=>{setService(e.target.value);setPage(1)}}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</select>
+      <Select className="select" aria-label="Client scope" value={scope} onChange={e=>{setScope(e.target.value);setPage(1)}}><option>All Clients</option><option>With active projects</option><option>No active projects</option></Select>
+      <Select className="select" aria-label="Status" value={status} onChange={e=>{setStatus(e.target.value);setPage(1)}}><option>All Statuses</option><option>Active</option><option>Proposal</option><option>Discovery</option><option>On Hold</option></Select>
+      <Select className="select" aria-label="Service" value={service} onChange={e=>{setService(e.target.value);setPage(1)}}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</Select>
       <ViewToggle value={view} onChange={setView}/><span style={{flex:1}}/><button className="button primary" onClick={()=>setOpen(true)}><Plus size={17}/>Add Client</button></div>
     <div className="split">
       <section className="panel">
         {view==="list"?<div className="table-wrap"><table className="data-table"><thead><tr><th style={{width:44}}><TableCheckbox label="Select all clients" checked={allChecked} onChange={on=>setChecked(on?Array.from(new Set([...checked,...pageRows.map(c=>c.id)])):checked.filter(id=>!pageRows.some(c=>c.id===id)))}/></th>{th("name","Client","up")}{th("service","Service","down")}{th("projects","Active Projects","down")}{th("pipeline","Value (Pipeline)","up")}{th("status","Status","down")}<th/></tr></thead>
-          <tbody>{pageRows.map(c=><tr key={c.id} className={c.id===client?.id?"selected":""} onClick={()=>setSelected(c.id)}><td><TableCheckbox label={`Select ${c.name}`} checked={checked.includes(c.id)} onChange={on=>setChecked(on?[...checked,c.id]:checked.filter(id=>id!==c.id))}/></td><td><span className="client-cell"><ClientLogo id={c.id} initials={c.initials}/><strong>{c.name}</strong></span></td><td>{c.service}</td><td>{activeCount(c.id)}</td><td><Money value={c.pipeline}/></td><td><StatusBadge value={c.status}/></td><td><MoreHorizontal size={17}/></td></tr>)}</tbody></table></div>
-        :<div className="card-grid">{pageRows.map(c=><button type="button" key={c.id} className={`card-tile ${c.id===client?.id?"selected":""}`} onClick={()=>setSelected(c.id)}><span className="client-cell"><ClientLogo id={c.id} initials={c.initials}/><strong>{c.name}</strong></span><span style={{color:"var(--muted)"}}>{c.service}</span><span style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><Money value={c.pipeline}/><StatusBadge value={c.status}/></span></button>)}</div>}
+          <tbody>{pageRows.map(c=><tr key={c.id} className={`${c.id===client?.id?"selected":""} clickable`} onMouseEnter={()=>setSelected(c.id)} {...rowLink(`/clients/${c.id}`)}><td><TableCheckbox label={`Select ${c.name}`} checked={checked.includes(c.id)} onChange={on=>setChecked(on?[...checked,c.id]:checked.filter(id=>id!==c.id))}/></td><td><span className="client-cell"><ClientLogo id={c.id} initials={c.initials}/><strong>{c.name}</strong></span></td><td>{c.service}</td><td>{activeCount(c.id)}</td><td><Money value={c.pipeline}/></td><td><StatusBadge value={c.status}/></td><td><MoreHorizontal size={17}/></td></tr>)}</tbody></table></div>
+        :<div className="card-grid">{pageRows.map(c=><button type="button" key={c.id} className={`card-tile ${c.id===client?.id?"selected":""}`} onMouseEnter={()=>setSelected(c.id)} onClick={rowLink(`/clients/${c.id}`).onClick}><span className="client-cell"><ClientLogo id={c.id} initials={c.initials}/><strong>{c.name}</strong></span><span style={{color:"var(--muted)"}}>{c.service}</span><span style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><Money value={c.pipeline}/><StatusBadge value={c.status}/></span></button>)}</div>}
         {pageRows.length===0&&<div className="empty" style={{minHeight:180}}>No clients match these filters.</div>}
         <Pagination page={current} pageSize={pageSize} total={rows.length} noun="clients" onPage={setPage}/>
       </section>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { ChartNoAxesColumn, ChevronLeft, ChevronRight, Diamond, Grip, LayoutGrid, Leaf, List, Search, Square, Waves, type LucideIcon } from "lucide-react";
 
@@ -16,10 +18,48 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
   </motion.header>;
 }
 
-export function KpiCard({ label, value, note, icon: Icon, active, iconLeft }: { label: string; value: string; note?: string; icon: LucideIcon; active?: boolean; iconLeft?: boolean }) {
+/** Counts up to `target` when it first appears, and glides to new values when it changes. */
+function useCountUp(target: number, duration = 1100) {
+  const [shown, setShown] = useState(0);
+  const from = useRef(0);
+  useEffect(() => {
+    const reduce = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    let frame = 0;
+    if (reduce) {
+      frame = requestAnimationFrame(() => { from.current = target; setShown(target); });
+      return () => cancelAnimationFrame(frame);
+    }
+    const begin = from.current;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration);
+      const value = Math.round(begin + (target - begin) * (1 - Math.pow(1 - t, 3)));
+      from.current = value;
+      setShown(value);
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [target, duration]);
+  return shown;
+}
+
+/** Renders a value like "R2 010 000", "R1,240,000", "92%" or "8" with its number counting up. */
+export function AnimatedValue({ value }: { value: string }) {
+  const match = /\d+(?:[ \u00a0,]\d{3})*/.exec(value);
+  const target = match ? Number(match[0].replace(/\D/g, "")) : 0;
+  const shown = useCountUp(target);
+  if (!match) return <>{value}</>;
+  const sep = match[0].includes(",") ? "," : (/[ \u00a0]/.exec(match[0])?.[0] ?? "");
+  const formatted = sep ? String(shown).replace(/\B(?=(\d{3})+(?!\d))/g, sep) : String(shown);
+  return <>{value.slice(0, match.index)}{formatted}{value.slice(match.index + match[0].length)}</>;
+}
+
+export function KpiCard({ label, value, note, icon: Icon, active, iconLeft, trend }: { label: string; value: string; note?: string; icon: LucideIcon; active?: boolean; iconLeft?: boolean; trend?: string }) {
   return <motion.div className={`kpi ${active ? "active" : ""} ${iconLeft ? "icon-left" : ""}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .2 }}>
     {iconLeft && <Icon size={34}/>}
-    <div className="kpi-text"><div className="kpi-label">{label}</div><div className="kpi-value">{value}</div>{note && <div className="kpi-note">↑ {note}</div>}</div>
+    <div className="kpi-text"><div className="kpi-label">{label}</div><div className="kpi-value"><AnimatedValue value={value}/></div>{note && <div className="kpi-note">↑ {note}</div>}</div>
+    {trend && <span className="kpi-trend">↗ {trend}</span>}
     {!iconLeft && <Icon size={24}/>}
   </motion.div>;
 }
@@ -84,4 +124,14 @@ export function Pagination({ page, pageSize, total, noun, onPage }: { page: numb
       <button type="button" aria-label="Next page" disabled={page >= pages} onClick={()=>onPage(page + 1)}><ChevronRight size={16}/></button>
     </div>
   </div>;
+}
+
+/** Props that make a whole table row open `href`, by mouse or by pressing Enter. */
+export function useRowLink() {
+  const router = useRouter();
+  return (href: string) => ({
+    tabIndex: 0,
+    onClick: () => router.push(href),
+    onKeyDown: (event: React.KeyboardEvent) => { if (event.key === "Enter" && event.target === event.currentTarget) router.push(href); },
+  });
 }

@@ -2,11 +2,11 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import * as seed from "@/_mocks/data";
-import type { Client, EmailMessage, Invoice, Opportunity, OpportunityStage, Project, ProjectStage, Task, Template } from "@/_types";
+import type { AppNotification, Client, EmailMessage, Invoice, Opportunity, OpportunityStage, Project, ProjectStage, Task, Template } from "@/_types";
 
 type DemoState = {
   clients: Client[]; projects: Project[]; opportunities: Opportunity[]; tasks: Task[];
-  emails: EmailMessage[]; templates: Template[]; invoices: Invoice[];
+  emails: EmailMessage[]; templates: Template[]; invoices: Invoice[]; notifications: AppNotification[];
 };
 type DemoContextValue = DemoState & {
   moveProject: (id: string, stage: ProjectStage) => void;
@@ -16,10 +16,12 @@ type DemoContextValue = DemoState & {
   addTask: (task: Task) => void;
   addEmail: (email: EmailMessage) => void;
   updateTemplate: (id: string, body: string) => void;
+  markNotificationRead: (id: string) => void;
+  markAllNotificationsRead: () => void;
   reset: () => void;
 };
 
-const initialState: DemoState = { clients: seed.clients, projects: seed.projects, opportunities: seed.opportunities, tasks: seed.tasks, emails: seed.emails, templates: seed.templates, invoices: seed.invoices };
+const initialState: DemoState = { clients: seed.clients, projects: seed.projects, opportunities: seed.opportunities, tasks: seed.tasks, emails: seed.emails, templates: seed.templates, invoices: seed.invoices, notifications: seed.notifications };
 const DemoContext = createContext<DemoContextValue | null>(null);
 const STORAGE_KEY = "oak-pixel-workspace-demo-v2";
 
@@ -36,7 +38,7 @@ export function DemoDataProvider({ children }: { children: React.ReactNode }) {
         const fill = <T extends { id: string }>(rows: T[], base: T[]) => rows.map(row => ({ ...base.find(b => b.id === row.id), ...row }));
         // Restoring persisted demonstration state is intentionally post-hydration.
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setState({ ...parsed, clients: fill(parsed.clients, seed.clients), projects: fill(parsed.projects, seed.projects) });
+        setState({ ...parsed, notifications: parsed.notifications ?? seed.notifications, clients: fill(parsed.clients, seed.clients), projects: fill(parsed.projects, seed.projects) });
       }
     } catch {}
     setHydrated(true);
@@ -52,6 +54,8 @@ export function DemoDataProvider({ children }: { children: React.ReactNode }) {
     addTask: task => setState(s => ({ ...s, tasks: [task, ...s.tasks] })),
     addEmail: email => setState(s => ({ ...s, emails: [email, ...s.emails] })),
     updateTemplate: (id, body) => setState(s => ({ ...s, templates: s.templates.map(t => t.id === id ? { ...t, body, updated: "Just now" } : t) })),
+    markNotificationRead: id => setState(s => ({ ...s, notifications: s.notifications.map(n => n.id === id ? { ...n, read: true } : n) })),
+    markAllNotificationsRead: () => setState(s => ({ ...s, notifications: s.notifications.map(n => ({ ...n, read: true })) })),
     reset: () => { localStorage.removeItem(STORAGE_KEY); setState(initialState); },
   }), [state]);
 

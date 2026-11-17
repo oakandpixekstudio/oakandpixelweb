@@ -6,7 +6,8 @@ import { useState } from "react";
 import { closestCorners, DndContext, DragEndEvent, DragOverlay, PointerSensor, useDraggable, useDroppable, useSensor, useSensors } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { AppWindow, ArrowDown, ArrowUp, CalendarDays, CheckCircle2, CheckSquare, FolderKanban, Layers, Mail, MoreHorizontal, Play, Plus, RotateCcw, Search, Square, Users } from "lucide-react";
-import { KpiCard, PageHero, Pagination, Panel, Progress, SearchBox, StatusBadge, TableCheckbox, ViewToggle } from "@/_components/shared";
+import { KpiCard, PageHero, Pagination, Panel, Progress, SearchBox, StatusBadge, TableCheckbox, useRowLink, ViewToggle } from "@/_components/shared";
+import { Select } from "@/_components/controls";
 import { useDemoData } from "@/_providers/demo-data-provider";
 import type { Project, ProjectStage } from "@/_types";
 
@@ -18,6 +19,7 @@ const stageAccent:Record<ProjectStage,string>={Backlog:"#8e9a9c","To Do":"#5b8de
 
 export function ProjectsView(){
   const router=useRouter();
+  const rowLink=useRowLink();
   const{projects,clients}=useDemoData();
   const[q,setQ]=useState("");const[client,setClient]=useState("All Clients");const[status,setStatus]=useState("All Statuses");const[service,setService]=useState("All Services");
   const[selected,setSelected]=useState(projects[0]?.id);const[page,setPage]=useState(1);const[checked,setChecked]=useState<string[]>([]);const[sortName,setSortName]=useState<1|-1|0>(0);
@@ -38,15 +40,15 @@ export function ProjectsView(){
       <KpiCard iconLeft label="Due This Week" value="4" icon={CalendarDays}/>
     </div>
     <div className="toolbar"><SearchBox value={q} onChange={v=>{setQ(v);setPage(1)}} placeholder="Search projects…"/>
-      <select className="select" aria-label="Client" value={client} onChange={e=>{setClient(e.target.value);setPage(1)}}><option>All Clients</option>{clients.map(c=><option key={c.id}>{c.name}</option>)}</select>
-      <select className="select" aria-label="Status" value={status} onChange={e=>{setStatus(e.target.value);setPage(1)}}><option>All Statuses</option>{stages.map(s=><option key={s}>{s}</option>)}</select>
-      <select className="select" aria-label="Service" value={service} onChange={e=>{setService(e.target.value);setPage(1)}}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</select>
+      <Select className="select" aria-label="Client" value={client} onChange={e=>{setClient(e.target.value);setPage(1)}}><option>All Clients</option>{clients.map(c=><option key={c.id}>{c.name}</option>)}</Select>
+      <Select className="select" aria-label="Status" value={status} onChange={e=>{setStatus(e.target.value);setPage(1)}}><option>All Statuses</option>{stages.map(s=><option key={s}>{s}</option>)}</Select>
+      <Select className="select" aria-label="Service" value={service} onChange={e=>{setService(e.target.value);setPage(1)}}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</Select>
       <ViewToggle value="list" onChange={v=>{if(v==="grid")router.push("/projects/board")}}/><span style={{flex:1}}/><button className="button primary"><Plus size={17}/>Add Project</button></div>
     <div className="split"><section className="panel">
       <div className="table-wrap"><table className="data-table"><thead><tr>
         <th style={{width:44}}><TableCheckbox label="Select all projects" checked={allChecked} onChange={on=>setChecked(on?Array.from(new Set([...checked,...pageRows.map(p=>p.id)])):checked.filter(id=>!pageRows.some(p=>p.id===id)))}/></th>
         <th><button type="button" className="th-sort" onClick={()=>setSortName(s=>s===1?-1:1)}>Project {sortName===-1?<ArrowDown size={13}/>:<ArrowUp size={13}/>}</button></th><th>Client</th><th>Service</th><th>Progress</th><th>Status</th><th>Due Date</th><th/></tr></thead>
-        <tbody>{pageRows.map(p=><tr key={p.id} className={p.id===selectedProject?.id?"selected":""} onClick={()=>setSelected(p.id)}>
+        <tbody>{pageRows.map(p=><tr key={p.id} className={`${p.id===selectedProject?.id?"selected":""} clickable`} onMouseEnter={()=>setSelected(p.id)} {...rowLink(`/projects/${p.id}`)}>
           <td><TableCheckbox label={`Select ${p.name}`} checked={checked.includes(p.id)} onChange={on=>setChecked(on?[...checked,p.id]:checked.filter(id=>id!==p.id))}/></td>
           <td><strong>{p.name}</strong></td><td>{clientName(p.clientId)}</td><td>{p.service}</td><td><Progress value={p.progress}/></td><td><StatusBadge value={p.stage}/></td><td className="nowrap">{p.due}</td><td><MoreHorizontal size={17}/></td></tr>)}</tbody></table></div>
       {pageRows.length===0&&<div className="empty" style={{minHeight:160}}>No projects match these filters.</div>}
@@ -85,9 +87,9 @@ export function ProjectBoardView(){
   return <>
     <PageHero eyebrow="Projects" title="View Projects" subtitle="Track and manage project work across all clients in a Kanban view."/>
     <div className="toolbar"><SearchBox value={q} onChange={setQ} placeholder="Search projects…"/>
-      <select className="select" aria-label="Client" value={client} onChange={e=>setClient(e.target.value)}><option>All Clients</option>{clients.map(c=><option key={c.id}>{c.name}</option>)}</select>
-      <select className="select" aria-label="Service" value={service} onChange={e=>setService(e.target.value)}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</select>
-      <select className="select" aria-label="Team member" value={member} onChange={e=>setMember(e.target.value)}><option>All Team Members</option>{team.map(m=><option key={m}>{m}</option>)}</select>
+      <Select className="select" aria-label="Client" value={client} onChange={e=>setClient(e.target.value)}><option>All Clients</option>{clients.map(c=><option key={c.id}>{c.name}</option>)}</Select>
+      <Select className="select" aria-label="Service" value={service} onChange={e=>setService(e.target.value)}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</Select>
+      <Select className="select" aria-label="Team member" value={member} onChange={e=>setMember(e.target.value)}><option>All Team Members</option>{team.map(m=><option key={m}>{m}</option>)}</Select>
       <span style={{flex:1}}/><ViewToggle value="grid" onChange={v=>{if(v==="list")router.push("/projects")}}/></div>
     <DndContext sensors={sensors} collisionDetection={closestCorners} onDragStart={e=>setActive(projects.find(p=>p.id===String(e.active.id))??null)} onDragEnd={end} onDragCancel={()=>setActive(null)}>
       <div className="kanban">{stages.map(stage=><ProjectColumn stage={stage} projects={visible.filter(p=>p.stage===stage)} clients={clients} checklist={checklist} key={stage}/>)}</div>
@@ -123,4 +125,4 @@ function ProjectCard({project,client,checklist,overlay=false}:{project:Project;c
   </article>;
 }
 
-export function ProjectDetailView({projectId}:{projectId:string}){const{projects,clients,tasks}=useDemoData();const p=projects.find(p=>p.id===projectId)??projects[0];const client=clients.find(c=>c.id===p.clientId);return <><PageHero eyebrow="Projects / Delivery workspace" title={p.name} subtitle={`${client?.name} · ${p.service}`}/><div className="detail-grid"><Panel title="Project overview"><p style={{color:"var(--muted)",lineHeight:1.7}}>{p.description}</p><div className="info-grid"><div className="info-box"><label>Status</label><StatusBadge value={p.stage}/></div><div className="info-box"><label>Progress</label><Progress value={p.progress}/></div><div className="info-box"><label>Due date</label><b>{p.due}</b></div><div className="info-box"><label>Manager</label><b>{p.manager}</b></div></div></Panel><Panel title="Project team"><div style={{display:"flex",gap:10}}>{["LM","TM","SN","OP"].map(x=><span className="profile" key={x}>{x}</span>)}</div><button className="button" style={{marginTop:18}}><Users size={16}/>Manage team</button></Panel><section className="panel table-wrap wide"><table className="data-table"><thead><tr><th>Task</th><th>Assignee</th><th>Priority</th><th>Status</th><th>Due</th></tr></thead><tbody>{tasks.filter(t=>t.projectId===p.id).map(t=><tr key={t.id}><td><strong>{t.title}</strong></td><td>{t.assignee}</td><td>{t.priority}</td><td><StatusBadge value={t.status}/></td><td>{t.due}</td></tr>)}</tbody></table></section></div><style jsx>{`.detail-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:14px}.wide{grid-column:1/-1}@media(max-width:800px){.detail-grid{grid-template-columns:1fr}.wide{grid-column:auto}}`}</style></>}
+export function ProjectDetailView({projectId}:{projectId:string}){const rowLink=useRowLink();const{projects,clients,tasks}=useDemoData();const p=projects.find(p=>p.id===projectId)??projects[0];const client=clients.find(c=>c.id===p.clientId);return <><PageHero eyebrow="Projects / Delivery workspace" title={p.name} subtitle={`${client?.name} · ${p.service}`}/><div className="detail-grid"><Panel title="Project overview"><p style={{color:"var(--muted)",lineHeight:1.7}}>{p.description}</p><div className="info-grid"><div className="info-box"><label>Status</label><StatusBadge value={p.stage}/></div><div className="info-box"><label>Progress</label><Progress value={p.progress}/></div><div className="info-box"><label>Due date</label><b>{p.due}</b></div><div className="info-box"><label>Manager</label><b>{p.manager}</b></div></div></Panel><Panel title="Project team"><div style={{display:"flex",gap:10}}>{["LM","TM","SN","OP"].map(x=><span className="profile" key={x}>{x}</span>)}</div><button className="button" style={{marginTop:18}}><Users size={16}/>Manage team</button></Panel><section className="panel table-wrap wide"><table className="data-table"><thead><tr><th>Task</th><th>Assignee</th><th>Priority</th><th>Status</th><th>Due</th></tr></thead><tbody>{tasks.filter(t=>t.projectId===p.id).map(t=><tr key={t.id} className="clickable" {...rowLink(`/tasks/${t.id}`)}><td><strong>{t.title}</strong></td><td>{t.assignee}</td><td>{t.priority}</td><td><StatusBadge value={t.status}/></td><td>{t.due}</td></tr>)}</tbody></table></section></div><style jsx>{`.detail-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:14px}.wide{grid-column:1/-1}@media(max-width:800px){.detail-grid{grid-template-columns:1fr}.wide{grid-column:auto}}`}</style></>}

@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { closestCorners, DndContext, DragEndEvent, PointerSensor, useDraggable, useDroppable, useSensor, useSensors } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
-import { ArrowDown, ArrowUp, CalendarDays, CheckCircle2, CircleDashed, FileText, Handshake, Layers, MoreHorizontal, Plus, Scale, Target, TrendingUp, Trophy, X } from "lucide-react";
-import { KpiCard, Money, PageHero, Pagination, Panel, SearchBox, StatusBadge, TableCheckbox, ViewToggle } from "@/_components/shared";
+import { ArrowDown, ArrowLeft, ArrowUp, CalendarDays, CheckCircle2, CircleDashed, FileText, Handshake, Layers, MoreHorizontal, Plus, Scale, Target, TrendingUp, Trophy, X } from "lucide-react";
+import { KpiCard, Money, PageHero, Pagination, Panel, SearchBox, StatusBadge, TableCheckbox, useRowLink, ViewToggle } from "@/_components/shared";
+import { Select, DatePicker } from "@/_components/controls";
 import { useDemoData } from "@/_providers/demo-data-provider";
+import { useDialogs } from "@/_components/dialogs";
 import type { Opportunity, OpportunityStage, Task, TaskStatus } from "@/_types";
 
 const opportunityStages:OpportunityStage[]=["Lead","Qualified","Proposal","Negotiation","Won"];
@@ -13,6 +16,7 @@ const stageIcons={Lead:Plus,Qualified:CheckCircle2,Proposal:FileText,Negotiation
 const funnelShades=["#0aa85c","#2fbf78","#5fd49a","#8ee2b8","#8e9a9c"];
 
 export function PipelineView(){
+  const rowLink=useRowLink();
   const{opportunities,moveOpportunity}=useDemoData();
   const[q,setQ]=useState("");const[service,setService]=useState("All Services");const[owner,setOwner]=useState("All Owners");const[view,setView]=useState<"grid"|"list">("grid");
   const sensors=useSensors(useSensor(PointerSensor,{activationConstraint:{distance:5}}));
@@ -30,11 +34,11 @@ export function PipelineView(){
       <KpiCard iconLeft label="Win Rate (YTD)" value={`${Math.round(opportunities.filter(o=>o.stage==="Won").length/Math.max(1,opportunities.length)*100)}%`} icon={Trophy}/>
     </div>
     <div className="toolbar"><SearchBox value={q} onChange={setQ} placeholder="Search opportunities…"/>
-      <select className="select" aria-label="Service" value={service} onChange={e=>setService(e.target.value)}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</select>
-      <select className="select" aria-label="Owner" value={owner} onChange={e=>setOwner(e.target.value)}><option>All Owners</option>{owners.map(o=><option key={o}>{o}</option>)}</select>
+      <Select className="select" aria-label="Service" value={service} onChange={e=>setService(e.target.value)}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</Select>
+      <Select className="select" aria-label="Owner" value={owner} onChange={e=>setOwner(e.target.value)}><option>All Owners</option>{owners.map(o=><option key={o}>{o}</option>)}</Select>
       <span style={{flex:1}}/><ViewToggle value={view} onChange={setView}/><button className="button primary"><Plus size={17}/>Add Opportunity</button></div>
     {view==="grid"?<DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={end}><div className="pipeline-board">{opportunityStages.map(stage=><OpportunityColumn key={stage} stage={stage} rows={visible.filter(o=>o.stage===stage)}/>)}<PipelineInsights rows={opportunities}/></div></DndContext>
-    :<section className="panel table-wrap"><table className="data-table"><thead><tr><th>Opportunity</th><th>Service</th><th>Stage</th><th>Owner</th><th>Value</th></tr></thead><tbody>{visible.map(o=><tr key={o.id}><td><strong>{o.name}</strong></td><td>{o.service}</td><td><StatusBadge value={o.stage}/></td><td><span className="avatar sm">{o.owner}</span></td><td><Money value={o.value}/></td></tr>)}</tbody></table></section>}
+    :<section className="panel table-wrap"><table className="data-table"><thead><tr><th>Opportunity</th><th>Service</th><th>Stage</th><th>Owner</th><th>Value</th></tr></thead><tbody>{visible.map(o=><tr key={o.id} className="clickable" {...rowLink(`/clients/${o.clientId}`)}><td><strong>{o.name}</strong></td><td>{o.service}</td><td><StatusBadge value={o.stage}/></td><td><span className="avatar sm">{o.owner}</span></td><td><Money value={o.value}/></td></tr>)}</tbody></table></section>}
     <style jsx>{`.pipeline-board{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr)) minmax(260px,1.15fr);gap:10px;overflow-x:auto;padding-bottom:14px}`}</style>
   </>;
 }
@@ -72,6 +76,8 @@ function PipelineInsights({rows}:{rows:Opportunity[]}){
 }
 
 export function TasksView(){
+  const rowLink=useRowLink();
+  const{toast}=useDialogs();
   const{tasks,projects,updateTask,addTask}=useDemoData();
   const[q,setQ]=useState("");const[project,setProject]=useState("All Projects");const[assignee,setAssignee]=useState("All Assignees");const[priority,setPriority]=useState("All Priority");const[status,setStatus]=useState("All Status");
   const[selected,setSelected]=useState(tasks[0]?.id);const[open,setOpen]=useState(false);const[view,setView]=useState<"list"|"grid">("list");
@@ -84,7 +90,7 @@ export function TasksView(){
   const task=tasks.find(t=>t.id===selected)??pageRows[0];
   const allChecked=pageRows.length>0&&pageRows.every(t=>checked.includes(t.id));
   const reset=<T,>(set:(v:T)=>void)=>(v:T)=>{set(v);setPage(1)};
-  function create(form:FormData){const title=String(form.get("title"));addTask({id:crypto.randomUUID(),title,projectId:String(form.get("project")),assignee:String(form.get("assignee")),priority:String(form.get("priority")) as Task["priority"],status:"To Do",due:String(form.get("due")),progress:0,description:String(form.get("description"))});setOpen(false)}
+  function create(form:FormData){const title=String(form.get("title"));addTask({id:crypto.randomUUID(),title,projectId:String(form.get("project")),assignee:String(form.get("assignee")),priority:String(form.get("priority")) as Task["priority"],status:"To Do",due:String(form.get("due")),progress:0,description:String(form.get("description"))});setOpen(false);toast("Task created")}
   return <>
     <PageHero eyebrow="Tasks" title="Tasks" subtitle="Manage, assign and track work across all projects in one place."/>
     <div className="grid kpi-grid">
@@ -94,44 +100,56 @@ export function TasksView(){
       <KpiCard iconLeft label="Due This Week" value="5" icon={CalendarDays}/>
     </div>
     <div className="toolbar"><SearchBox value={q} onChange={reset(setQ)} placeholder="Search tasks…"/>
-      <select className="select" aria-label="Project" value={project} onChange={e=>reset(setProject)(e.target.value)}><option>All Projects</option>{projects.map(p=><option key={p.id}>{p.name}</option>)}</select>
-      <select className="select" aria-label="Assignee" value={assignee} onChange={e=>reset(setAssignee)(e.target.value)}><option>All Assignees</option>{assignees.map(a=><option key={a}>{a}</option>)}</select>
-      <select className="select" aria-label="Priority" value={priority} onChange={e=>reset(setPriority)(e.target.value)}><option>All Priority</option><option>High</option><option>Medium</option><option>Low</option></select>
-      <select className="select" aria-label="Status" value={status} onChange={e=>reset(setStatus)(e.target.value)}><option>All Status</option>{["To Do","In Progress","In Review","Completed"].map(s=><option key={s}>{s}</option>)}</select>
+      <Select className="select" aria-label="Project" value={project} onChange={e=>reset(setProject)(e.target.value)}><option>All Projects</option>{projects.map(p=><option key={p.id}>{p.name}</option>)}</Select>
+      <Select className="select" aria-label="Assignee" value={assignee} onChange={e=>reset(setAssignee)(e.target.value)}><option>All Assignees</option>{assignees.map(a=><option key={a}>{a}</option>)}</Select>
+      <Select className="select" aria-label="Priority" value={priority} onChange={e=>reset(setPriority)(e.target.value)}><option>All Priority</option><option>High</option><option>Medium</option><option>Low</option></Select>
+      <Select className="select" aria-label="Status" value={status} onChange={e=>reset(setStatus)(e.target.value)}><option>All Status</option>{["To Do","In Progress","In Review","Completed"].map(s=><option key={s}>{s}</option>)}</Select>
       <ViewToggle value={view} onChange={setView}/><span style={{flex:1}}/><button className="button primary" onClick={()=>setOpen(true)}><Plus size={16}/>Add Task</button></div>
     <div className="split"><section className="panel">
       {view==="list"?<div className="table-wrap"><table className="data-table"><thead><tr>
         <th style={{width:44}}><TableCheckbox label="Select all tasks" checked={allChecked} onChange={on=>setChecked(on?Array.from(new Set([...checked,...pageRows.map(t=>t.id)])):checked.filter(id=>!pageRows.some(t=>t.id===id)))}/></th>
         <th><button type="button" className="th-sort" onClick={()=>setSort(s=>s===1?-1:1)}>Task {sort===1?<ArrowUp size={13}/>:<ArrowDown size={13}/>}</button></th><th>Project</th><th>Assignee</th><th>Priority</th><th>Status</th><th>Due Date</th><th/></tr></thead>
-        <tbody>{pageRows.map(t=><tr key={t.id} className={t.id===task?.id?"selected":""} onClick={()=>setSelected(t.id)}>
+        <tbody>{pageRows.map(t=><tr key={t.id} className={`${t.id===task?.id?"selected":""} clickable`} onMouseEnter={()=>setSelected(t.id)} {...rowLink(`/tasks/${t.id}`)}>
           <td><TableCheckbox label={`Select ${t.title}`} checked={checked.includes(t.id)} onChange={on=>setChecked(on?[...checked,t.id]:checked.filter(id=>id!==t.id))}/></td>
           <td><strong>{t.title}</strong></td><td>{projectName(t.projectId)}</td><td><span className="avatar sm">{t.assignee}</span></td>
           <td><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span></td><td><StatusBadge value={t.status}/></td><td className="nowrap">{t.due}</td><td><MoreHorizontal size={17}/></td></tr>)}</tbody></table></div>
-      :<div className="card-grid">{pageRows.map(t=><button type="button" key={t.id} className={`card-tile ${t.id===task?.id?"selected":""}`} onClick={()=>setSelected(t.id)}><strong>{t.title}</strong><span style={{color:"var(--muted)"}}>{projectName(t.projectId)}</span><span style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span><StatusBadge value={t.status}/></span></button>)}</div>}
+      :<div className="card-grid">{pageRows.map(t=><button type="button" key={t.id} className={`card-tile ${t.id===task?.id?"selected":""}`} onMouseEnter={()=>setSelected(t.id)} onClick={rowLink(`/tasks/${t.id}`).onClick}><strong>{t.title}</strong><span style={{color:"var(--muted)"}}>{projectName(t.projectId)}</span><span style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span><StatusBadge value={t.status}/></span></button>)}</div>}
       {pageRows.length===0&&<div className="empty" style={{minHeight:160}}>No tasks match these filters.</div>}
       <Pagination page={current} pageSize={pageSize} total={rows.length} noun="tasks" onPage={setPage}/>
     </section>{task&&<TaskInspector task={task} onUpdate={p=>updateTask(task.id,p)}/>}</div>
-    {open&&<div className="modal-backdrop"><form className="modal" action={create}><div className="modal-header"><h2 className="section-title">Create task</h2><button type="button" className="icon-button" onClick={()=>setOpen(false)}><X size={16}/></button></div><div className="modal-body form-grid"><Field name="title" label="Task title"/><label className="field"><span>Project</span><select className="select" name="project">{projects.map(p=><option value={p.id} key={p.id}>{p.name}</option>)}</select></label><Field name="assignee" label="Assignee initials"/><label className="field"><span>Priority</span><select className="select" name="priority"><option>Low</option><option>Medium</option><option>High</option></select></label><Field name="due" label="Due date"/><Field name="description" label="Description"/></div><div className="modal-footer"><button type="button" className="button" onClick={()=>setOpen(false)}>Cancel</button><button className="button primary">Create demo task</button></div></form></div>}
+    {open&&<div className="modal-backdrop"><form className="modal" action={create}><div className="modal-header"><h2 className="section-title">Create task</h2><button type="button" className="icon-button" onClick={()=>setOpen(false)}><X size={16}/></button></div><div className="modal-body form-grid"><Field name="title" label="Task title"/><label className="field"><span>Project</span><Select className="select" name="project">{projects.map(p=><option value={p.id} key={p.id}>{p.name}</option>)}</Select></label><Field name="assignee" label="Assignee initials"/><label className="field"><span>Priority</span><Select className="select" name="priority"><option>Low</option><option>Medium</option><option>High</option></Select></label><label className="field"><span>Due date</span><DatePicker name="due" placeholder="Select a due date"/></label><Field name="description" label="Description"/></div><div className="modal-footer"><button type="button" className="button" onClick={()=>setOpen(false)}>Cancel</button><button className="button primary">Create demo task</button></div></form></div>}
+  </>;
+}
+
+export function TaskDetailView({taskId}:{taskId:string}){
+  const{tasks,projects,updateTask}=useDemoData();
+  const task=tasks.find(t=>t.id===taskId)??tasks[0];
+  if(!task)return null;
+  const project=projects.find(p=>p.id===task.projectId);
+  return <>
+    <PageHero eyebrow="Tasks / Task" title={task.title} subtitle={project?.name??"Task"}/>
+    <div className="toolbar"><Link href="/tasks" className="button"><ArrowLeft size={16}/>Tasks</Link><span style={{flex:1}}/>{project&&<Link href={`/projects/${project.id}`} className="button">Open project</Link>}</div>
+    <div style={{maxWidth:640}}><TaskInspector task={task} onUpdate={p=>updateTask(task.id,p)}/></div>
   </>;
 }
 
 function TaskInspector({task,onUpdate}:{task:Task;onUpdate:(p:Partial<Task>)=>void}){
-  const{projects}=useDemoData();const[tab,setTab]=useState("Details");
+  const{projects}=useDemoData();const{toast}=useDialogs();const[tab,setTab]=useState("Details");
   return <Panel>
     <div className="detail-title"><span className="logo-tile"><CheckCircle2 size={20}/></span><div><h2>{task.title}</h2><small style={{color:"var(--muted)"}}>{projects.find(p=>p.id===task.projectId)?.name}</small></div><MoreHorizontal size={18} style={{marginLeft:"auto"}}/></div>
     <div className="tabs" style={{margin:"14px -18px"}}>{["Details","Subtasks","Comments","Files","Activity"].map(x=><button className={`tab ${tab===x?"active":""}`} onClick={()=>setTab(x)} key={x}>{x}</button>)}</div>
     {tab==="Details"?<>
       <p style={{lineHeight:1.7,color:"var(--muted)"}}>{task.description}</p>
       <div className="info-grid">
-        <label className="info-box"><span>Status</span><select className="select" value={task.status} onChange={e=>onUpdate({status:e.target.value as TaskStatus})}>{["To Do","In Progress","In Review","Completed"].map(x=><option key={x}>{x}</option>)}</select></label>
-        <label className="info-box"><span>Priority</span><select className="select" value={task.priority} onChange={e=>onUpdate({priority:e.target.value as Task["priority"]})}><option>Low</option><option>Medium</option><option>High</option></select></label>
+        <label className="info-box"><span>Status</span><Select className="select" value={task.status} onChange={e=>onUpdate({status:e.target.value as TaskStatus})}>{["To Do","In Progress","In Review","Completed"].map(x=><option key={x}>{x}</option>)}</Select></label>
+        <label className="info-box"><span>Priority</span><Select className="select" value={task.priority} onChange={e=>onUpdate({priority:e.target.value as Task["priority"]})}><option>Low</option><option>Medium</option><option>High</option></Select></label>
         <div className="info-box"><span>Assignee</span><b><span className="avatar sm" style={{marginRight:8}}>{task.assignee}</span>{task.assignee}</b></div>
         <div className="info-box"><span>Due Date</span><b>{task.due}</b></div>
       </div>
       <div style={{margin:"18px 0"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}><span>Progress</span><b>{task.progress}%</b></div><input type="range" min="0" max="100" value={task.progress} onChange={e=>onUpdate({progress:Number(e.target.value)})} style={{width:"100%",accentColor:"var(--green)"}}/></div>
-      <button className="button outline" style={{width:"100%"}} onClick={()=>onUpdate({status:"Completed",progress:100})}><CheckCircle2 size={16}/>Mark as Complete</button>
+      <button className="button outline" style={{width:"100%"}} onClick={()=>{onUpdate({status:"Completed",progress:100});toast("Task marked as complete")}}><CheckCircle2 size={16}/>Mark as Complete</button>
     </>:<div className="empty">{tab} are available as frontend demonstration states.</div>}
-    <style jsx>{`.info-box>span{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}.info-box :global(.select){width:100%}`}</style>
+    <style jsx>{`.info-box>span{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}.info-box :global(.select-root){width:100%}`}</style>
   </Panel>;
 }
 

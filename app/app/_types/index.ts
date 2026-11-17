@@ -20,11 +20,15 @@ export interface Task {
 }
 export interface EmailMessage {
   id: string; clientId: string; projectId?: string; folder: string; from: string; subject: string; preview: string;
-  body: string; time: string; unread?: boolean; starred?: boolean; attachments?: string[];
+  body: string; time: string; unread?: boolean; starred?: boolean; attachments?: string[]; html?: string; to?: string[]; cc?: string[]; bcc?: string[]; scheduledFor?: string;
 }
 export interface Template { id: string; name: string; type: string; service: string; updated: string; body: string; }
 export interface InvoiceItem { description: string; quantity: number; unitPrice: number; }
 export interface Invoice {
   id: string; clientId: string; projectId?: string; status: "Draft" | "Sent" | "Paid" | "Overdue";
   issueDate: string; dueDate: string; taxRate: number; items: InvoiceItem[]; paid: number;
+}
+export interface AppNotification {
+  id: string; type: "email" | "invoice" | "task" | "project" | "client" | "pipeline";
+  title: string; body: string; time: string; href: string; read: boolean;
 }

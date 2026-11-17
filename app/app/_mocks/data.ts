@@ -1,4 +1,4 @@
-import type { Client, EmailMessage, Invoice, Opportunity, Project, Task, Template } from "@/_types";
+import type { AppNotification, Client, EmailMessage, Invoice, Opportunity, Project, Task, Template } from "@/_types";
 
 export const clients: Client[] = [
   { id:"trellis", name:"Trellis Capital", initials:"TC", since:"14 Mar 2025", service:"Website & CMS", status:"Active", contact:"Lerato Maseko", email:"lerato@trelliscapital.co.za", phone:"+27 82 345 6789", industry:"Investment & Advisory", pipeline:320000, billed:980000 },
@@ -67,4 +67,13 @@ export const invoices: Invoice[] = [
   { id:"INV-00429", clientId:"mavena", projectId:"p2", status:"Sent", issueDate:"12 Nov 2026", dueDate:"26 Nov 2026", taxRate:15, paid:0, items:[{description:"Brand and website design",quantity:1,unitPrice:240000}] },
   { id:"INV-00430", clientId:"rivermere", projectId:"p3", status:"Draft", issueDate:"15 Nov 2026", dueDate:"30 Nov 2026", taxRate:15, paid:0, items:[{description:"Website implementation",quantity:1,unitPrice:160000}] },
   { id:"INV-00417", clientId:"aurelia", projectId:"p4", status:"Overdue", issueDate:"20 Oct 2026", dueDate:"03 Nov 2026", taxRate:15, paid:50000, items:[{description:"SEO and content setup",quantity:1,unitPrice:120000}] }
+];
+
+export const notifications: AppNotification[] = [
+  { id:"n1", type:"email", title:"New email from Trellis Capital", body:"Website content for review", time:"14:21", href:"/emails", read:false },
+  { id:"n2", type:"task", title:"Task due soon", body:"Implement SEO recommendations · due 18 Nov 2026", time:"2 hours ago", href:"/tasks", read:false },
+  { id:"n3", type:"invoice", title:"Invoice INV-00428 paid", body:"R276,000 received from Trellis Capital", time:"Yesterday", href:"/invoices/INV-00428", read:false },
+  { id:"n4", type:"project", title:"Project moved to In Review", body:"Brand & Website (v2) · Mavena Group", time:"3 hours ago", href:"/projects/board", read:true },
+  { id:"n5", type:"pipeline", title:"Opportunity won", body:"Aurelia Properties · R200,000", time:"Yesterday", href:"/pipeline", read:true },
+  { id:"n6", type:"client", title:"New client added", body:"Lumen Infrastructure", time:"5 hours ago", href:"/clients", read:true },
 ];
