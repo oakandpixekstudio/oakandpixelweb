@@ -536,6 +536,20 @@ section{position:relative}
 .work-item:nth-child(1) .process-num{font-size:14rem;top:2.5rem}
 .work-item:nth-child(2) .process-num{color:rgba(10,10,9,.1)}
 .process-art{position:absolute;inset:0;width:100%;height:100%}
+.reviews{padding:9rem 0;background:var(--off-white)}
+.reviews-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:4rem}
+.reviews-headline{font-family:var(--font-display);font-size:clamp(2.2rem,3.6vw,3.4rem);font-weight:300;line-height:1.1}
+.reviews-score{display:flex;align-items:center;gap:1rem}
+.reviews-score-num{font-family:var(--font-display);font-size:3.2rem;font-weight:300;line-height:1}
+.reviews-score-meta{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);line-height:1.7}
+.review-stars{color:var(--gold);letter-spacing:.2em;font-size:.95rem}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.review-card{background:var(--white);padding:2.5rem 2.25rem;display:flex;flex-direction:column;gap:1.25rem}
+.review-quote{font-family:var(--font-display);font-size:1.3rem;font-weight:400;line-height:1.5;color:var(--black);flex:1}
+.review-by{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.review-src{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+.reviews-cta{margin-top:2.5rem}
+@media (max-width:900px){.reviews{padding:6rem 0}.reviews-grid{grid-template-columns:1fr}}
 .work-item:nth-child(4){grid-column:1/-1}
 .work-desc{font-size:.92rem;line-height:1.7;color:var(--slate);max-width:34rem;margin-top:.25rem}
 .partner-strip{margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--silk);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
@@ -2021,6 +2035,54 @@ footer{
           <img src="images/lgndry-co-logo.webp" alt="LGNDRY.Co logo" width="280" height="100" loading="lazy">
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS ══════════════ -->
+<section id="reviews" class="reviews">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <div class="label reveal">Client Reviews</div>
+        <h2 class="reviews-headline reveal reveal-delay-1">What clients say</h2>
+      </div>
+      <div class="reviews-score reveal reveal-delay-2">
+        <div class="reviews-score-num">5.0</div>
+        <div>
+          <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <div class="reviews-score-meta">3 Google reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review-card reveal">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“Our company has skyrocketed because of the touch of Oak &amp; Pixel Studio. Efficient and top notch in their own way. Exceptional service I must state.”</blockquote>
+        <figcaption>
+          <div class="review-by">Neo Dan Official</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card reveal reveal-delay-1">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“If you are looking for a serious upgrade just let them touch your business and see wonders… The best in RSA so far.”</blockquote>
+        <figcaption>
+          <div class="review-by">Lgndry Co</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card reveal reveal-delay-2">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“We love they did for us. 🙏🏾”</blockquote>
+        <figcaption>
+          <div class="review-by">Beige Content</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="reviews-cta reveal">
+      <a class="work-more" href="https://share.google/828UDlN1eClAgx3ou" target="_blank" rel="noopener noreferrer">Read all reviews on Google</a>
     </div>
   </div>
 </section>
