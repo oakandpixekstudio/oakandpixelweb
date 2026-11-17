@@ -355,6 +355,9 @@ section{position:relative}
   font-weight:400;color:var(--white);margin-bottom:1rem;
   line-height:1.2;
 }
+.service-card{cursor:default}
+.service-art{width:100%;height:112px;margin-bottom:1.75rem;opacity:.85;transition:opacity .4s,transform .5s var(--ease-expo)}
+.service-card:hover .service-art{opacity:1;transform:translateY(-2px)}
 .service-price{
   font-family:var(--font-body);font-size:.85rem;
   color:var(--emerald-l);letter-spacing:.04em;
@@ -1686,104 +1689,73 @@ footer{
 <!-- ══════════════ SERVICES ══════════════ -->
 <section id="services">
   <div class="container">
-    <div class="label reveal">Capabilities</div>
+    <div class="label reveal">What You Get</div>
     <h2 class="services-headline reveal reveal-delay-1">
       Everything your website<br>needs to perform
     </h2>
     <p class="services-sub reveal reveal-delay-2">
-      Our website plans and the services that support them — each designed to help your website look better, work harder and win more business.
+      Every website we build is designed to look sharp, load fast and win you business. Here is what goes into it.
     </p>
     <div class="services-grid" id="public-services-grid">
-      <div class="service-card reveal" data-service="Signature Plan">
+      <div class="service-card reveal">
         <div class="service-num">01</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <rect x="4" y="8" width="32" height="24" rx="2"/>
-          <path d="M14 20h12M10 16h4M26 16h4"/>
-        </svg>
-        <div class="service-name">Signature Plan</div>
-        <p class="service-price">R 12 500 setup + R 1 800/month</p>
-        <p class="service-desc">A professional custom website — ideal for businesses launching or rebranding.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="40" y="10" width="132" height="92" rx="3" fill="rgba(255,255,255,.03)"/><line x1="40" y1="26" x2="172" y2="26"/><circle cx="50" cy="18" r="2"/><circle cx="58" cy="18" r="2"/><circle cx="66" cy="18" r="2"/>
+<rect x="50" y="34" width="64" height="36" fill="rgba(61,153,102,.12)"/><line x1="50" y1="34" x2="114" y2="70"/><line x1="114" y1="34" x2="50" y2="70"/>
+<rect x="50" y="78" width="30" height="16"/><rect x="86" y="78" width="30" height="16"/><rect x="122" y="78" width="40" height="16"/></g>
+<g stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"><line x1="124" y1="40" x2="162" y2="40"/><line x1="124" y1="49" x2="154" y2="49"/><line x1="124" y1="58" x2="160" y2="58"/></g>
+<circle cx="204" cy="28" r="8" fill="#3D9966"/><circle cx="204" cy="52" r="8" fill="#B8955A"/><circle cx="204" cy="76" r="8" fill="rgba(255,255,255,.7)"/></svg>
+        <div class="service-name">Custom Design</div>
+        <p class="service-desc">A layout built around your brand, never a template.</p>
       </div>
-      <div class="service-card reveal reveal-delay-1" data-service="Growth Plan">
+      <div class="service-card reveal reveal-delay-1">
         <div class="service-num">02</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <rect x="6" y="8" width="28" height="24" rx="2"/>
-          <path d="M6 18h28M14 6v4M26 6v4"/>
-          <rect x="12" y="23" width="4" height="4" rx=".5"/>
-          <rect x="22" y="23" width="4" height="4" rx=".5"/>
-        </svg>
-        <div class="service-name">Growth Plan</div>
-        <p class="service-price">R 25 000 setup + R 3 200/month</p>
-        <p class="service-desc">A lead-generating website — online booking, blog, SEO and payment or CRM integration.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="24" y="18" width="128" height="74" rx="3" fill="rgba(255,255,255,.03)"/><line x1="14" y1="98" x2="162" y2="98" stroke-linecap="round"/>
+<rect x="34" y="28" width="108" height="22" fill="rgba(61,153,102,.12)"/><rect x="34" y="58" width="50" height="26"/><rect x="92" y="58" width="50" height="26"/>
+<rect x="172" y="28" width="46" height="74" rx="8" fill="rgba(255,255,255,.04)"/><rect x="180" y="40" width="30" height="20" fill="rgba(61,153,102,.14)"/><line x1="180" y1="70" x2="210" y2="70"/><line x1="180" y1="79" x2="202" y2="79"/><line x1="188" y1="33" x2="202" y2="33" stroke-linecap="round"/></g></svg>
+        <div class="service-name">Mobile-First Build</div>
+        <p class="service-desc">Looks and works properly on every phone, tablet and desktop.</p>
       </div>
-      <div class="service-card reveal reveal-delay-2" data-service="Premium Plan">
+      <div class="service-card reveal reveal-delay-2">
         <div class="service-num">03</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <rect x="8" y="6" width="24" height="30" rx="2"/>
-          <path d="M14 15h12M14 21h12M14 27h8"/>
-          <circle cx="11" cy="15" r="1.5" fill="rgba(255,255,255,0.5)" stroke="none"/>
-          <circle cx="11" cy="21" r="1.5" fill="rgba(255,255,255,0.5)" stroke="none"/>
-        </svg>
-        <div class="service-name">Premium Plan</div>
-        <p class="service-price">R 55 000 setup + R 6 500/month</p>
-        <p class="service-desc">A fully bespoke website — custom design, e-commerce or portal features and advanced integrations.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="46" y="10" width="148" height="94" rx="3" fill="rgba(255,255,255,.03)"/><line x1="46" y1="34" x2="194" y2="34"/><line x1="76" y1="10" x2="76" y2="2" stroke-linecap="round"/><line x1="164" y1="10" x2="164" y2="2" stroke-linecap="round"/></g>
+<text x="58" y="26" fill="rgba(255,255,255,.38)" font-family="DM Mono, monospace" font-size="8" letter-spacing="2">BOOK A TIME</text>
+<rect x="58" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="124" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="58" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="58" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="124" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/>
+<rect x="124" y="68" width="10" height="10" rx="1" fill="#3D9966" stroke="#7FD1A2"/>
+<circle cx="190" cy="92" r="15" fill="#161614" stroke="#B8955A" stroke-width="1.6"/><path d="M190 83v9l6 4" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="service-name">Online Booking</div>
+        <p class="service-desc">Let clients book a time straight from your site, synced to your calendar.</p>
       </div>
-      <div class="service-card reveal reveal-delay-3" data-service="Online Booking Experience">
+      <div class="service-card reveal">
         <div class="service-num">04</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <circle cx="10" cy="12" r="4"/>
-          <circle cx="20" cy="20" r="4"/>
-          <circle cx="30" cy="28" r="4"/>
-          <path d="M13.5 14.5L16.5 17.5M23.5 22.5L26.5 25.5"/>
-        </svg>
-        <div class="service-name">Online Booking Experience</div>
-        <p class="service-price">R 15 000 setup + R 1 999/month</p>
-        <p class="service-desc">A seamless digital booking flow integrated into your website.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="30" y="12" width="100" height="88" rx="3" fill="rgba(255,255,255,.03)"/>
+<rect x="42" y="26" width="76" height="14" rx="1"/><rect x="42" y="48" width="76" height="14" rx="1"/></g>
+<rect x="42" y="72" width="40" height="16" rx="2" fill="rgba(61,153,102,.25)" stroke="#3D9966"/>
+<path d="M142 56h30m-8 -8l8 8-8 8" stroke="#7FD1A2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<g stroke="#B8955A" stroke-width="1.5" stroke-linejoin="round"><rect x="184" y="38" width="44" height="32" rx="3" fill="rgba(184,149,90,.1)"/><path d="M184 41l22 17 22 -17"/></g>
+<circle cx="226" cy="36" r="5" fill="#3D9966"/></svg>
+        <div class="service-name">Lead Capture</div>
+        <p class="service-desc">Forms and landing pages that turn visitors into enquiries.</p>
       </div>
-      <div class="service-card reveal reveal-delay-1" data-service="Lead Capture Experience">
+      <div class="service-card reveal reveal-delay-1">
         <div class="service-num">05</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <circle cx="20" cy="20" r="4"/>
-          <circle cx="8" cy="10" r="3"/>
-          <circle cx="32" cy="10" r="3"/>
-          <circle cx="8" cy="30" r="3"/>
-          <circle cx="32" cy="30" r="3"/>
-          <path d="M11 12L17 17M23 17L29 12M11 28L17 23M23 23L29 28"/>
-        </svg>
-        <div class="service-name">Lead Capture Experience</div>
-        <p class="service-price">R 12 500 setup + R 1 999/month</p>
-        <p class="service-desc">High-converting landing pages and forms to qualify inbound interest.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2" stroke-linecap="round"><line x1="30" y1="14" x2="30" y2="96"/><line x1="30" y1="96" x2="156" y2="96"/><line x1="30" y1="60" x2="156" y2="60" stroke-dasharray="3 5" stroke="rgba(255,255,255,.18)"/></g>
+<path d="M30 90C52 86 64 74 82 70S112 56 128 40S146 24 156 18L156 96L30 96Z" fill="rgba(61,153,102,.15)"/>
+<path d="M30 90C52 86 64 74 82 70S112 56 128 40S146 24 156 18" stroke="#7FD1A2" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="156" cy="18" r="4" fill="#7FD1A2"/>
+<circle cx="196" cy="46" r="22" stroke="#B8955A" stroke-width="2.2" fill="rgba(184,149,90,.08)"/><line x1="212" y1="62" x2="228" y2="80" stroke="#B8955A" stroke-width="5" stroke-linecap="round"/>
+<text x="184" y="50" fill="#B8955A" font-family="DM Mono, monospace" font-size="11" letter-spacing="1">#1</text></svg>
+        <div class="service-name">SEO &amp; Speed</div>
+        <p class="service-desc">Fast pages and a search-friendly structure, so customers can find you.</p>
       </div>
-      <div class="service-card reveal reveal-delay-2" data-service="Digital Presence Management">
+      <div class="service-card reveal reveal-delay-2">
         <div class="service-num">06</div>
-        <svg class="service-icon" viewBox="0 0 40 40" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2">
-          <rect x="6" y="8" width="28" height="8" rx="1"/>
-          <rect x="6" y="20" width="28" height="8" rx="1"/>
-          <circle cx="12" cy="12" r="1.5" fill="rgba(255,255,255,0.4)" stroke="none"/>
-          <circle cx="12" cy="24" r="1.5" fill="rgba(255,255,255,0.4)" stroke="none"/>
-          <path d="M18 32c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke-linecap="round"/>
-        </svg>
-        <div class="service-name">Digital Presence Management</div>
-        <p class="service-price">R 3 999/month</p>
-        <p class="service-desc">Hosting, security, maintenance and monthly content updates to keep your website sharp.</p>
-        <div class="service-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-        </div>
+        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="24" y="14" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/><rect x="24" y="44" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/><rect x="24" y="74" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/></g>
+<g fill="#7FD1A2"><circle cx="36" cy="26" r="2.5"/><circle cx="36" cy="56" r="2.5"/><circle cx="36" cy="86" r="2.5"/></g>
+<g stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"><line x1="50" y1="26" x2="104" y2="26"/><line x1="50" y1="56" x2="92" y2="56"/><line x1="50" y1="86" x2="100" y2="86"/></g>
+<path d="M180 12L210 24V54C210 76 196 90 180 98C164 90 150 76 150 54V24Z" stroke="#B8955A" stroke-width="1.8" fill="rgba(184,149,90,.08)" stroke-linejoin="round"/>
+<path d="M168 54l9 9 16-18" stroke="#7FD1A2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="service-name">Hosting &amp; Care</div>
+        <p class="service-desc">Hosting, security, backups and monthly updates, all handled for you.</p>
       </div>
     </div>
   </div>
@@ -3252,13 +3224,6 @@ if(false)(function(){
 })();
 
 
-// ── SERVICE CARDS → scroll to contact ──────────────────
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () =>
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
-  );
-});
-
 // ── MOBILE SIDE DRAWER ──────────────────────────────
 (function(){
   const toggle  = document.getElementById('mob-toggle');
@@ -3608,13 +3573,7 @@ document.querySelectorAll('.service-card').forEach(card => {
 </script>
 
 
-<script>
-document.querySelectorAll('#public-services-grid .service-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-</script>
+
 
 </body>
 </html>
