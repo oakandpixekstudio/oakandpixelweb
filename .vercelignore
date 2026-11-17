@@ -6,3 +6,5 @@ docs/
 tests/
 playwright.config.mjs
 .github/
+app/
+migrations/

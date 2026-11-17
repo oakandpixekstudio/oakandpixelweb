@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main style={{minHeight:"100vh",display:"grid",placeItems:"center",padding:30}}><div className="panel" style={{padding:32,maxWidth:560}}><div className="eyebrow">404</div><h1 className="page-title">Workspace view not found.</h1><p style={{color:"var(--muted)"}}>The page may have moved or the demonstration record does not exist.</p><Link className="button primary" href="/overview">Return to overview</Link></div></main>}
