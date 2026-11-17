@@ -1,4 +1,4 @@
-import type { AppNotification, Client, EmailMessage, Invoice, Opportunity, Project, Task, Template } from "@/_types";
+import type { AppNotification, AppSignature, Client, EmailMessage, Invoice, Opportunity, Project, Task, Template } from "@/_types";
 
 export const clients: Client[] = [
   { id:"trellis", name:"Trellis Capital", initials:"TC", since:"14 Mar 2025", service:"Website & CMS", status:"Active", contact:"Lerato Maseko", email:"lerato@trelliscapital.co.za", phone:"+27 82 345 6789", industry:"Investment & Advisory", pipeline:320000, billed:980000 },
@@ -77,3 +77,8 @@ export const notifications: AppNotification[] = [
   { id:"n5", type:"pipeline", title:"Opportunity won", body:"Aurelia Properties · R200,000", time:"Yesterday", href:"/pipeline", read:true },
   { id:"n6", type:"client", title:"New client added", body:"Lumen Infrastructure", time:"5 hours ago", href:"/clients", read:true },
 ];
+
+export const signature: AppSignature = {
+  enabled: true,
+  html: '<div style="color: #6b7778">--</div><div><b>Oak &amp; Pixel Studio</b></div><div style="color: #6b7778">Web design agency · Randburg, South Africa</div><div><a href="https://www.oakandpixel.co.za">www.oakandpixel.co.za</a></div>',
+};

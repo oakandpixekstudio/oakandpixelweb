@@ -7,9 +7,10 @@ import { DatePicker, Select } from "@/_components/controls";
 import { RichTextEditor, type EditorHandle } from "@/_components/rich-text";
 import { useDemoData } from "@/_providers/demo-data-provider";
 import { useDialogs } from "@/_components/dialogs";
+import { buildSignatureHtml } from "@/_components/signature-modal";
 import { htmlToText, textToHtml } from "@/_lib/sanitize-html";
 
-export type ComposeInit = { mode: "new" | "reply" | "replyAll" | "forward"; to?: string[]; cc?: string[]; subject?: string; html?: string };
+export type ComposeInit = { mode: "new" | "reply" | "replyAll" | "forward"; to?: string[]; cc?: string[]; subject?: string; html?: string; draftId?: string };
 export type ComposeResult = {
   kind: "send" | "draft" | "schedule"; to: string[]; cc: string[]; bcc: string[]; subject: string; html: string;
   attachments: { name: string; size: number }[]; scheduledFor?: string;
@@ -17,7 +18,6 @@ export type ComposeResult = {
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_BYTES = 25 * 1024 * 1024;
-const SIGNATURE = `<div><br></div><div><br></div><div style="color: #6b7778">--</div><div><b>Oak &amp; Pixel Studio</b></div><div style="color: #6b7778">Web design agency · Randburg, South Africa</div><div><a href="https://www.oakandpixel.co.za">www.oakandpixel.co.za</a></div>`;
 const TIMES = ["08:00", "09:00", "12:00", "15:00", "17:00"];
 const titles = { new: "New message", reply: "Reply", replyAll: "Reply all", forward: "Forward" } as const;
 
@@ -49,7 +49,7 @@ function RecipientField({ label, values, onChange, suggestions, autoFocus }: {
 }
 
 export function ComposeModal({ init, onClose, onSubmit }: { init: ComposeInit; onClose: () => void; onSubmit: (result: ComposeResult) => void }) {
-  const { clients, templates } = useDemoData();
+  const { clients, templates, signature } = useDemoData();
   const { confirm } = useDialogs();
   const [to, setTo] = useState<string[]>(init.to ?? []);
   const [cc, setCc] = useState<string[]>(init.cc ?? []);
@@ -66,7 +66,7 @@ export function ComposeModal({ init, onClose, onSubmit }: { init: ComposeInit; o
   const [dragging, setDragging] = useState(false);
   const editor = useRef<EditorHandle | null>(null);
   const picker = useRef<HTMLInputElement>(null);
-  const [initialHtml] = useState(init.html ?? SIGNATURE);
+  const [initialHtml] = useState(init.html ?? buildSignatureHtml(signature));
   const suggestions = clients.map(c => ({ name: c.contact || c.name, email: c.email }));
   const dirty = to.length > 0 || cc.length > 0 || bcc.length > 0 || subject.trim() !== "" || files.length > 0 || htmlToText(html) !== htmlToText(initialHtml);
 
@@ -118,7 +118,7 @@ export function ComposeModal({ init, onClose, onSubmit }: { init: ComposeInit; o
         <button type="button" className={`button ${scheduling ? "outline" : ""}`} onClick={() => setScheduling(v => !v)}><Clock size={16}/>Send later</button>
         <input ref={picker} type="file" multiple hidden onChange={e => { if (e.target.files) addFiles(e.target.files); e.target.value = ""; }}/>
         <button type="button" className="icon-button" aria-label="Attach files" title="Attach files" onClick={() => picker.current?.click()}><Paperclip size={17}/></button>
-        <button type="button" className="icon-button" aria-label="Insert signature" title="Insert signature" onClick={() => editor.current?.insertHtml(SIGNATURE)}><PenLine size={17}/></button>
+        <button type="button" className="icon-button" aria-label="Insert signature" title="Insert signature" onClick={() => editor.current?.insertHtml(buildSignatureHtml({ ...signature, enabled: true }))}><PenLine size={17}/></button>
         <Select aria-label="Insert template" value="" style={{ minWidth: 170 }} onChange={e => { const template = templates.find(t => t.id === e.target.value); if (!template) return; editor.current?.insertHtml(textToHtml(template.body)); if (!subject.trim() && template.type === "Email") setSubject(template.name); }}>
           <option value="">Insert template</option>{templates.filter(t => t.type === "Email").map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
         </Select>

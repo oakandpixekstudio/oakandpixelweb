@@ -1,21 +1,91 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { closestCorners, DndContext, DragEndEvent, PointerSensor, useDraggable, useDroppable, useSensor, useSensors } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
-import { ArrowDown, ArrowLeft, ArrowUp, CalendarDays, CheckCircle2, CircleDashed, FileText, Handshake, Layers, MoreHorizontal, Plus, Scale, Target, TrendingUp, Trophy, X } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowUp, CalendarDays, CheckCircle2, CircleDashed, FileText, Handshake, ExternalLink, Layers, MoreHorizontal, Pencil, Plus, Scale, Target, Trash2, TrendingUp, Trophy } from "lucide-react";
 import { KpiCard, Money, PageHero, Pagination, Panel, SearchBox, StatusBadge, TableCheckbox, useRowLink, ViewToggle } from "@/_components/shared";
-import { Select, DatePicker } from "@/_components/controls";
+import { Select } from "@/_components/controls";
+import { RecordForm, type FieldDef, type FormValues } from "@/_components/record-form";
+import { RowMenu } from "@/_components/row-menu";
 import { useDemoData } from "@/_providers/demo-data-provider";
 import { useDialogs } from "@/_components/dialogs";
 import type { Opportunity, OpportunityStage, Task, TaskStatus } from "@/_types";
+
+const taskStatuses: TaskStatus[] = ["To Do", "In Progress", "In Review", "Completed"];
+type TaskForm = { mode: "new" } | { mode: "edit"; task: Task } | null;
+type OppForm = { mode: "new"; stage?: OpportunityStage } | { mode: "edit"; opportunity: Opportunity } | null;
+
+function useTaskActions() {
+  const { projects, upsertTask, deleteTask } = useDemoData();
+  const { confirm, toast } = useDialogs();
+  const fields: FieldDef[] = [
+    { name: "title", label: "Task title", required: true, wide: true },
+    { name: "projectId", label: "Project", type: "select", required: true, options: projects.map(p => ({ value: p.id, label: p.name })) },
+    { name: "assignee", label: "Assignee (initials)", required: true, placeholder: "e.g. LM" },
+    { name: "priority", label: "Priority", type: "select", options: ["Low", "Medium", "High"] },
+    { name: "status", label: "Status", type: "select", options: taskStatuses },
+    { name: "due", label: "Due date", type: "date", required: true },
+    { name: "progress", label: "Progress (%)", type: "number", min: 0, max: 100 },
+    { name: "description", label: "Description", type: "textarea" },
+  ];
+  const initialOf = (t?: Task): Partial<FormValues> => t ? { title: t.title, projectId: t.projectId, assignee: t.assignee, priority: t.priority, status: t.status, due: t.due, progress: t.progress, description: t.description } : { projectId: projects[0]?.id ?? "", priority: "Medium", status: "To Do" };
+  const save = (values: FormValues, existing?: Task) => {
+    const task: Task = { id: existing?.id ?? crypto.randomUUID(), title: String(values.title).trim(), projectId: String(values.projectId), assignee: String(values.assignee).toUpperCase(), priority: values.priority as Task["priority"], status: values.status as TaskStatus, due: String(values.due), progress: values.status === "Completed" ? 100 : Number(values.progress), description: String(values.description) };
+    upsertTask(task); toast(existing ? "Task updated" : "Task created");
+  };
+  const remove = async (task: Task) => {
+    const ok = await confirm({ title: `Delete “${task.title}”?`, message: "This task will be permanently removed. This can’t be undone.", confirmLabel: "Delete task", tone: "danger" });
+    if (ok) { deleteTask(task.id); toast("Task deleted"); }
+    return ok;
+  };
+  return { fields, initialOf, save, remove };
+}
+function TaskFormModal({ form, actions, onClose }: { form: Exclude<TaskForm, null>; actions: ReturnType<typeof useTaskActions>; onClose: () => void }) {
+  const editing = form.mode === "edit" ? form.task : undefined;
+  return <RecordForm title={editing ? "Edit task" : "Create task"} subtitle={editing?.title} fields={actions.fields} onClose={onClose} initial={actions.initialOf(editing)} submitLabel={editing ? "Save changes" : "Create task"}
+    onSubmit={values => { actions.save(values, editing); onClose(); }} onDelete={editing ? async () => { if (await actions.remove(editing)) onClose(); } : undefined} deleteLabel="Delete task"/>;
+}
+
+function useOpportunityActions() {
+  const { clients, upsertOpportunity, deleteOpportunity } = useDemoData();
+  const { confirm, toast } = useDialogs();
+  const fields: FieldDef[] = [
+    { name: "name", label: "Opportunity name", required: true, wide: true },
+    { name: "clientId", label: "Client", type: "select", required: true, options: clients.map(c => ({ value: c.id, label: c.name })) },
+    { name: "service", label: "Service", required: true, placeholder: "e.g. Website & CMS" },
+    { name: "stage", label: "Stage", type: "select", options: opportunityStages },
+    { name: "value", label: "Value (R)", type: "number", min: 0 },
+    { name: "owner", label: "Owner (initials)", required: true, placeholder: "e.g. KM" },
+  ];
+  const initialOf = (o?: Opportunity, stage?: OpportunityStage): Partial<FormValues> => o ? { name: o.name, clientId: o.clientId, service: o.service, stage: o.stage, value: o.value, owner: o.owner } : { clientId: clients[0]?.id ?? "", name: clients[0]?.name ?? "", stage: stage ?? "Lead" };
+  const save = (values: FormValues, existing?: Opportunity) => {
+    const opportunity: Opportunity = { id: existing?.id ?? crypto.randomUUID(), name: String(values.name).trim(), clientId: String(values.clientId), service: String(values.service), stage: values.stage as OpportunityStage, value: Number(values.value), owner: String(values.owner).toUpperCase() };
+    upsertOpportunity(opportunity); toast(existing ? "Opportunity updated" : "Opportunity added");
+  };
+  const remove = async (opportunity: Opportunity) => {
+    const ok = await confirm({ title: `Delete “${opportunity.name}”?`, message: "This opportunity will be permanently removed from the pipeline.", confirmLabel: "Delete opportunity", tone: "danger" });
+    if (ok) { deleteOpportunity(opportunity.id); toast("Opportunity deleted"); }
+    return ok;
+  };
+  return { fields, initialOf, save, remove };
+}
+function OpportunityFormModal({ form, actions, onClose }: { form: Exclude<OppForm, null>; actions: ReturnType<typeof useOpportunityActions>; onClose: () => void }) {
+  const editing = form.mode === "edit" ? form.opportunity : undefined;
+  return <RecordForm title={editing ? `Edit ${editing.name}` : "Add opportunity"} subtitle={editing ? undefined : "Track a new deal in the pipeline."} fields={actions.fields} onClose={onClose} initial={actions.initialOf(editing, form.mode === "new" ? form.stage : undefined)} submitLabel={editing ? "Save changes" : "Add opportunity"}
+    onSubmit={values => { actions.save(values, editing); onClose(); }} onDelete={editing ? async () => { if (await actions.remove(editing)) onClose(); } : undefined} deleteLabel="Delete opportunity"/>;
+}
 
 const opportunityStages:OpportunityStage[]=["Lead","Qualified","Proposal","Negotiation","Won"];
 const stageIcons={Lead:Plus,Qualified:CheckCircle2,Proposal:FileText,Negotiation:Scale,Won:Trophy} as const;
 const funnelShades=["#0aa85c","#2fbf78","#5fd49a","#8ee2b8","#8e9a9c"];
 
 export function PipelineView(){
+  const router=useRouter();
+  const actions=useOpportunityActions();
+  const[form,setForm]=useState<OppForm>(null);
   const rowLink=useRowLink();
   const{opportunities,moveOpportunity}=useDemoData();
   const[q,setQ]=useState("");const[service,setService]=useState("All Services");const[owner,setOwner]=useState("All Owners");const[view,setView]=useState<"grid"|"list">("grid");
@@ -24,6 +94,7 @@ export function PipelineView(){
   const weighted=opportunities.reduce((s,o)=>s+o.value*({Lead:.15,Qualified:.35,Proposal:.6,Negotiation:.8,Won:1}[o.stage]),0);
   const services=Array.from(new Set(opportunities.map(o=>o.service)));const owners=Array.from(new Set(opportunities.map(o=>o.owner)));
   const visible=opportunities.filter(o=>(o.name+o.service).toLowerCase().includes(q.toLowerCase())&&(service==="All Services"||o.service===service)&&(owner==="All Owners"||o.owner===owner));
+  const menuFor=(o:Opportunity)=><RowMenu label={`Actions for ${o.name}`} size={16} items={[{label:"Open client",icon:ExternalLink,onClick:()=>router.push(`/clients/${o.clientId}`)},{label:"Edit opportunity",icon:Pencil,onClick:()=>setForm({mode:"edit",opportunity:o})},{label:"Delete opportunity",icon:Trash2,tone:"danger",separatorBefore:true,onClick:()=>{void actions.remove(o)}}]}/>;
   function end(e:DragEndEvent){const id=String(e.active.id);const over=String(e.over?.id??"");const stage=opportunityStages.includes(over as OpportunityStage)?over as OpportunityStage:opportunities.find(o=>o.id===over)?.stage;if(stage)moveOpportunity(id,stage)}
   return <>
     <PageHero eyebrow="Pipeline" title="Pipeline" subtitle="Track opportunities from lead to win and keep your revenue on target."/>
@@ -36,28 +107,29 @@ export function PipelineView(){
     <div className="toolbar"><SearchBox value={q} onChange={setQ} placeholder="Search opportunities…"/>
       <Select className="select" aria-label="Service" value={service} onChange={e=>setService(e.target.value)}><option>All Services</option>{services.map(s=><option key={s}>{s}</option>)}</Select>
       <Select className="select" aria-label="Owner" value={owner} onChange={e=>setOwner(e.target.value)}><option>All Owners</option>{owners.map(o=><option key={o}>{o}</option>)}</Select>
-      <span style={{flex:1}}/><ViewToggle value={view} onChange={setView}/><button className="button primary"><Plus size={17}/>Add Opportunity</button></div>
-    {view==="grid"?<DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={end}><div className="pipeline-board">{opportunityStages.map(stage=><OpportunityColumn key={stage} stage={stage} rows={visible.filter(o=>o.stage===stage)}/>)}<PipelineInsights rows={opportunities}/></div></DndContext>
-    :<section className="panel table-wrap"><table className="data-table"><thead><tr><th>Opportunity</th><th>Service</th><th>Stage</th><th>Owner</th><th>Value</th></tr></thead><tbody>{visible.map(o=><tr key={o.id} className="clickable" {...rowLink(`/clients/${o.clientId}`)}><td><strong>{o.name}</strong></td><td>{o.service}</td><td><StatusBadge value={o.stage}/></td><td><span className="avatar sm">{o.owner}</span></td><td><Money value={o.value}/></td></tr>)}</tbody></table></section>}
+      <span style={{flex:1}}/><ViewToggle value={view} onChange={setView}/><button className="button primary" onClick={()=>setForm({mode:"new"})}><Plus size={17}/>Add Opportunity</button></div>
+    {view==="grid"?<DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={end}><div className="pipeline-board">{opportunityStages.map(stage=><OpportunityColumn key={stage} stage={stage} rows={visible.filter(o=>o.stage===stage)} onAdd={()=>setForm({mode:"new",stage})} menu={menuFor}/>)}<PipelineInsights rows={opportunities}/></div></DndContext>
+    :<section className="panel table-wrap"><table className="data-table"><thead><tr><th>Opportunity</th><th>Service</th><th>Stage</th><th>Owner</th><th>Value</th><th/></tr></thead><tbody>{visible.map(o=><tr key={o.id} className="clickable" {...rowLink(`/clients/${o.clientId}`)}><td><strong>{o.name}</strong></td><td>{o.service}</td><td><StatusBadge value={o.stage}/></td><td><span className="avatar sm">{o.owner}</span></td><td><Money value={o.value}/></td><td>{menuFor(o)}</td></tr>)}</tbody></table></section>}
+    {form&&<OpportunityFormModal form={form} actions={actions} onClose={()=>setForm(null)}/>}
     <style jsx>{`.pipeline-board{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr)) minmax(260px,1.15fr);gap:10px;overflow-x:auto;padding-bottom:14px}`}</style>
   </>;
 }
 
-function OpportunityColumn({stage,rows}:{stage:OpportunityStage;rows:Opportunity[]}){
+function OpportunityColumn({stage,rows,onAdd,menu}:{stage:OpportunityStage;rows:Opportunity[];onAdd:()=>void;menu:(o:Opportunity)=>React.ReactNode}){
   const{setNodeRef,isOver}=useDroppable({id:stage});const Icon=stageIcons[stage];
   return <section className="opp-column" ref={setNodeRef} style={{background:isOver?"var(--green-soft)":"var(--panel)"}}>
     <header><span className="col-title"><Icon size={17} color={stage==="Won"?"var(--green)":undefined}/>{stage}</span><span className="col-meta"><b>{rows.length}</b><MoreHorizontal size={15}/></span></header>
     <small><Money value={rows.reduce((s,o)=>s+o.value,0)}/></small>
-    <div>{rows.map(o=><OpportunityCard key={o.id} opportunity={o}/>)}</div>
-    <button><Plus size={14}/> Add Opportunity</button>
+    <div>{rows.map(o=><OpportunityCard key={o.id} opportunity={o} menu={menu(o)}/>)}</div>
+    <button onClick={onAdd}><Plus size={14}/> Add Opportunity</button>
     <style jsx>{`.opp-column{border:1px solid var(--border);min-height:440px;display:flex;flex-direction:column;transition:background .15s}.opp-column header{display:flex;justify-content:space-between;align-items:center;padding:12px 10px 4px;font:17px var(--font-display)}.col-title,.col-meta{display:inline-flex;align-items:center;gap:8px}.col-meta{color:var(--muted)}.opp-column header b{font:11px var(--font-body);color:var(--text);background:color-mix(in srgb,var(--muted) 24%,transparent);padding:4px 8px}.opp-column>small{padding:0 10px 10px;color:var(--muted)}.opp-column>div{padding:0 8px;flex:1}.opp-column>button{margin:0 8px 8px;height:38px;border:1px solid var(--border);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;gap:6px}.opp-column>button:hover{border-color:var(--green)}`}</style>
   </section>;
 }
 
-function OpportunityCard({opportunity:o}:{opportunity:Opportunity}){
+function OpportunityCard({opportunity:o,menu}:{opportunity:Opportunity;menu:React.ReactNode}){
   const{attributes,listeners,setNodeRef,transform,isDragging}=useDraggable({id:o.id});
   return <article ref={setNodeRef} {...listeners} {...attributes} style={{transform:CSS.Translate.toString(transform),opacity:isDragging?.3:1}} className={`opp-card stage-${o.stage.toLowerCase()}`}>
-    <div><b>{o.name}</b>{o.stage==="Won"&&<CheckCircle2 size={16} color="var(--green)"/>}</div><p>{o.service}</p>
+    <div><b>{o.name}</b><span style={{display:"inline-flex",alignItems:"center",gap:4,marginRight:-6}}>{o.stage==="Won"&&<CheckCircle2 size={16} color="var(--green)"/>}{menu}</span></div><p>{o.service}</p>
     <footer><Money value={o.value}/><span className="avatar sm">{o.owner}</span></footer>
     <style jsx>{`.opp-card{border:1px solid var(--line);border-left:4px solid var(--muted);padding:10px 10px 8px;margin-bottom:8px;background:var(--panel-strong);touch-action:none;cursor:grab}.opp-card.stage-qualified{border-left-color:#75a6ff}.opp-card.stage-proposal{border-left-color:#5b8def}.opp-card.stage-negotiation{border-left-color:#f3b33c}.opp-card.stage-won{border-left-color:var(--green)}.opp-card>div,.opp-card footer{display:flex;justify-content:space-between;align-items:center;gap:8px}.opp-card p{color:var(--muted);font-size:12px;margin:3px 0 12px}`}</style>
   </article>;
@@ -76,11 +148,13 @@ function PipelineInsights({rows}:{rows:Opportunity[]}){
 }
 
 export function TasksView(){
+  const router=useRouter();
+  const actions=useTaskActions();
+  const[form,setForm]=useState<TaskForm>(null);
   const rowLink=useRowLink();
-  const{toast}=useDialogs();
-  const{tasks,projects,updateTask,addTask}=useDemoData();
+  const{tasks,projects,updateTask}=useDemoData();
   const[q,setQ]=useState("");const[project,setProject]=useState("All Projects");const[assignee,setAssignee]=useState("All Assignees");const[priority,setPriority]=useState("All Priority");const[status,setStatus]=useState("All Status");
-  const[selected,setSelected]=useState(tasks[0]?.id);const[open,setOpen]=useState(false);const[view,setView]=useState<"list"|"grid">("list");
+  const[selected,setSelected]=useState(tasks[0]?.id);const[view,setView]=useState<"list"|"grid">("list");
   const[page,setPage]=useState(1);const[checked,setChecked]=useState<string[]>([]);const[sort,setSort]=useState<1|-1|0>(0);const pageSize=8;
   const projectName=(id:string)=>projects.find(p=>p.id===id)?.name??"";
   const assignees=Array.from(new Set(tasks.map(t=>t.assignee)));
@@ -90,7 +164,7 @@ export function TasksView(){
   const task=tasks.find(t=>t.id===selected)??pageRows[0];
   const allChecked=pageRows.length>0&&pageRows.every(t=>checked.includes(t.id));
   const reset=<T,>(set:(v:T)=>void)=>(v:T)=>{set(v);setPage(1)};
-  function create(form:FormData){const title=String(form.get("title"));addTask({id:crypto.randomUUID(),title,projectId:String(form.get("project")),assignee:String(form.get("assignee")),priority:String(form.get("priority")) as Task["priority"],status:"To Do",due:String(form.get("due")),progress:0,description:String(form.get("description"))});setOpen(false);toast("Task created")}
+  const menuFor=(t:Task)=><RowMenu label={`Actions for ${t.title}`} items={[{label:"Open task",icon:ExternalLink,onClick:()=>router.push(`/tasks/${t.id}`)},{label:"Edit task",icon:Pencil,onClick:()=>setForm({mode:"edit",task:t})},{label:"Delete task",icon:Trash2,tone:"danger",separatorBefore:true,onClick:()=>{void actions.remove(t)}}]}/>;
   return <>
     <PageHero eyebrow="Tasks" title="Tasks" subtitle="Manage, assign and track work across all projects in one place."/>
     <div className="grid kpi-grid">
@@ -104,7 +178,7 @@ export function TasksView(){
       <Select className="select" aria-label="Assignee" value={assignee} onChange={e=>reset(setAssignee)(e.target.value)}><option>All Assignees</option>{assignees.map(a=><option key={a}>{a}</option>)}</Select>
       <Select className="select" aria-label="Priority" value={priority} onChange={e=>reset(setPriority)(e.target.value)}><option>All Priority</option><option>High</option><option>Medium</option><option>Low</option></Select>
       <Select className="select" aria-label="Status" value={status} onChange={e=>reset(setStatus)(e.target.value)}><option>All Status</option>{["To Do","In Progress","In Review","Completed"].map(s=><option key={s}>{s}</option>)}</Select>
-      <ViewToggle value={view} onChange={setView}/><span style={{flex:1}}/><button className="button primary" onClick={()=>setOpen(true)}><Plus size={16}/>Add Task</button></div>
+      <ViewToggle value={view} onChange={setView}/><span style={{flex:1}}/><button className="button primary" onClick={()=>setForm({mode:"new"})}><Plus size={16}/>Add Task</button></div>
     <div className="split"><section className="panel">
       {view==="list"?<div className="table-wrap"><table className="data-table"><thead><tr>
         <th style={{width:44}}><TableCheckbox label="Select all tasks" checked={allChecked} onChange={on=>setChecked(on?Array.from(new Set([...checked,...pageRows.map(t=>t.id)])):checked.filter(id=>!pageRows.some(t=>t.id===id)))}/></th>
@@ -112,31 +186,35 @@ export function TasksView(){
         <tbody>{pageRows.map(t=><tr key={t.id} className={`${t.id===task?.id?"selected":""} clickable`} onMouseEnter={()=>setSelected(t.id)} {...rowLink(`/tasks/${t.id}`)}>
           <td><TableCheckbox label={`Select ${t.title}`} checked={checked.includes(t.id)} onChange={on=>setChecked(on?[...checked,t.id]:checked.filter(id=>id!==t.id))}/></td>
           <td><strong>{t.title}</strong></td><td>{projectName(t.projectId)}</td><td><span className="avatar sm">{t.assignee}</span></td>
-          <td><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span></td><td><StatusBadge value={t.status}/></td><td className="nowrap">{t.due}</td><td><MoreHorizontal size={17}/></td></tr>)}</tbody></table></div>
+          <td><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span></td><td><StatusBadge value={t.status}/></td><td className="nowrap">{t.due}</td><td>{menuFor(t)}</td></tr>)}</tbody></table></div>
       :<div className="card-grid">{pageRows.map(t=><button type="button" key={t.id} className={`card-tile ${t.id===task?.id?"selected":""}`} onMouseEnter={()=>setSelected(t.id)} onClick={rowLink(`/tasks/${t.id}`).onClick}><strong>{t.title}</strong><span style={{color:"var(--muted)"}}>{projectName(t.projectId)}</span><span style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}><span className="priority"><i className={`dot ${t.priority.toLowerCase()}`}/>{t.priority}</span><StatusBadge value={t.status}/></span></button>)}</div>}
       {pageRows.length===0&&<div className="empty" style={{minHeight:160}}>No tasks match these filters.</div>}
       <Pagination page={current} pageSize={pageSize} total={rows.length} noun="tasks" onPage={setPage}/>
-    </section>{task&&<TaskInspector task={task} onUpdate={p=>updateTask(task.id,p)}/>}</div>
-    {open&&<div className="modal-backdrop"><form className="modal" action={create}><div className="modal-header"><h2 className="section-title">Create task</h2><button type="button" className="icon-button" onClick={()=>setOpen(false)}><X size={16}/></button></div><div className="modal-body form-grid"><Field name="title" label="Task title"/><label className="field"><span>Project</span><Select className="select" name="project">{projects.map(p=><option value={p.id} key={p.id}>{p.name}</option>)}</Select></label><Field name="assignee" label="Assignee initials"/><label className="field"><span>Priority</span><Select className="select" name="priority"><option>Low</option><option>Medium</option><option>High</option></Select></label><label className="field"><span>Due date</span><DatePicker name="due" placeholder="Select a due date"/></label><Field name="description" label="Description"/></div><div className="modal-footer"><button type="button" className="button" onClick={()=>setOpen(false)}>Cancel</button><button className="button primary">Create demo task</button></div></form></div>}
+    </section>{task&&<TaskInspector task={task} menu={menuFor(task)} onUpdate={p=>updateTask(task.id,p)}/>}</div>
+    {form&&<TaskFormModal form={form} actions={actions} onClose={()=>setForm(null)}/>}
   </>;
 }
 
 export function TaskDetailView({taskId}:{taskId:string}){
+  const router=useRouter();
+  const actions=useTaskActions();
+  const[form,setForm]=useState<TaskForm>(null);
   const{tasks,projects,updateTask}=useDemoData();
-  const task=tasks.find(t=>t.id===taskId)??tasks[0];
-  if(!task)return null;
+  const task=tasks.find(t=>t.id===taskId);
+  if(!task)return <><PageHero eyebrow="Tasks" title="Task not found" subtitle="This task may have been deleted."/><Link href="/tasks" className="button">Back to tasks</Link></>;
   const project=projects.find(p=>p.id===task.projectId);
   return <>
     <PageHero eyebrow="Tasks / Task" title={task.title} subtitle={project?.name??"Task"}/>
-    <div className="toolbar"><Link href="/tasks" className="button"><ArrowLeft size={16}/>Tasks</Link><span style={{flex:1}}/>{project&&<Link href={`/projects/${project.id}`} className="button">Open project</Link>}</div>
+    <div className="toolbar"><Link href="/tasks" className="button"><ArrowLeft size={16}/>Tasks</Link><span style={{flex:1}}/>{project&&<Link href={`/projects/${project.id}`} className="button">Open project</Link>}<button className="button" onClick={()=>setForm({mode:"edit",task})}><Pencil size={16}/>Edit task</button><button className="button danger-ghost" onClick={async()=>{if(await actions.remove(task))router.push("/tasks")}}><Trash2 size={16}/>Delete</button></div>
     <div style={{maxWidth:640}}><TaskInspector task={task} onUpdate={p=>updateTask(task.id,p)}/></div>
+    {form&&<TaskFormModal form={form} actions={actions} onClose={()=>setForm(null)}/>}
   </>;
 }
 
-function TaskInspector({task,onUpdate}:{task:Task;onUpdate:(p:Partial<Task>)=>void}){
+function TaskInspector({task,onUpdate,menu}:{task:Task;onUpdate:(p:Partial<Task>)=>void;menu?:React.ReactNode}){
   const{projects}=useDemoData();const{toast}=useDialogs();const[tab,setTab]=useState("Details");
   return <Panel>
-    <div className="detail-title"><span className="logo-tile"><CheckCircle2 size={20}/></span><div><h2>{task.title}</h2><small style={{color:"var(--muted)"}}>{projects.find(p=>p.id===task.projectId)?.name}</small></div><MoreHorizontal size={18} style={{marginLeft:"auto"}}/></div>
+    <div className="detail-title"><span className="logo-tile"><CheckCircle2 size={20}/></span><div><h2>{task.title}</h2><small style={{color:"var(--muted)"}}>{projects.find(p=>p.id===task.projectId)?.name}</small></div><span style={{marginLeft:"auto"}}>{menu}</span></div>
     <div className="tabs" style={{margin:"14px -18px"}}>{["Details","Subtasks","Comments","Files","Activity"].map(x=><button className={`tab ${tab===x?"active":""}`} onClick={()=>setTab(x)} key={x}>{x}</button>)}</div>
     {tab==="Details"?<>
       <p style={{lineHeight:1.7,color:"var(--muted)"}}>{task.description}</p>
@@ -153,5 +231,4 @@ function TaskInspector({task,onUpdate}:{task:Task;onUpdate:(p:Partial<Task>)=>vo
   </Panel>;
 }
 
-function Field({name,label}:{name:string;label:string}){return <label className="field"><span>{label}</span><input name={name} className="input" required/><style jsx>{`span{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}`}</style></label>}
 

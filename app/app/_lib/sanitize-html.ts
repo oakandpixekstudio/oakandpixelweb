@@ -3,9 +3,9 @@
  * Keeps basic formatting (bold, colours, lists, links) and drops everything
  * else, including scripts, event handlers and unsafe URLs.
  */
-const ALLOWED_TAGS = new Set(["B", "STRONG", "I", "EM", "U", "S", "STRIKE", "SPAN", "DIV", "P", "BR", "UL", "OL", "LI", "A", "BLOCKQUOTE", "FONT", "H1", "H2", "H3", "HR"]);
-const DROP_TAGS = new Set(["SCRIPT", "STYLE", "IFRAME", "OBJECT", "EMBED", "LINK", "META", "NOSCRIPT", "TEMPLATE", "SVG", "MATH", "FORM", "INPUT", "BUTTON", "TEXTAREA", "SELECT", "IMG", "VIDEO", "AUDIO"]);
-const ALLOWED_STYLES = new Set(["color", "background-color", "background", "font-size", "font-family", "font-weight", "font-style", "text-decoration", "text-decoration-line", "text-align", "margin-left", "padding-left"]);
+const ALLOWED_TAGS = new Set(["B", "STRONG", "I", "EM", "U", "S", "STRIKE", "SPAN", "DIV", "P", "BR", "UL", "OL", "LI", "A", "BLOCKQUOTE", "FONT", "H1", "H2", "H3", "HR", "IMG"]);
+const DROP_TAGS = new Set(["SCRIPT", "STYLE", "IFRAME", "OBJECT", "EMBED", "LINK", "META", "NOSCRIPT", "TEMPLATE", "SVG", "MATH", "FORM", "INPUT", "BUTTON", "TEXTAREA", "SELECT", "VIDEO", "AUDIO"]);
+const ALLOWED_STYLES = new Set(["color", "background-color", "background", "font-size", "font-family", "font-weight", "font-style", "text-decoration", "text-decoration-line", "text-align", "margin-left", "padding-left", "max-width", "width", "height", "border-radius", "display", "margin"]);
 const SAFE_VALUE = /^[\w\s#%.,()\-"'/]+$/;
 
 function cleanStyle(style: string): string {
@@ -41,6 +41,10 @@ export function sanitizeHtml(html: string): string {
           if (cleaned) el.setAttribute("style", cleaned); else el.removeAttribute("style");
         } else if (name === "href" && el.tagName === "A") {
           if (!/^(https?:|mailto:)/i.test(attr.value.trim())) el.removeAttribute("href");
+        } else if (el.tagName === "IMG" && name === "src") {
+          if (!/^(data:image\/(png|jpe?g|gif|webp);base64,|https:\/\/)/i.test(attr.value.trim())) el.remove();
+        } else if (el.tagName === "IMG" && (name === "alt" || name === "width" || name === "height")) {
+          // harmless descriptive and sizing attributes
         } else if (el.tagName === "FONT" && (name === "color" || name === "size" || name === "face")) {
           // allowed legacy attributes produced by some browsers
         } else {

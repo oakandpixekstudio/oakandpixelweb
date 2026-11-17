@@ -5,7 +5,7 @@ export type TaskStatus = "To Do" | "In Progress" | "In Review" | "Completed";
 
 export interface Client {
   id: string; name: string; initials: string; service: string; status: ClientStatus;
-  contact: string; email: string; phone: string; industry: string; pipeline: number; billed: number; since?: string;
+  contact: string; email: string; phone: string; industry: string; pipeline: number; billed: number; since?: string; contacts?: ClientContact[];
 }
 export interface Project {
   id: string; name: string; clientId: string; service: string; stage: ProjectStage; progress: number;
@@ -32,3 +32,5 @@ export interface AppNotification {
   id: string; type: "email" | "invoice" | "task" | "project" | "client" | "pipeline";
   title: string; body: string; time: string; href: string; read: boolean;
 }
+export interface ClientContact { id: string; name: string; role: string; email: string; phone: string; primary: boolean; }
+export interface AppSignature { html: string; banner?: string; enabled: boolean; }
