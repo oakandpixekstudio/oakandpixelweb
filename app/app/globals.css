@@ -71,6 +71,19 @@ a { color: inherit; text-decoration: none; }
 .th-sort { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; padding: 0; color: inherit; font: inherit; }
 .th-sort svg { opacity: .7; }
 .logo-letter { font: 600 17px var(--font-body); }
+.kpi.icon-left { justify-content: flex-start; align-items: center; gap: 22px; }
+.kpi.icon-left .kpi-text { display: flex; flex-direction: column; }
+.kpi.icon-left .kpi-value { order: -1; margin-top: 0; font-size: 32px; line-height: 1.05; }
+.kpi.icon-left .kpi-label { margin-top: 4px; font-size: 14px; color: var(--text); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--muted) 38%, transparent); font: 600 11px var(--font-body); }
+.avatar.sm { width: 26px; height: 26px; font-size: 10px; }
+.team-box > div { margin-top: 6px; }
+.priority { display: inline-flex; align-items: center; gap: 8px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: var(--muted); }
+.dot.high { background: #ef5350; }
+.dot.medium { background: #f5a623; }
+.dot.low { background: var(--green); }
+.nowrap { white-space: nowrap; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; padding: 16px; }
 .card-tile { border: 1px solid var(--border); background: var(--input); padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
 .card-tile.selected { border-color: var(--green); box-shadow: inset 3px 0 var(--green); }

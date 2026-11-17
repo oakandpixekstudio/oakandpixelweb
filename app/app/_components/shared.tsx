@@ -16,10 +16,11 @@ export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: stri
   </motion.header>;
 }
 
-export function KpiCard({ label, value, note, icon: Icon, active }: { label: string; value: string; note?: string; icon: LucideIcon; active?: boolean }) {
-  return <motion.div className={`kpi ${active ? "active" : ""}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .2 }}>
-    <div><div className="kpi-label">{label}</div><div className="kpi-value">{value}</div>{note && <div className="kpi-note">↑ {note}</div>}</div>
-    <Icon size={24}/>
+export function KpiCard({ label, value, note, icon: Icon, active, iconLeft }: { label: string; value: string; note?: string; icon: LucideIcon; active?: boolean; iconLeft?: boolean }) {
+  return <motion.div className={`kpi ${active ? "active" : ""} ${iconLeft ? "icon-left" : ""}`} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .2 }}>
+    {iconLeft && <Icon size={34}/>}
+    <div className="kpi-text"><div className="kpi-label">{label}</div><div className="kpi-value">{value}</div>{note && <div className="kpi-note">↑ {note}</div>}</div>
+    {!iconLeft && <Icon size={24}/>}
   </motion.div>;
 }
 

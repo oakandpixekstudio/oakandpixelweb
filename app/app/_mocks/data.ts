@@ -12,14 +12,14 @@ export const clients: Client[] = [
 ];
 
 export const projects: Project[] = [
-  { id:"p1", name:"Corporate Website Redesign", clientId:"trellis", service:"Website & CMS", stage:"In Progress", progress:72, due:"24 Nov 2026", manager:"Lerato Maseko", description:"A complete editorial redesign of the corporate website and content platform." },
-  { id:"p2", name:"Brand & Website (v2)", clientId:"mavena", service:"Brand & Website", stage:"In Review", progress:45, due:"28 Nov 2026", manager:"Thandi Moyo", description:"Brand refresh and conversion-focused website system." },
-  { id:"p3", name:"New Marketing Site", clientId:"rivermere", service:"New Website", stage:"In Progress", progress:90, due:"20 Nov 2026", manager:"Sizwe Dlamini", description:"A focused lead generation site for a consulting practice." },
-  { id:"p4", name:"SEO & Content Setup", clientId:"aurelia", service:"Website & SEO", stage:"Completed", progress:100, due:"14 Nov 2026", manager:"Anele Ncube", description:"Technical SEO, analytics and content foundation." },
-  { id:"p5", name:"Property Platform (MVP)", clientId:"aurelia", service:"Web App", stage:"In Progress", progress:38, due:"05 Dec 2026", manager:"Lerato Maseko", description:"A searchable property experience and enquiry workflow." },
-  { id:"p6", name:"Marketing Site Refresh", clientId:"lumen", service:"Marketing Site", stage:"To Do", progress:12, due:"01 Dec 2026", manager:"Kagiso Motsepe", description:"Refresh messaging, performance and capability pages." },
-  { id:"p7", name:"Corporate Website", clientId:"northgate", service:"Website & CMS", stage:"Backlog", progress:0, due:"12 Dec 2026", manager:"Thandi Moyo", description:"Corporate site discovery and content planning." },
-  { id:"p8", name:"Brand Identity & Site", clientId:"cedar", service:"Brand & Website", stage:"To Do", progress:0, due:"19 Dec 2026", manager:"Anele Ncube", description:"Brand system and commerce-ready marketing website." }
+  { id:"p1", name:"Corporate Website Redesign", start:"03 Nov 2026", clientId:"trellis", service:"Website & CMS", stage:"In Progress", progress:72, due:"24 Nov 2026", manager:"Lerato Maseko", description:"A complete editorial redesign of the corporate website and content platform." },
+  { id:"p2", name:"Brand & Website (v2)", start:"12 Oct 2026", clientId:"mavena", service:"Brand & Website", stage:"In Review", progress:45, due:"28 Nov 2026", manager:"Thandi Moyo", description:"Brand refresh and conversion-focused website system." },
+  { id:"p3", name:"New Marketing Site", start:"19 Oct 2026", clientId:"rivermere", service:"New Website", stage:"In Progress", progress:90, due:"20 Nov 2026", manager:"Sizwe Dlamini", description:"A focused lead generation site for a consulting practice." },
+  { id:"p4", name:"SEO & Content Setup", start:"05 Oct 2026", clientId:"aurelia", service:"Website & SEO", stage:"Completed", progress:100, due:"14 Nov 2026", manager:"Anele Ncube", description:"Technical SEO, analytics and content foundation." },
+  { id:"p5", name:"Property Platform (MVP)", start:"26 Oct 2026", clientId:"aurelia", service:"Web App", stage:"In Progress", progress:38, due:"05 Dec 2026", manager:"Lerato Maseko", description:"A searchable property experience and enquiry workflow." },
+  { id:"p6", name:"Marketing Site Refresh", start:"09 Nov 2026", clientId:"lumen", service:"Marketing Site", stage:"To Do", progress:12, due:"01 Dec 2026", manager:"Kagiso Motsepe", description:"Refresh messaging, performance and capability pages." },
+  { id:"p7", name:"Corporate Website", start:"30 Nov 2026", clientId:"northgate", service:"Website & CMS", stage:"Backlog", progress:0, due:"12 Dec 2026", manager:"Thandi Moyo", description:"Corporate site discovery and content planning." },
+  { id:"p8", name:"Brand Identity & Site", start:"07 Dec 2026", clientId:"cedar", service:"Brand & Website", stage:"To Do", progress:0, due:"19 Dec 2026", manager:"Anele Ncube", description:"Brand system and commerce-ready marketing website." }
 ];
 
 export const opportunities: Opportunity[] = [

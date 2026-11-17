@@ -30,9 +30,14 @@ export function DemoDataProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      // Restoring persisted demonstration state is intentionally post-hydration.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (saved) setState(JSON.parse(saved));
+      if (saved) {
+        // Fill any fields added since the state was saved (e.g. dates) from the seed data.
+        const parsed = JSON.parse(saved) as DemoState;
+        const fill = <T extends { id: string }>(rows: T[], base: T[]) => rows.map(row => ({ ...base.find(b => b.id === row.id), ...row }));
+        // Restoring persisted demonstration state is intentionally post-hydration.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setState({ ...parsed, clients: fill(parsed.clients, seed.clients), projects: fill(parsed.projects, seed.projects) });
+      }
     } catch {}
     setHydrated(true);
   }, []);

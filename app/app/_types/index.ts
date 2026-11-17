@@ -9,7 +9,7 @@ export interface Client {
 }
 export interface Project {
   id: string; name: string; clientId: string; service: string; stage: ProjectStage; progress: number;
-  due: string; manager: string; description: string;
+  due: string; start?: string; manager: string; description: string;
 }
 export interface Opportunity {
   id: string; clientId: string; name: string; service: string; stage: OpportunityStage; value: number; owner: string;
