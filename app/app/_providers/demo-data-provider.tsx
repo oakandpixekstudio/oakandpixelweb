@@ -21,7 +21,7 @@ type DemoContextValue = DemoState & {
 
 const initialState: DemoState = { clients: seed.clients, projects: seed.projects, opportunities: seed.opportunities, tasks: seed.tasks, emails: seed.emails, templates: seed.templates, invoices: seed.invoices };
 const DemoContext = createContext<DemoContextValue | null>(null);
-const STORAGE_KEY = "oak-pixel-workspace-demo-v1";
+const STORAGE_KEY = "oak-pixel-workspace-demo-v2";
 
 export function DemoDataProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<DemoState>(initialState);

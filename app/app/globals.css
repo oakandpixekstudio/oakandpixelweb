@@ -45,9 +45,36 @@ a { color: inherit; text-decoration: none; }
 .button:hover { border-color: var(--green); transform: translateY(-1px); }
 .button.primary { color: #fff; border-color: var(--green); background: linear-gradient(90deg, var(--green-deep), var(--green)); }
 .button.ghost { background: transparent; }
+.button.outline { background: transparent; border-color: var(--green); }
+.button.outline:hover { background: var(--green-soft); }
 .input, .select, .textarea { padding: 0 13px; outline: 0; width: 100%; }
 .textarea { padding-top: 11px; resize: vertical; }
-.profile { width: 42px; height: 42px; border: 1px solid var(--border); display: grid; place-items: center; font: 12px var(--font-mono); }
+.profile { height: 42px; padding: 0 12px; border: 1px solid var(--border); background: var(--input); display: inline-flex; align-items: center; gap: 10px; font: 12px var(--font-mono); }
+.profile:hover { border-color: var(--green); }
+.icon-button.bell { position: relative; }
+.bell-dot { position: absolute; top: 7px; right: 8px; width: 7px; height: 7px; background: var(--green); }
+.theme-toggle { display: inline-flex; border: 1px solid var(--border); background: var(--input); padding: 3px; gap: 2px; }
+.theme-toggle button { width: 36px; height: 32px; border: 0; background: transparent; display: grid; place-items: center; color: var(--muted); transition: background .15s, color .15s; }
+.theme-toggle button.on { background: var(--green); color: #fff; }
+.theme-toggle button:not(.on):hover { color: var(--text); }
+.check { appearance: none; width: 18px; height: 18px; border: 1px solid var(--border); background: transparent; display: inline-grid; place-content: center; margin: 0; vertical-align: middle; cursor: pointer; }
+.check:checked { background: var(--green); border-color: var(--green); }
+.check:checked::after { content: ""; width: 9px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: translateY(-1px) rotate(-45deg); }
+.view-toggle { display: inline-flex; border: 1px solid var(--border); background: var(--input); }
+.view-toggle button { width: 42px; height: 38px; border: 0; background: transparent; display: grid; place-items: center; color: var(--muted); }
+.view-toggle button.active { background: var(--green); color: #fff; }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; color: var(--muted); font-size: 12px; flex-wrap: wrap; }
+.pager { display: inline-flex; gap: 6px; }
+.pager button { min-width: 34px; height: 34px; padding: 0 8px; border: 1px solid var(--border); background: var(--input); color: var(--text); display: inline-grid; place-items: center; font-size: 13px; }
+.pager button.active { background: var(--green-deep); border-color: var(--green); color: #fff; }
+.pager button:disabled { opacity: .4; cursor: not-allowed; }
+.th-sort { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; padding: 0; color: inherit; font: inherit; }
+.th-sort svg { opacity: .7; }
+.logo-letter { font: 600 17px var(--font-body); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; padding: 16px; }
+.card-tile { border: 1px solid var(--border); background: var(--input); padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.card-tile.selected { border-color: var(--green); box-shadow: inset 3px 0 var(--green); }
+.card-tile:hover { border-color: var(--green); }
 .workspace { padding: 0 22px 34px; }
 .page-hero { height: 164px; margin: 0 -22px 16px; padding: 31px 28px; position: relative; display: flex; flex-direction: column; justify-content: center; overflow: hidden; background: linear-gradient(90deg, color-mix(in srgb,var(--bg) 96%,transparent) 0%, color-mix(in srgb,var(--bg) 86%,transparent) 45%, color-mix(in srgb,var(--bg) 20%,transparent) 100%), url('/images/architecture/monolithic-concrete.png') center 42% / cover; }
 .page-hero::after { content: ""; position: absolute; inset: auto 0 0; height: 1px; background: var(--border); }

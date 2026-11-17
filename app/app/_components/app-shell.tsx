@@ -40,9 +40,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="topbar-spacer"/>
         <div className="date-display"><CalendarDays size={18}/><span>Tue, 17 Nov 2026</span></div>
         <button className="button primary desktop-only" onClick={()=>setNewOpen(true)}><Plus size={18}/> New <ChevronDown size={16}/></button>
-        <button className="icon-button" aria-label="Notifications"><Bell size={18}/></button>
-        {mounted && <button className="icon-button" aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`} onClick={()=>setTheme(resolvedTheme === "dark" ? "light" : "dark")}>{resolvedTheme === "dark" ? <Moon size={18}/> : <Sun size={18}/>}</button>}
-        <button className="profile" aria-label="Open profile menu">OP</button>
+        <button className="icon-button bell" aria-label="Notifications (1 unread)"><Bell size={18}/><i className="bell-dot"/></button>
+        {mounted && <div className="theme-toggle" role="group" aria-label="Colour theme"><button type="button" className={resolvedTheme !== "dark" ? "on" : ""} aria-pressed={resolvedTheme !== "dark"} aria-label="Light mode" onClick={()=>setTheme("light")}><Sun size={15}/></button><button type="button" className={resolvedTheme === "dark" ? "on" : ""} aria-pressed={resolvedTheme === "dark"} aria-label="Dark mode" onClick={()=>setTheme("dark")}><Moon size={15}/></button></div>}
+        <button className="profile" aria-label="Open profile menu"><span>OP</span><ChevronDown size={15}/></button>
       </header>
       <div className="workspace">{children}</div>
     </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Search, type LucideIcon } from "lucide-react";
+import { ChartNoAxesColumn, ChevronLeft, ChevronRight, Diamond, Grip, LayoutGrid, Leaf, List, Search, Square, Waves, type LucideIcon } from "lucide-react";
 
 export function BrandMark({ className = "" }: { className?: string }) {
   return <span className={`brand-mark ${className}`} aria-hidden="true"><i/><i/><i/><i/></span>;
@@ -43,3 +43,44 @@ export function SearchBox({ value, onChange, placeholder = "Search…" }: { valu
 }
 
 export function EmptyState({ title, body }: { title: string; body: string }) { return <div className="empty"><div><h3 className="section-title">{title}</h3><p>{body}</p></div></div>; }
+
+/** Square brand glyph for a client, matching the design references. Falls back to initials. */
+export function ClientLogo({ id, initials }: { id: string; initials: string }) {
+  const glyphs: Record<string, React.ReactNode> = {
+    trellis: <Grip size={20}/>,
+    mavena: <b className="logo-letter">M</b>,
+    rivermere: <Waves size={20}/>,
+    aurelia: <b className="logo-letter">A</b>,
+    lumen: <ChartNoAxesColumn size={20}/>,
+    northgate: <Square size={18} strokeWidth={3}/>,
+    cedar: <Leaf size={19}/>,
+    stonefield: <Diamond size={18} strokeWidth={3}/>,
+  };
+  return <span className="logo-tile">{glyphs[id] ?? initials}</span>;
+}
+
+/** Hard-edged checkbox used in tables. Purely visual until bulk actions exist. */
+export function TableCheckbox({ checked, onChange, label }: { checked: boolean; onChange: (checked: boolean) => void; label: string }) {
+  return <input type="checkbox" className="check" aria-label={label} checked={checked} onChange={e=>onChange(e.target.checked)} onClick={e=>e.stopPropagation()}/>;
+}
+
+export function ViewToggle({ value, onChange }: { value: "list" | "grid"; onChange: (value: "list" | "grid") => void }) {
+  return <div className="view-toggle" role="group" aria-label="View mode">
+    <button type="button" className={value === "list" ? "active" : ""} aria-pressed={value === "list"} aria-label="List view" onClick={()=>onChange("list")}><List size={18}/></button>
+    <button type="button" className={value === "grid" ? "active" : ""} aria-pressed={value === "grid"} aria-label="Grid view" onClick={()=>onChange("grid")}><LayoutGrid size={18}/></button>
+  </div>;
+}
+
+export function Pagination({ page, pageSize, total, noun, onPage }: { page: number; pageSize: number; total: number; noun: string; onPage: (page: number) => void }) {
+  const pages = Math.max(1, Math.ceil(total / pageSize));
+  const from = total === 0 ? 0 : (page - 1) * pageSize + 1;
+  const to = Math.min(total, page * pageSize);
+  return <div className="pagination">
+    <span>Showing {from} – {to} of {total} {noun}</span>
+    <div className="pager" role="navigation" aria-label="Pagination">
+      <button type="button" aria-label="Previous page" disabled={page <= 1} onClick={()=>onPage(page - 1)}><ChevronLeft size={16}/></button>
+      {Array.from({ length: pages }, (_, i) => i + 1).map(n => <button type="button" key={n} className={n === page ? "active" : ""} aria-current={n === page ? "page" : undefined} onClick={()=>onPage(n)}>{n}</button>)}
+      <button type="button" aria-label="Next page" disabled={page >= pages} onClick={()=>onPage(page + 1)}><ChevronRight size={16}/></button>
+    </div>
+  </div>;
+}

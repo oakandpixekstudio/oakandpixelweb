@@ -1,14 +1,14 @@
 import type { Client, EmailMessage, Invoice, Opportunity, Project, Task, Template } from "@/_types";
 
 export const clients: Client[] = [
-  { id:"trellis", name:"Trellis Capital", initials:"TC", service:"Website & CMS", status:"Active", contact:"Lerato Maseko", email:"lerato@trelliscapital.co.za", phone:"+27 82 345 6789", industry:"Investment & Advisory", pipeline:320000, billed:980000 },
-  { id:"mavena", name:"Mavena Group", initials:"MG", service:"Website Redesign", status:"Active", contact:"Thandi Moyo", email:"thandi@mavena.co.za", phone:"+27 83 218 4410", industry:"Professional Services", pipeline:540000, billed:620000 },
-  { id:"rivermere", name:"Rivermere Consulting", initials:"RC", service:"New Website", status:"Proposal", contact:"Sizwe Dlamini", email:"sizwe@rivermere.co.za", phone:"+27 72 990 2143", industry:"Consulting", pipeline:390000, billed:180000 },
-  { id:"aurelia", name:"Aurelia Properties", initials:"AP", service:"Website & SEO", status:"Active", contact:"Anele Ncube", email:"anele@aurelia.co.za", phone:"+27 79 502 1880", industry:"Property", pipeline:200000, billed:740000 },
-  { id:"lumen", name:"Lumen Infrastructure", initials:"LI", service:"Marketing Site", status:"Discovery", contact:"Kagiso Motsepe", email:"kagiso@lumeninfra.co.za", phone:"+27 76 310 1142", industry:"Infrastructure", pipeline:180000, billed:160000 },
-  { id:"northgate", name:"Northgate Resources", initials:"NR", service:"Corporate Website", status:"On Hold", contact:"Mia Adams", email:"mia@northgate.co.za", phone:"+27 84 413 1209", industry:"Resources", pipeline:0, billed:280000 },
-  { id:"cedar", name:"Cedar & Co.", initials:"CC", service:"Brand & Website", status:"Active", contact:"Yusuf Khan", email:"yusuf@cedarandco.co.za", phone:"+27 81 669 0202", industry:"Consumer", pipeline:160000, billed:420000 },
-  { id:"stonefield", name:"Stonefield Energy", initials:"SE", service:"Website & CMS", status:"Active", contact:"Nandi Peters", email:"nandi@stonefield.co.za", phone:"+27 74 170 8821", industry:"Energy", pipeline:480000, billed:510000 }
+  { id:"trellis", name:"Trellis Capital", initials:"TC", since:"14 Mar 2025", service:"Website & CMS", status:"Active", contact:"Lerato Maseko", email:"lerato@trelliscapital.co.za", phone:"+27 82 345 6789", industry:"Investment & Advisory", pipeline:320000, billed:980000 },
+  { id:"mavena", name:"Mavena Group", initials:"MG", since:"02 Jun 2025", service:"Website Redesign", status:"Active", contact:"Thandi Moyo", email:"thandi@mavena.co.za", phone:"+27 83 218 4410", industry:"Professional Services", pipeline:540000, billed:620000 },
+  { id:"rivermere", name:"Rivermere Consulting", initials:"RC", since:"21 Aug 2025", service:"New Website", status:"Proposal", contact:"Sizwe Dlamini", email:"sizwe@rivermere.co.za", phone:"+27 72 990 2143", industry:"Consulting", pipeline:390000, billed:180000 },
+  { id:"aurelia", name:"Aurelia Properties", initials:"AP", since:"09 Jan 2025", service:"Website & SEO", status:"Active", contact:"Anele Ncube", email:"anele@aurelia.co.za", phone:"+27 79 502 1880", industry:"Property", pipeline:200000, billed:740000 },
+  { id:"lumen", name:"Lumen Infrastructure", initials:"LI", since:"30 Sep 2025", service:"Marketing Site", status:"Discovery", contact:"Kagiso Motsepe", email:"kagiso@lumeninfra.co.za", phone:"+27 76 310 1142", industry:"Infrastructure", pipeline:180000, billed:160000 },
+  { id:"northgate", name:"Northgate Resources", initials:"NR", since:"11 Feb 2025", service:"Corporate Website", status:"On Hold", contact:"Mia Adams", email:"mia@northgate.co.za", phone:"+27 84 413 1209", industry:"Resources", pipeline:0, billed:280000 },
+  { id:"cedar", name:"Cedar & Co.", initials:"CC", since:"05 Apr 2025", service:"Brand & Website", status:"Active", contact:"Yusuf Khan", email:"yusuf@cedarandco.co.za", phone:"+27 81 669 0202", industry:"Consumer", pipeline:160000, billed:420000 },
+  { id:"stonefield", name:"Stonefield Energy", initials:"SE", since:"18 Jul 2025", service:"Website & CMS", status:"Active", contact:"Nandi Peters", email:"nandi@stonefield.co.za", phone:"+27 74 170 8821", industry:"Energy", pipeline:480000, billed:510000 }
 ];
 
 export const projects: Project[] = [

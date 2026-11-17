@@ -5,7 +5,7 @@ export type TaskStatus = "To Do" | "In Progress" | "In Review" | "Completed";
 
 export interface Client {
   id: string; name: string; initials: string; service: string; status: ClientStatus;
-  contact: string; email: string; phone: string; industry: string; pipeline: number; billed: number;
+  contact: string; email: string; phone: string; industry: string; pipeline: number; billed: number; since?: string;
 }
 export interface Project {
   id: string; name: string; clientId: string; service: string; stage: ProjectStage; progress: number;
