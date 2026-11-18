@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut } from "@/_lib/sign-out";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Bell, CalendarDays, CheckCheck, ChevronDown, ExternalLink, LogOut, Menu, Moon, PanelLeftClose, PanelLeftOpen, Plus, Search, Settings, Sun, UserRound } from "lucide-react";
@@ -95,7 +96,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <a className="menu-item" role="menuitem" href="https://www.oakandpixel.co.za" target="_blank" rel="noopener noreferrer" onClick={()=>setProfileOpen(false)}><ExternalLink size={17}/>View website</a>
             {mounted && <button type="button" className="menu-item" role="menuitem" onClick={()=>{toggleTheme();setProfileOpen(false)}}>{resolvedTheme === "dark" ? <Sun size={17}/> : <Moon size={17}/>}Switch to {resolvedTheme === "dark" ? "light" : "dark"} mode</button>}
             <div className="menu-sep"/>
-            <button type="button" className="menu-item danger" role="menuitem" onClick={()=>{setProfileOpen(false);router.push("/sign-in")}}><LogOut size={17}/>Sign out</button>
+            <button type="button" className="menu-item danger" role="menuitem" onClick={()=>{setProfileOpen(false);void signOut()}}><LogOut size={17}/>Sign out</button>
           </div>}
         </div>
         </div>

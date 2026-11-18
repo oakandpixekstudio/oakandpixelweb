@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut } from "@/_lib/sign-out";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { ExternalLink, LogOut, Settings } from "lucide-react";
@@ -38,7 +39,7 @@ export function ProfileView() {
           <div style={{ display: "grid", gap: 10 }}>
             <Link href="/settings" className="button"><Settings size={16}/>Workspace settings</Link>
             <a href="https://www.oakandpixel.co.za" target="_blank" rel="noopener noreferrer" className="button"><ExternalLink size={16}/>View website</a>
-            <Link href="/sign-in" className="button"><LogOut size={16}/>Sign out</Link>
+            <button type="button" className="button" onClick={() => void signOut()}><LogOut size={16}/>Sign out</button>
           </div>
         </Panel>
       </div>
