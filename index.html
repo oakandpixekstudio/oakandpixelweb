@@ -1879,6 +1879,36 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
 .pricing-card.pricing-crm .fit-rest{display:inline}
 .work-item:nth-child(4){grid-column:auto}
 .work-item:nth-child(4) .work-img{height:104px}
+/* ─── ELEVATION: motion, type, featured plan ─── */
+#scroll-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:200;background:var(--emerald-l);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.hero-headline.split{opacity:1;animation:none}
+.hw{display:inline-block;opacity:0;transform:translateY(.45em);animation:wordIn .9s var(--ease-expo) forwards}
+@keyframes wordIn{to{opacity:1;transform:none}}
+/* a whisper of texture on the dark sections */
+#services,#contact{background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px}
+/* hover polish */
+.btn-primary,.btn-ghost,.nav-cta{transition:background .3s var(--ease-silk),color .3s var(--ease-silk),transform .3s var(--ease-expo),box-shadow .3s var(--ease-silk),border-color .3s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(10,10,9,.18)}
+.pricing-card .btn-primary:hover{box-shadow:0 10px 24px rgba(10,10,9,.2)}
+.service-card{transition:border-color .35s}
+.service-card:hover{border-bottom-color:var(--emerald-l)}
+.service-name{transition:transform .35s var(--ease-expo)}
+.service-card:hover .service-name{transform:translateX(4px)}
+.review-card{transition:transform .4s var(--ease-expo),box-shadow .4s}
+.review-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,10,9,.07)}
+.work-item{transition:transform .4s var(--ease-expo),box-shadow .4s}
+.work-item:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,10,9,.08)}
+/* type: bolder prices, a little more air */
+.pricing-setup{font-size:2.5rem;font-weight:500;letter-spacing:-.01em;line-height:1}
+.pricing-month{font-size:.8rem;letter-spacing:.02em}
+.pricing-card.pricing-crm .pricing-setup{font-size:2rem}
+h2{letter-spacing:-.015em}
+@media (min-width:1025px){#services{padding:4rem 0 3.5rem}#pricing{padding:5rem 0}#work{padding:4rem 0}#reviews,.reviews{padding:5rem 0}#faq{padding:5rem 0}}
+/* the featured plan: fine gold hairline and a small hand-drawn flourish */
+.pricing-card.featured,.pricing-card.featured:hover{border:1px solid rgba(184,149,90,.6);border-top:1px solid rgba(184,149,90,.6);box-shadow:0 0 0 5px rgba(184,149,90,.07),0 18px 44px rgba(10,10,9,.22)}
+.pricing-card.featured .pricing-name{position:relative;display:inline-block;padding-bottom:.55rem}
+.pricing-card.featured .pricing-name::after{content:'';position:absolute;left:0;bottom:0;width:62px;height:7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 62 7' fill='none' stroke='%23B8955A' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M1 4.5C8 1.2 12 6.2 19 3.4S31 1.6 38 4s14 .8 23-2'/%3E%3C/svg%3E") no-repeat left center/contain}
+@media (prefers-reduced-motion:reduce){#scroll-progress{display:none}.hw{opacity:1;transform:none;animation:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -2023,6 +2053,8 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
 </script>
 </head>
 <body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- CURSOR -->
 <div id="cursor"></div>
@@ -3369,6 +3401,42 @@ document.addEventListener('mousemove',e=>{
     });
     list.parentNode.insertBefore(b,list.nextSibling);
   });
+})();
+
+
+// ── HERO HEADLINE: words rise in one by one ─────────────────
+(function(){
+  var h=document.querySelector('.hero-headline');
+  if(!h||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var i=0;
+  (function wrap(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){
+        var frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function(t){
+          if(!t) return;
+          if(/^\s+$/.test(t)){frag.appendChild(document.createTextNode(t));return;}
+          var sp=document.createElement('span'); sp.className='hw'; sp.textContent=t;
+          sp.style.animationDelay=(0.25+i*0.1)+'s'; i++; frag.appendChild(sp);
+        });
+        node.replaceChild(frag,n);
+      } else if(n.nodeType===1&&n.tagName!=='BR'){ wrap(n); }
+    });
+  })(h);
+  h.classList.add('split');
+})();
+
+// ── SCROLL PROGRESS LINE ────────────────────────────────────
+(function(){
+  var bar=document.getElementById('scroll-progress'); if(!bar) return;
+  var ticking=false;
+  function update(){
+    var max=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform='scaleX('+(max>0?Math.min(1,scrollY/max):0)+')';
+    ticking=false;
+  }
+  addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(update);} },{passive:true});
+  update();
 })();
 
 // ── NAV SCROLL STATE ────────────────────────────────────
