@@ -1669,6 +1669,124 @@ footer{padding:2rem 2.5rem}
   #cta-band{padding:2.5rem 0}
   .work-img{height:190px;min-height:190px!important}
 }
+/* ─── SHORTER PAGE + REBUILT CONTACT FORM ─── */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+#pixel-dimension{height:72vh;min-height:420px}
+#scroll-zoom{height:60vh;min-height:360px}
+.benefits-grid{grid-template-columns:repeat(2,1fr);gap:1.75rem 3rem}
+.standards-grid{grid-template-columns:repeat(2,1fr)}
+#contact{padding:6rem 0}
+.contact-inner{gap:5rem;align-items:start}
+.contact-headline{font-size:clamp(2rem,3.6vw,3.2rem);margin-bottom:1.25rem}
+.contact-body{font-size:.9rem;margin-bottom:1.5rem;color:rgba(255,255,255,.65)}
+.contact-item,.contact-item a{color:rgba(255,255,255,.7)}
+.contact-item a:hover{color:#fff}
+.contact-note{margin-top:.85rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.contact-cta{display:inline-flex;margin-top:1.5rem;background:var(--white);color:var(--black);cursor:pointer}
+.contact-cta:hover{background:var(--silk)}
+/* form */
+#app-wizard{border:0;min-width:0}
+fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
+.form-group{margin-bottom:1.1rem}
+.form-label{color:rgba(255,255,255,.7);font-size:.62rem}
+.form-label .opt{opacity:.7;text-transform:none;letter-spacing:.04em}
+.form-input,.form-textarea,.form-select{font-size:.9rem;padding:.75rem .9rem;color:var(--white)}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,.4)}
+.form-select{color:var(--white);background-image:linear-gradient(45deg,transparent 50%,rgba(255,255,255,.6) 50%),linear-gradient(135deg,rgba(255,255,255,.6) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:2.2rem}
+.form-textarea{height:96px}
+.form-input:focus-visible,.form-textarea:focus-visible,.form-select:focus-visible{outline:2px solid var(--emerald-l);outline-offset:1px}
+.app-step-indicator{color:rgba(255,255,255,.7)}
+.app-error{color:#ef8f78;font-size:.66rem;min-height:0;margin-top:.4rem}
+.app-error:empty{display:none}
+.form-input.invalid,.form-textarea.invalid,.form-select.invalid{border-color:#ef8f78!important}
+.app-form-error{color:#ef8f78;font-size:.8rem;line-height:1.5;margin:.5rem 0 0}
+.app-form-error:empty{display:none}
+.app-form-error a,.app-success-body a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.app-choices{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.app-choice{position:relative;display:block;cursor:pointer}
+.app-choice input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.app-choice span{display:flex;flex-direction:column;gap:.15rem;padding:.8rem .9rem;height:100%;border:1px solid rgba(255,255,255,.18);border-radius:2px;background:rgba(255,255,255,.03);transition:border-color .2s,background .2s}
+.app-choice b{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--white)}
+.app-choice small{font-size:.7rem;color:rgba(255,255,255,.65);line-height:1.4}
+.app-choice:hover span{border-color:rgba(255,255,255,.4)}
+.app-choice input:checked + span{border-color:var(--emerald-l);background:rgba(45,122,82,.18);box-shadow:inset 0 0 0 1px var(--emerald-l)}
+.app-choice input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
+.app-nav{margin-top:1.25rem}
+.app-btn-back{color:rgba(255,255,255,.7);padding:.6rem .4rem}
+.app-btn-back:hover{color:#fff}
+.app-btn-next{padding:.85rem 1.25rem}
+.form-note{color:rgba(255,255,255,.55);text-align:left;margin-top:.9rem}
+.form-char-count{color:rgba(255,255,255,.55)}
+.app-success{padding:1.5rem 0;text-align:left;outline:none}
+.app-success-rule{margin:0 0 1.25rem}
+.app-success-body{color:rgba(255,255,255,.75);font-family:var(--font-body);font-size:.95rem;line-height:1.7;letter-spacing:0;max-width:none;margin:0 0 .75rem}
+/* booking pop-up */
+.booking-field input:focus-visible,.booking-btn-primary:focus-visible,.booking-btn-ghost:focus-visible,.booking-close:focus-visible{outline:2px solid var(--emerald-l);outline-offset:2px}
+.booking-fallback{margin-top:1rem;font-size:.8rem;color:rgba(245,244,241,.7)}
+.booking-fallback a{color:#fff;text-decoration:underline}
+@media (max-width:1024px){
+  .benefits-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-inner{gap:2.5rem}
+}
+@media (max-width:768px){
+  /* shorter page on phones */
+  #pixel-dimension{height:44svh;min-height:280px}
+  #scroll-zoom{height:36svh;min-height:240px}
+  .pdt-headline{font-size:clamp(1.9rem,9vw,2.6rem)}
+  .sz-headline{font-size:clamp(1.7rem,7.5vw,2.3rem)}
+  .sz-body{display:none}
+  .service-art{display:none}
+  .service-card{min-height:0;padding:1rem 1.15rem}
+  .service-num{margin-bottom:.35rem}
+  .service-name{font-size:1.05rem;margin-bottom:.25rem}
+  .work-img{display:none}
+  .work-meta{padding:1rem 1.15rem 1.1rem}
+  .work-title{font-size:1.1rem}
+  .work-item:nth-child(1) .work-title{font-size:1.1rem}
+  .work-desc{margin:0}
+  .work-grid{gap:1px}
+  .about-panel{display:none}
+  .stat-card{padding:1rem .9rem}
+  .stat-num{font-size:1.9rem;margin-bottom:.15rem}
+  .about-sig{display:none}
+  .std-card{padding:1.1rem 1rem}
+  .std-icon{display:none}
+  .standards-grid{grid-template-columns:1fr;gap:1px}
+  .standards-intro{margin-bottom:1.25rem}
+  .benefits-head{margin-bottom:1.5rem}
+  .benefits-grid{grid-template-columns:1fr;gap:1.1rem}
+  .benefit{padding-top:.8rem}
+  .pricing-fit{display:none}
+  .reviews-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.75rem;margin:0 -1.25rem;padding:0 1.25rem .5rem;scrollbar-width:none}
+  .reviews-grid::-webkit-scrollbar{display:none}
+  .review-card{flex:0 0 82%;scroll-snap-align:start}
+  .reviews-head{margin-bottom:1.25rem}
+  .partner-strip{margin-top:1.5rem;padding-top:1rem}
+  .faq-item summary{font-size:1rem}
+  #contact{padding:3rem 0}
+  .contact-inner{gap:2rem}
+  .contact-detail{gap:.5rem}
+  .contact-cta{width:100%;justify-content:center}
+  .app-choices{grid-template-columns:1fr}
+  .app-choice span{flex-direction:row;align-items:baseline;justify-content:space-between;gap:.75rem;padding:.7rem .9rem}
+  footer{padding:1.5rem 1.25rem;gap:.75rem}
+}
+@media (max-width:768px){
+  .trustbar-inner{grid-template-columns:1fr 1fr;gap:.9rem}
+  .trust-item strong{font-size:.95rem}
+  .trust-item span{font-size:.7rem}
+  .benefits-sub,.standards-body,.about-stats,.about-body + .about-body{display:none}
+  .standards-headline{font-size:1.7rem}
+  .about-grid{gap:0}
+  .pricing-list li:nth-child(n+4){display:none}
+  .pricing-list.open li{display:flex}
+  .pricing-more{align-self:flex-start;margin:-.6rem 0 1.1rem;padding:.3rem 0;font-size:.8rem;color:var(--emerald);border-bottom:1px solid currentColor;background:none}
+  .pricing-card.featured .pricing-more{color:#fff}
+  .pricing-card{padding:1.25rem 1.1rem}
+  .pricing-help{margin-top:1.25rem}
+}
+@media (min-width:769px){.pricing-more{display:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -1770,14 +1888,6 @@ footer{padding:2rem 2.5rem}
         },
         {
           "@type": "Question",
-          "name": "Will my website work on phones?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Every website we build is mobile-first and tested on phones, tablets and desktop, because most of your customers will find you on a phone."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Can customers book or pay through the website?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -1790,14 +1900,6 @@ footer{padding:2rem 2.5rem}
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where are you based and who do you work with?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We are based in Randburg, Gauteng and build websites for service businesses across South Africa. Everything can be done online, by phone or on WhatsApp."
           }
         }
       ]
@@ -1983,14 +2085,6 @@ footer{padding:2rem 2.5rem}
       <div class="benefit reveal">
         <h3>Never chase a developer</h3>
         <p>We host, secure, back up and update your website every month. You run your business; we keep your website sharp.</p>
-      </div>
-      <div class="benefit reveal reveal-delay-1">
-        <h3>One clear monthly price</h3>
-        <p>A once-off build and a fixed monthly plan. You know what you pay, what you get and who to call.</p>
-      </div>
-      <div class="benefit reveal reveal-delay-2">
-        <h3>Senior attention, always</h3>
-        <p>We keep our roster to ten clients, so you work directly with the people building your site, not a ticket queue.</p>
       </div>
     </div>
   </div>
@@ -2430,26 +2524,7 @@ footer{padding:2rem 2.5rem}
   </div>
 </section>
 
-<section id="care" style="padding:10rem 0;background:var(--off-white);">
-  <div class="container">
-    <div class="label reveal">Ongoing Care</div>
-    <h2 class="reveal reveal-delay-1" style="font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.5rem;">
-      A website that stays<br>sharp long after launch.
-    </h2>
-    <p class="reveal reveal-delay-2" style="color:var(--slate);font-size:.98rem;line-height:1.8;max-width:580px;margin-bottom:3.5rem;">
-      We host, secure, update and improve your website every month, so you never have to chase a developer to keep your business up to date.
-    </p>
-    <div class="reveal reveal-delay-3" style="display:flex;flex-wrap:wrap;gap:.75rem;">
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Website Content</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Services</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Team Members</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Blogs</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Lead Capture</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Bookings</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Insights</span>
-    </div>
-  </div>
-</section>
+
 
 <section id="standards">
   <div class="container">
@@ -2500,22 +2575,6 @@ footer{padding:2rem 2.5rem}
         <div class="std-name">High-Touch Execution</div>
         <p class="std-desc">You work directly with senior practitioners, not handed off. Our process is transparent, rigorous, and remarkably smooth.</p>
       </div>
-      <div class="std-card reveal reveal-delay-2">
-        <div class="std-number">05</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><path d="M10 3v14M3 10h14" stroke-width="1.2" stroke-linecap="round"/><circle cx="10" cy="10" r="7" stroke-width="1.2"/></svg>
-        </div>
-        <div class="std-name">Modern Craftsmanship</div>
-        <p class="std-desc">Technical excellence paired with aesthetic intelligence. We care how things work as deeply as how they look.</p>
-      </div>
-      <div class="std-card reveal reveal-delay-3">
-        <div class="std-number">06</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><path d="M6 10h8M10 6l4 4-4 4" stroke-width="1.2" stroke-linecap="round"/><circle cx="10" cy="10" r="7" stroke-width="1.2"/></svg>
-        </div>
-        <div class="std-name">Technology with Taste</div>
-        <p class="std-desc">The best technology is invisible. We use the right tools, not the trending ones, to build websites that endure.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -2532,10 +2591,8 @@ footer{padding:2rem 2.5rem}
       <details class="faq-item"><summary>What does the monthly fee cover?</summary><p>Managed hosting, domain management, SSL, backups, security, monthly content updates (2 on Signature, 5 on Growth, unlimited on Premium) and support. You never need to find a separate developer to keep your site running.</p></details>
       <details class="faq-item"><summary>Why is there a monthly fee on top of the build?</summary><p>A website is not a once-off job. Hosting, security, backups and regular updates are what keep it fast, safe and current. We bundle them into one predictable monthly price instead of billing you for every small request.</p></details>
       <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Book a free call and we will recommend one.</p></details>
-      <details class="faq-item"><summary>Will my website work on phones?</summary><p>Yes. Every website we build is mobile-first and tested on phones, tablets and desktop, because most of your customers will find you on a phone.</p></details>
       <details class="faq-item"><summary>Can customers book or pay through the website?</summary><p>Yes. Growth includes online booking with calendar integration and payment gateway or CRM integration using your own software. Premium adds e-commerce and client portal functionality.</p></details>
       <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up.</p></details>
-      <details class="faq-item"><summary>Where are you based and who do you work with?</summary><p>We are based in Randburg, Gauteng and build websites for service businesses across South Africa. Everything can be done online, by phone or on WhatsApp.</p></details>
     </div>
   </div>
 </section>
@@ -2567,8 +2624,8 @@ footer{padding:2rem 2.5rem}
   <div class="container">
     <div class="contact-inner">
       <div class="contact-left reveal">
-        <div class="label" style="color:rgba(255,255,255,.25)">
-          <span style="background:rgba(255,255,255,.25)"></span>
+        <div class="label" style="color:rgba(255,255,255,.65)">
+          <span style="background:rgba(255,255,255,.5)"></span>
           Begin Here
         </div>
         <h2 class="contact-headline">
@@ -2580,151 +2637,115 @@ footer{padding:2rem 2.5rem}
         </p>
         <div class="contact-detail">
           <div class="contact-item"><a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a></div>
-          <div class="contact-item">+27 (75) 089 0614</div>
+          <div class="contact-item"><a href="tel:+27750890614">+27 (75) 089 0614</a></div>
+          <div class="contact-item"><a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">WhatsApp us</a></div>
           <div class="contact-item">Randburg · Gauteng · South Africa</div>
         </div>
-        <a href="" onclick="openBookingModal();return false;" class="btn-primary" style="display:inline-flex;margin-top:2rem;">
-          Book a Discovery Call
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-left:.5rem">
-            <path d="M2 7h10M8 3l4 4-4 4"/>
-          </svg>
-        </a>
-        <p style="margin-top:.85rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);">Free 30-minute call · No obligation</p>
+        <button type="button" class="btn-primary contact-cta" id="contact-book">Book a free discovery call</button>
+        <p class="contact-note">Free 30-minute call &middot; No obligation</p>
       </div>
       <div class="contact-right reveal reveal-delay-2">
 
-        <!-- Success state — hidden until submission succeeds -->
-        <div class="app-success" id="app-success">
+        <!-- Success state (shown after a successful submit) -->
+        <div class="app-success" id="app-success" role="status" tabindex="-1">
           <div class="app-success-rule"></div>
-          <p class="app-success-title">Application Received</p>
-          <p class="app-success-body">Thank you for applying to work with Oak &amp; Pixel Studio. Every application is carefully reviewed to ensure mutual alignment before we begin a partnership journey. We will contact you regarding the next steps.</p>
+          <p class="app-success-title">Thank you, we have your request</p>
+          <p class="app-success-body" id="app-success-body">We will reply within one business day with the right plan for your business.</p>
+          <p class="app-success-body">In a hurry? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a>.</p>
         </div>
 
-        <!-- Wizard -->
-        <div id="app-wizard">
-          <div class="app-step-indicator" id="app-step-label">STEP 1 OF 6</div>
-          <div class="app-progress-bar">
-            <div class="app-progress-fill" id="app-progress-fill" style="width:16.67%"></div>
-          </div>
+        <form id="app-wizard" novalidate>
+          <div class="app-step-indicator" id="app-step-label" aria-live="polite">Step 1 of 3 &middot; About you</div>
+          <div class="app-progress-bar" aria-hidden="true"><div class="app-progress-fill" id="app-progress-fill" style="width:33.33%"></div></div>
 
-          <!-- Step 1: Business Information -->
-          <div class="app-step active" id="app-step-1">
+          <!-- Step 1: About you -->
+          <fieldset class="app-step active" id="app-step-1">
+            <legend class="sr-only">About you</legend>
             <div class="form-group">
-              <label class="form-label">Company Name</label>
-              <input type="text" class="form-input" id="app-company-name" placeholder="Your company name" autocomplete="organization">
-              <span class="app-error" id="app-err-company-name"></span>
+              <label class="form-label" for="app-full-name">Your name</label>
+              <input type="text" class="form-input" id="app-full-name" name="name" placeholder="Full name" autocomplete="name" required>
+              <span class="app-error" id="app-err-full-name" role="alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label">Industry</label>
-              <input type="text" class="form-input" id="app-industry" placeholder="e.g. Legal, Real Estate, Healthcare">
-              <span class="app-error" id="app-err-industry"></span>
+              <label class="form-label" for="app-email">Email</label>
+              <input type="email" class="form-input" id="app-email" name="email" placeholder="you@company.co.za" autocomplete="email" inputmode="email" required>
+              <span class="app-error" id="app-err-email" role="alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label">Company Website <span style="opacity:.4;font-size:.75em;">(optional)</span></label>
-              <input type="url" class="form-input" id="app-website" placeholder="https://yourcompany.co.za" autocomplete="url">
+              <label class="form-label" for="app-phone">Phone or WhatsApp</label>
+              <input type="tel" class="form-input" id="app-phone" name="phone" placeholder="082 345 6789" autocomplete="tel" inputmode="tel" required>
+              <span class="app-error" id="app-err-phone" role="alert"></span>
             </div>
             <div class="form-group">
-              <label class="form-label">Number of Employees</label>
-              <select class="form-select" id="app-employees">
-                <option value="" disabled selected>Select a range</option>
-                <option>1 – 5</option>
-                <option>6 – 20</option>
-                <option>21 – 50</option>
-                <option>51 – 200</option>
-                <option>200+</option>
+              <label class="form-label" for="app-company-name">Business name</label>
+              <input type="text" class="form-input" id="app-company-name" name="organization" placeholder="Your business" autocomplete="organization" required>
+              <span class="app-error" id="app-err-company-name" role="alert"></span>
+            </div>
+          </fieldset>
+
+          <!-- Step 2: Your project -->
+          <fieldset class="app-step" id="app-step-2">
+            <legend class="form-label">Which plan interests you?</legend>
+            <div class="app-choices" id="app-plan">
+              <label class="app-choice"><input type="radio" name="plan" value="Signature Plan (R12,500 setup + R1,800/month)"><span><b>Signature</b><small>R12,500 + R1,800/month</small></span></label>
+              <label class="app-choice"><input type="radio" name="plan" value="Growth Plan (R25,000 setup + R3,200/month)"><span><b>Growth</b><small>R25,000 + R3,200/month &middot; Most popular</small></span></label>
+              <label class="app-choice"><input type="radio" name="plan" value="Premium Plan (from R55,000 setup + R6,500/month)"><span><b>Premium</b><small>From R55,000 + R6,500/month</small></span></label>
+              <label class="app-choice"><input type="radio" name="plan" value="Not sure yet"><span><b>Not sure yet</b><small>Recommend one for me</small></span></label>
+            </div>
+            <span class="app-error" id="app-err-plan" role="alert"></span>
+            <div class="form-group" style="margin-top:1.25rem">
+              <label class="form-label" for="app-start-date">When would you like to start?</label>
+              <select class="form-select" id="app-start-date" name="start" required>
+                <option value="" disabled selected>Choose a timeframe</option>
+                <option>As soon as possible</option>
+                <option>Within 30 days</option>
+                <option>Within 60 days</option>
+                <option>Within 90 days</option>
+                <option>Just exploring</option>
               </select>
-              <span class="app-error" id="app-err-employees"></span>
+              <span class="app-error" id="app-err-start-date" role="alert"></span>
             </div>
-          </div>
+          </fieldset>
 
-          <!-- Step 2: Primary Contact -->
-          <div class="app-step" id="app-step-2">
+          <!-- Step 3: Anything else -->
+          <fieldset class="app-step" id="app-step-3">
+            <legend class="sr-only">Anything else</legend>
             <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-input" id="app-full-name" placeholder="Your full name" autocomplete="name">
-              <span class="app-error" id="app-err-full-name"></span>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Job Title</label>
-              <input type="text" class="form-input" id="app-job-title" placeholder="e.g. Founder, Director, CEO">
-              <span class="app-error" id="app-err-job-title"></span>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" id="app-email" placeholder="your@email.com" autocomplete="email">
-              <span class="app-error" id="app-err-email"></span>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-input" id="app-phone" value="+27-" autocomplete="tel">
-              <span class="app-error" id="app-err-phone"></span>
-            </div>
-          </div>
-
-          <!-- Step 3: Services of Interest -->
-          <div class="app-step" id="app-step-3">
-            <p class="app-toggle-group-label">Strategic Partnership Plans</p>
-            <div class="app-toggle-cards">
-              <div class="app-toggle-card" data-value="Signature Plan">Signature Plan</div>
-              <div class="app-toggle-card" data-value="Growth Plan">Growth Plan</div>
-              <div class="app-toggle-card" data-value="Premium Plan">Premium Plan</div>
-            </div>
-            <p class="app-toggle-group-label">Standalone Services</p>
-            <div class="app-toggle-cards">
-              <div class="app-toggle-card" data-value="Premium Website">Premium Website</div>
-              <div class="app-toggle-card" data-value="Online Booking Experience">Online Booking Experience</div>
-              <div class="app-toggle-card" data-value="Lead Capture Experience">Lead Capture Experience</div>
-              <div class="app-toggle-card" data-value="Client Onboarding Experience">Client Onboarding Experience</div>
-              <div class="app-toggle-card" data-value="Client Operating System">Client Operating System</div>
-              <div class="app-toggle-card" data-value="Digital Presence Management">Digital Presence Management</div>
-            </div>
-            <span class="app-error" id="app-err-services"></span>
-          </div>
-
-          <!-- Step 4: Business Challenges -->
-          <div class="app-step" id="app-step-4">
-            <div class="form-group">
-              <label class="form-label">Business Challenges</label>
-              <textarea class="form-textarea" id="app-challenges" placeholder="What operational, digital, or growth challenges are you currently experiencing?" style="height:160px;resize:none"></textarea>
-              <span class="app-error" id="app-err-challenges"></span>
-            </div>
-          </div>
-
-          <!-- Step 5: Desired Start Date -->
-          <div class="app-step" id="app-step-5">
-            <div class="form-group">
-              <label class="form-label">When are you looking to start?</label>
-              <select class="form-select" id="app-start-date">
-                <option value="" disabled selected>Select a timeframe</option>
-                <option>Immediately</option>
-                <option>Within 30 Days</option>
-                <option>Within 60 Days</option>
-                <option>Within 90 Days</option>
-                <option>Exploring Options</option>
+              <label class="form-label" for="app-industry">What does your business do?</label>
+              <select class="form-select" id="app-industry" name="industry" required>
+                <option value="" disabled selected>Choose the closest match</option>
+                <option>Professional services</option>
+                <option>Legal or financial</option>
+                <option>Health or wellness</option>
+                <option>Property</option>
+                <option>Trades or construction</option>
+                <option>Hospitality or events</option>
+                <option>Retail or e-commerce</option>
+                <option>Creative or media</option>
+                <option>Other</option>
               </select>
-              <span class="app-error" id="app-err-start-date"></span>
+              <span class="app-error" id="app-err-industry" role="alert"></span>
             </div>
-          </div>
-
-          <!-- Step 6: Investment Readiness -->
-          <div class="app-step" id="app-step-6">
             <div class="form-group">
-              <label class="form-label">Which investment range best aligns with your expectations?</label>
-              <div class="app-radio-cards" id="app-investment">
-                <div class="app-radio-card" data-value="Under R10,000">Under R10,000</div>
-                <div class="app-radio-card" data-value="R10,000 – R25,000">R10,000 – R25,000</div>
-                <div class="app-radio-card" data-value="R25,000 – R50,000">R25,000 – R50,000</div>
-                <div class="app-radio-card" data-value="R50,000+">R50,000+</div>
-              </div>
-              <span class="app-error" id="app-err-investment"></span>
+              <label class="form-label" for="app-website">Current website <span class="opt">(optional)</span></label>
+              <input type="text" class="form-input" id="app-website" name="website" placeholder="www.yourbusiness.co.za" autocomplete="url" inputmode="url">
+              <span class="app-error" id="app-err-website" role="alert"></span>
             </div>
-          </div>
+            <div class="form-group">
+              <label class="form-label" for="app-challenges">Anything we should know? <span class="opt">(optional)</span></label>
+              <textarea class="form-textarea" id="app-challenges" name="message" maxlength="600" placeholder="What do you want your website to do for you?"></textarea>
+              <span class="form-char-count" id="app-count">0 / 600</span>
+            </div>
+            <input type="text" id="app-hp" name="company_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </fieldset>
 
+          <p class="app-form-error" id="app-form-error" role="alert"></p>
           <div class="app-nav">
-            <button class="app-btn-back" id="app-btn-back" style="visibility:hidden">← Back</button>
-            <button class="app-btn-next" id="app-btn-next">Next →</button>
+            <button type="button" class="app-btn-back" id="app-btn-back" style="visibility:hidden">&larr; Back</button>
+            <button type="submit" class="app-btn-next" id="app-btn-next">Next &rarr;</button>
           </div>
-        </div><!-- /#app-wizard -->
+          <p class="form-note">No obligation. We reply within one business day.</p>
+        </form>
 
       </div><!-- /.contact-right -->
     </div>
@@ -3218,223 +3239,232 @@ document.addEventListener('mousemove',e=>{
   });
 })();
 
-// ── PARTNERSHIP APPLICATION ─────────────────────────────────
+// ── CONTACT FORM (3 steps) ──────────────────────────────────
 (function () {
-  const TOTAL   = 6;
-  let   current = 1;
+  var form = document.getElementById('app-wizard');
+  if (!form) return;
 
-  const stepLabel    = document.getElementById('app-step-label');
-  const progressFill = document.getElementById('app-progress-fill');
-  const btnBack      = document.getElementById('app-btn-back');
-  const btnNext      = document.getElementById('app-btn-next');
+  var TOTAL = 3;
+  var TITLES = ['About you', 'Your project', 'Anything else'];
+  var current = 1;
+  var sending = false;
+  var DRAFT = 'op-contact-draft';
 
-  if (!btnNext) return; // guard if HTML not present
+  var stepLabel = document.getElementById('app-step-label');
+  var fill      = document.getElementById('app-progress-fill');
+  var btnBack   = document.getElementById('app-btn-back');
+  var btnNext   = document.getElementById('app-btn-next');
+  var formError = document.getElementById('app-form-error');
+  var $ = function (id) { return document.getElementById(id); };
 
-  // ── Step display ──────────────────────────────────────────
-  function showStep(n) {
-    document.querySelectorAll('.app-step').forEach(function (s) { s.classList.remove('active'); });
-    document.getElementById('app-step-' + n).classList.add('active');
-    stepLabel.textContent           = 'STEP ' + n + ' OF ' + TOTAL;
-    progressFill.style.width        = ((n / TOTAL) * 100).toFixed(2) + '%';
-    btnBack.style.visibility        = n === 1 ? 'hidden' : 'visible';
-    btnNext.textContent             = n === TOTAL ? 'Apply For Partnership' : 'Next →';
-    current = n;
+  // ── helpers ────────────────────────────────────────────────
+  function fail(id, msg) {
+    var err = $('app-err-' + id), field = $('app-' + id);
+    if (err) err.textContent = msg;
+    if (field) { field.classList.add('invalid'); field.setAttribute('aria-invalid', 'true'); }
+  }
+  function clearAll() {
+    form.querySelectorAll('.app-error').forEach(function (e) { e.textContent = ''; });
+    form.querySelectorAll('.invalid').forEach(function (e) { e.classList.remove('invalid'); e.removeAttribute('aria-invalid'); });
+    formError.innerHTML = '';
+  }
+  // South African numbers: 082 345 6789, +27 82 345 6789, 27823456789 all give "+27-82-345-6789"
+  function normalisePhone(raw) {
+    var d = String(raw).replace(/\D/g, '');
+    if (d.indexOf('0027') === 0) d = d.slice(4);
+    else if (d.indexOf('27') === 0 && d.length >= 11) d = d.slice(2);
+    else if (d.charAt(0) === '0') d = d.slice(1);
+    if (d.length !== 9) return null;
+    return '+27-' + d.slice(0, 2) + '-' + d.slice(2, 5) + '-' + d.slice(5);
+  }
+  function normaliseUrl(raw) {
+    var v = String(raw).trim();
+    if (!v) return '';
+    if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+    try { var u = new URL(v); return /\./.test(u.hostname) ? u.href : null; } catch (e) { return null; }
+  }
+  function radioValue(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
   }
 
-  // ── Error helpers ─────────────────────────────────────────
-  function clearErr(id) { var el = document.getElementById(id); if (el) el.textContent = ''; }
-  function showErr(id, msg) { var el = document.getElementById(id); if (el) el.textContent = msg; }
-  function markInvalid(id) { var el = document.getElementById(id); if (el) el.classList.add('invalid'); }
-  function markValid(id)   { var el = document.getElementById(id); if (el) el.classList.remove('invalid'); }
+  // ── steps ──────────────────────────────────────────────────
+  function showStep(n, moveFocus) {
+    form.querySelectorAll('.app-step').forEach(function (s) { s.classList.remove('active'); });
+    $('app-step-' + n).classList.add('active');
+    stepLabel.textContent = 'Step ' + n + ' of ' + TOTAL + ' · ' + TITLES[n - 1];
+    fill.style.width = (n / TOTAL * 100).toFixed(2) + '%';
+    btnBack.style.visibility = n === 1 ? 'hidden' : 'visible';
+    btnNext.textContent = n === TOTAL ? 'Send my request' : 'Next →';
+    current = n;
+    if (moveFocus) {
+      var first = $('app-step-' + n).querySelector('input:not([type=radio]):not(.hp-field),select,textarea');
+      if (first && n !== 2) first.focus({ preventScroll: true });
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
-  // ── Per-step validation ───────────────────────────────────
   function validate(n) {
+    clearAll();
+    var ok = true, first = null;
+    function bad(id, msg) { fail(id, msg); ok = false; if (!first) first = $('app-' + id); }
     if (n === 1) {
-      var ok = true;
-      var company   = document.getElementById('app-company-name').value.trim();
-      var industry  = document.getElementById('app-industry').value.trim();
-      var employees = document.getElementById('app-employees').value;
-      ['app-err-company-name','app-err-industry','app-err-employees'].forEach(clearErr);
-      ['app-company-name','app-industry','app-employees'].forEach(markValid);
-      if (!company)   { showErr('app-err-company-name','Company name is required.'); markInvalid('app-company-name'); ok = false; }
-      if (!industry)  { showErr('app-err-industry','Industry is required.'); markInvalid('app-industry'); ok = false; }
-      if (!employees) { showErr('app-err-employees','Please select a range.'); markInvalid('app-employees'); ok = false; }
-      return ok;
+      if (!$('app-full-name').value.trim()) bad('full-name', 'Please enter your name.');
+      var email = $('app-email').value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) bad('email', 'Enter a valid email, like name@company.co.za.');
+      if (!normalisePhone($('app-phone').value)) bad('phone', 'Enter a South African number, like 082 345 6789.');
+      if (!$('app-company-name').value.trim()) bad('company-name', 'Please enter your business name.');
     }
     if (n === 2) {
-      var ok    = true;
-      var name  = document.getElementById('app-full-name').value.trim();
-      var title = document.getElementById('app-job-title').value.trim();
-      var email = document.getElementById('app-email').value.trim();
-      var phone = document.getElementById('app-phone').value;
-      ['app-err-full-name','app-err-job-title','app-err-email','app-err-phone'].forEach(clearErr);
-      ['app-full-name','app-job-title','app-email','app-phone'].forEach(markValid);
-      if (!name)  { showErr('app-err-full-name','Full name is required.'); markInvalid('app-full-name'); ok = false; }
-      if (!title) { showErr('app-err-job-title','Job title is required.'); markInvalid('app-job-title'); ok = false; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-        showErr('app-err-email','A valid email address is required.'); markInvalid('app-email'); ok = false;
-      }
-      if (phone.replace(/\D/g,'').length !== 11) {
-        showErr('app-err-phone','Please enter 9 digits after +27.'); markInvalid('app-phone'); ok = false;
-      }
-      return ok;
+      if (!radioValue('plan')) { $('app-err-plan').textContent = 'Choose a plan, or "Not sure yet".'; ok = false; first = form.querySelector('input[name="plan"]'); }
+      if (!$('app-start-date').value) bad('start-date', 'Choose when you would like to start.');
     }
     if (n === 3) {
-      clearErr('app-err-services');
-      if (!document.querySelector('#app-step-3 .app-toggle-card.selected')) {
-        showErr('app-err-services','Please select at least one service or plan.'); return false;
-      }
-      return true;
+      if (!$('app-industry').value) bad('industry', 'Choose the closest match.');
+      if (normaliseUrl($('app-website').value) === null) bad('website', 'That web address does not look right.');
     }
-    if (n === 4) {
-      var val = document.getElementById('app-challenges').value.trim();
-      clearErr('app-err-challenges'); markValid('app-challenges');
-      if (!val || val.length < 20) {
-        showErr('app-err-challenges','Please describe your challenges (at least 20 characters).'); markInvalid('app-challenges'); return false;
-      }
-      return true;
-    }
-    if (n === 5) {
-      clearErr('app-err-start-date'); markValid('app-start-date');
-      if (!document.getElementById('app-start-date').value) {
-        showErr('app-err-start-date','Please select a timeframe.'); markInvalid('app-start-date'); return false;
-      }
-      return true;
-    }
-    if (n === 6) {
-      clearErr('app-err-investment');
-      if (!document.querySelector('#app-investment .app-radio-card.selected')) {
-        showErr('app-err-investment','Please select an investment range.'); return false;
-      }
-      return true;
-    }
-    return true;
+    if (first && first.focus) first.focus({ preventScroll: false });
+    return ok;
   }
 
-  // ── Navigation ────────────────────────────────────────────
-  btnNext.addEventListener('click', function () {
+  // ── draft (survives an accidental refresh) ─────────────────
+  function saveDraft() {
+    try {
+      sessionStorage.setItem(DRAFT, JSON.stringify({
+        n: $('app-full-name').value, e: $('app-email').value, p: $('app-phone').value, c: $('app-company-name').value,
+        i: $('app-industry').value, w: $('app-website').value, m: $('app-challenges').value,
+        s: $('app-start-date').value, pl: radioValue('plan')
+      }));
+    } catch (e) {}
+  }
+  function restoreDraft() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(DRAFT) || 'null'); if (!d) return;
+      $('app-full-name').value = d.n || ''; $('app-email').value = d.e || ''; $('app-phone').value = d.p || '';
+      $('app-company-name').value = d.c || ''; $('app-website').value = d.w || ''; $('app-challenges').value = d.m || '';
+      if (d.i) $('app-industry').value = d.i;
+      if (d.s) $('app-start-date').value = d.s;
+      if (d.pl) { var r = Array.prototype.find.call(form.querySelectorAll('input[name="plan"]'), function (x) { return x.value === d.pl; }); if (r) r.checked = true; }
+      $('app-count').textContent = $('app-challenges').value.length + ' / 600';
+    } catch (e) {}
+  }
+  form.addEventListener('input', saveDraft);
+  form.addEventListener('change', saveDraft);
+  restoreDraft();
+
+  $('app-challenges').addEventListener('input', function () {
+    var n = this.value.length, c = $('app-count');
+    c.textContent = n + ' / 600';
+    c.className = 'form-char-count' + (n >= 600 ? ' at-limit' : n >= 540 ? ' near-limit' : '');
+  });
+  // clear a field's error as soon as the person starts fixing it
+  form.addEventListener('input', function (e) {
+    var t = e.target; if (!t.id) return;
+    t.classList.remove('invalid'); t.removeAttribute('aria-invalid');
+    var err = $('app-err-' + t.id.replace(/^app-/, '')); if (err) err.textContent = '';
+  });
+  form.addEventListener('change', function (e) { if (e.target.name === 'plan') $('app-err-plan').textContent = ''; });
+
+  // ── navigation (Enter key and the button both come through submit) ─
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sending) return;
     if (!validate(current)) return;
-    if (current < TOTAL) { showStep(current + 1); return; }
-    submitApplication();
+    if (current < TOTAL) { showStep(current + 1, true); return; }
+    submit();
   });
+  btnBack.addEventListener('click', function () { if (current > 1 && !sending) { clearAll(); showStep(current - 1, true); } });
 
-  btnBack.addEventListener('click', function () {
-    if (current > 1) showStep(current - 1);
-  });
+  // ── send ───────────────────────────────────────────────────
+  function failMessage() {
+    formError.innerHTML = 'We could not send that just now. Please try again, or message us on ' +
+      '<a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">WhatsApp</a> or email ' +
+      '<a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a>.';
+  }
 
-  // ── Toggle cards (multi-select, Step 3) ───────────────────
-  document.querySelectorAll('#app-step-3 .app-toggle-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      this.classList.toggle('selected');
-      clearErr('app-err-services');
-    });
-  });
+  function submit() {
+    // spam trap: real people never fill the hidden field; pretend it worked
+    if ($('app-hp').value) { finish('there'); return; }
 
-  // ── Radio cards (single-select, Step 6) ───────────────────
-  document.querySelectorAll('#app-investment .app-radio-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      document.querySelectorAll('#app-investment .app-radio-card').forEach(function (c) { c.classList.remove('selected'); });
-      this.classList.add('selected');
-      clearErr('app-err-investment');
-    });
-  });
+    sending = true; btnNext.disabled = true; btnBack.disabled = true; btnNext.textContent = 'Sending…';
+    var fullName = $('app-full-name').value.trim();
+    var sp = fullName.indexOf(' ');
+    var first = sp > -1 ? fullName.slice(0, sp) : fullName;
+    var last  = sp > -1 ? fullName.slice(sp + 1) : '';
+    var phone = normalisePhone($('app-phone').value);
+    var plan  = radioValue('plan');
 
-  // ── Phone formatter (Step 2) — same pattern as original form ─
-  (function () {
-    var PREFIX  = '+27-';
-    var phoneEl = document.getElementById('app-phone');
-    function applyFormat(raw) {
-      var digits = raw.replace(/^\+27-?/,'').replace(/\D/g,'').slice(0,9);
-      if (!digits.length)   return PREFIX;
-      if (digits.length <= 2) return PREFIX + digits;
-      if (digits.length <= 5) return PREFIX + digits.slice(0,2) + '-' + digits.slice(2);
-      return                   PREFIX + digits.slice(0,2) + '-' + digits.slice(2,5) + '-' + digits.slice(5,9);
-    }
-    phoneEl.addEventListener('input', function () {
-      this.value = applyFormat(this.value);
-      this.selectionStart = this.selectionEnd = this.value.length;
-    });
-    phoneEl.addEventListener('keydown', function (e) {
-      if ((e.key === 'Backspace' || e.key === 'Delete') && this.value.length <= PREFIX.length) {
-        e.preventDefault();
-      }
-    });
-  })();
-
-  // ── Submission ────────────────────────────────────────────
-  function submitApplication() {
-    btnNext.disabled    = true;
-    btnNext.textContent = 'Submitting…';
-
-    var spaceIdx  = document.getElementById('app-full-name').value.trim().indexOf(' ');
-    var fullName  = document.getElementById('app-full-name').value.trim();
-    var firstname = spaceIdx > -1 ? fullName.slice(0, spaceIdx) : fullName;
-    var lastname  = spaceIdx > -1 ? fullName.slice(spaceIdx + 1) : '';
-
-    var selectedServices = [];
-    document.querySelectorAll('#app-step-3 .app-toggle-card.selected').forEach(function (c) {
-      selectedServices.push(c.dataset.value);
-    });
-    var selectedInvestment = document.querySelector('#app-investment .app-radio-card.selected');
-
+    // The applications table (migration 013) requires job_title and employee_count, which this shorter form no longer asks.
     var payload = {
-      company_name:         document.getElementById('app-company-name').value.trim(),
-      industry:             document.getElementById('app-industry').value.trim(),
-      website:              document.getElementById('app-website').value.trim() || null,
-      employee_count:       document.getElementById('app-employees').value,
-      full_name:            fullName,
-      job_title:            document.getElementById('app-job-title').value.trim(),
-      email:                document.getElementById('app-email').value.trim(),
-      phone:                document.getElementById('app-phone').value,
-      services_of_interest: selectedServices.join(', '),
-      business_challenges:  document.getElementById('app-challenges').value.trim(),
-      start_date:           document.getElementById('app-start-date').value,
-      investment_range:     selectedInvestment ? selectedInvestment.dataset.value : '',
+      company_name: $('app-company-name').value.trim(),
+      industry: $('app-industry').value,
+      website: normaliseUrl($('app-website').value) || null,
+      employee_count: 'Not provided',
+      full_name: fullName,
+      job_title: 'Not provided',
+      email: $('app-email').value.trim(),
+      phone: phone,
+      services_of_interest: plan,
+      business_challenges: $('app-challenges').value.trim() || null,
+      start_date: $('app-start-date').value,
+      investment_range: plan
     };
 
-    var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkYnNtY3h6aG1ka2Zqb2Z0dWxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4MDEwMTQsImV4cCI6MjA5NzM3NzAxNH0.xo9x29q_QVmDl81soUI3OMDzJBKmqEme-I6v5IZmeN0';
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
 
     fetch('https://wdbsmcxzhmdkfjoftulm.supabase.co/rest/v1/applications', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey':        ANON,
-        'Authorization': 'Bearer ' + ANON,
-        'Prefer':        'return=minimal',
-      },
+      headers: { 'Content-Type': 'application/json', 'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkYnNtY3h6aG1ka2Zqb2Z0dWxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4MDEwMTQsImV4cCI6MjA5NzM3NzAxNH0.xo9x29q_QVmDl81soUI3OMDzJBKmqEme-I6v5IZmeN0', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkYnNtY3h6aG1ka2Zqb2Z0dWxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4MDEwMTQsImV4cCI6MjA5NzM3NzAxNH0.xo9x29q_QVmDl81soUI3OMDzJBKmqEme-I6v5IZmeN0', 'Prefer': 'return=minimal' },
       body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined
     }).then(function (res) {
+      clearTimeout(timer);
       if (!res.ok) throw new Error('HTTP ' + res.status);
-
-      // Fire-and-forget to HubSpot (contact basics only)
-      var hsFields = [
-        { objectTypeId: '0-1', name: 'firstname', value: firstname      },
-        { objectTypeId: '0-1', name: 'email',     value: payload.email  },
-        { objectTypeId: '0-1', name: 'company',   value: payload.company_name },
+      // contact basics to HubSpot; never blocks or fails the request
+      var fields = [
+        { objectTypeId: '0-1', name: 'firstname', value: first },
+        { objectTypeId: '0-1', name: 'email', value: payload.email },
+        { objectTypeId: '0-1', name: 'company', value: payload.company_name },
+        { objectTypeId: '0-1', name: 'phone', value: phone }
       ];
-      if (lastname) hsFields.push({ objectTypeId: '0-1', name: 'lastname', value: lastname });
-      if (payload.phone && payload.phone !== '+27-')
-        hsFields.push({ objectTypeId: '0-1', name: 'phone', value: payload.phone });
-
+      if (last) fields.push({ objectTypeId: '0-1', name: 'lastname', value: last });
       fetch('https://api.hsforms.com/submissions/v3/integration/submit/148222168/985b8dbe-7881-4dc5-93fc-3ae30065bfef', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fields:  hsFields,
-          context: { pageUri: window.location.href, pageName: document.title },
-        }),
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title } })
       }).catch(function () {});
-
-      // Show success state
-      document.getElementById('app-wizard').style.display  = 'none';
-      document.getElementById('app-success').style.display = 'block';
-
+      finish(first);
     }).catch(function () {
-      btnNext.disabled    = false;
-      btnNext.textContent = 'Apply For Partnership';
-      showErr('app-err-investment', 'Something went wrong. Please email us directly at info@oakandpixel.co.za');
+      clearTimeout(timer);
+      sending = false; btnNext.disabled = false; btnBack.disabled = false; btnNext.textContent = 'Send my request';
+      failMessage();
     });
   }
+
+  function finish(first) {
+    try { sessionStorage.removeItem(DRAFT); } catch (e) {}
+    $('app-success-body').textContent = 'Thanks, ' + first + '. We will reply within one business day with the right plan for your business.';
+    form.style.display = 'none';
+    var s = $('app-success'); s.style.display = 'block'; s.focus({ preventScroll: true });
+    form.parentNode.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+})();
+
+
+// ── PRICING: collapse long lists on phones ──────────────────
+(function(){
+  document.querySelectorAll('.pricing-list').forEach(function(list){
+    if(list.children.length<=3) return;
+    var b=document.createElement('button');
+    b.type='button'; b.className='pricing-more'; b.textContent='See everything included';
+    b.setAttribute('aria-expanded','false');
+    b.addEventListener('click',function(){
+      var open=list.classList.toggle('open');
+      b.setAttribute('aria-expanded',String(open));
+      b.textContent=open?'Show less':'See everything included';
+    });
+    list.parentNode.insertBefore(b,list.nextSibling);
+  });
 })();
 
 // ── NAV SCROLL STATE ────────────────────────────────────
@@ -3674,7 +3704,7 @@ if(false)(function(){
 
 <!-- ── BOOKING MODAL ──────────────────────────────────────── -->
 <div class="booking-overlay" id="booking-overlay" role="dialog" aria-modal="true" aria-label="Book a Discovery Call">
-  <div class="booking-panel">
+  <div class="booking-panel" role="dialog" aria-modal="true" aria-label="Book a discovery call">
 
     <div class="booking-header">
       <div class="booking-steps">
@@ -3716,19 +3746,19 @@ if(false)(function(){
       <p class="booking-sub">We'll use these to confirm your session and send a calendar invite.</p>
       <div class="booking-form">
         <div class="booking-field">
-          <label>Full Name</label>
+          <label for="b-name">Full Name</label>
           <input type="text" id="b-name" placeholder="Your full name" autocomplete="name">
         </div>
         <div class="booking-field">
-          <label>Company</label>
+          <label for="b-company">Company</label>
           <input type="text" id="b-company" placeholder="Your business" autocomplete="organization">
         </div>
         <div class="booking-field">
-          <label>Email</label>
+          <label for="b-email">Email</label>
           <input type="email" id="b-email" placeholder="your@email.com" autocomplete="email">
         </div>
         <div class="booking-field">
-          <label>Phone</label>
+          <label for="b-phone">Phone</label>
           <input type="tel" id="b-phone" placeholder="+27" autocomplete="tel">
         </div>
       </div>
@@ -3842,6 +3872,7 @@ if(false)(function(){
     $('booking-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
     showPhase(1);
+    $('booking-close')?.focus();
     await loadServices();
   };
 
@@ -3855,13 +3886,14 @@ if(false)(function(){
     const grid = $('booking-services-grid');
     grid.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;grid-column:1/-1">' +
       Array(4).fill('<div class="booking-skel" style="height:52px"></div>').join('') + '</div>';
-    const { data } = await getSb().from('services').select('id,name').eq('active', true).order('sort_order');
+    let data = null;
+    try { ({ data } = await getSb().from('services').select('id,name').eq('active', true).order('sort_order')); } catch (e) { data = null; }
     if (!data?.length) {
-      grid.innerHTML = '<p class="booking-slots-empty">Unable to load services. Please try again.</p>';
+      grid.innerHTML = '<p class="booking-slots-empty">We could not load the booking calendar just now.</p>' + '<p class="booking-fallback">Prefer to chat? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or email <a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a>.</p>';
       return;
     }
     grid.innerHTML = data.map(s =>
-      `<div class="booking-service-card" data-id="${s.id}"><span class="booking-service-name">${s.name}</span></div>`
+      `<div class="booking-service-card" data-id="${s.id}"><span class="booking-service-name">${String(s.name).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</span></div>`
     ).join('');
     grid.querySelectorAll('.booking-service-card').forEach(card => {
       card.addEventListener('click', () => {
@@ -3883,9 +3915,10 @@ if(false)(function(){
       Array(5).fill('<div class="booking-skel" style="height:82px;min-width:66px;flex:0 0 auto"></div>').join('') + '</div>';
     $('booking-slots').innerHTML = '';
     const today = new Date().toISOString().split('T')[0];
-    const { data } = await getSb().from('available_slots')
+    let data = null;
+    try { ({ data } = await getSb().from('available_slots')
       .select('id,date,start_time').eq('is_booked', false)
-      .gte('date', today).order('date').order('start_time');
+      .gte('date', today).order('date').order('start_time')); } catch (e) { data = null; }
     slotsMap = {};
     (data || []).forEach(s => { (slotsMap[s.date] = slotsMap[s.date] || []).push(s); });
     renderDates();
@@ -3895,7 +3928,7 @@ if(false)(function(){
     const el = $('booking-dates-scroll');
     const dates = Object.keys(slotsMap).sort();
     if (!dates.length) {
-      el.innerHTML = '<p class="booking-slots-empty">No availability at the moment. Please check back soon.</p>';
+      el.innerHTML = '<p class="booking-slots-empty">No times are open right now.</p>' + '<p class="booking-fallback">Prefer to chat? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or email <a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a>.</p>';
       return;
     }
     el.innerHTML = dates.map(ds => {
@@ -3948,18 +3981,21 @@ if(false)(function(){
     if (!name)    { errEl.textContent = 'Full name is required.'; return; }
     if (!company) { errEl.textContent = 'Company name is required.'; return; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'A valid email is required.'; return; }
-    if (!phone)   { errEl.textContent = 'Phone number is required.'; return; }
+    if (phone.replace(/\D/g, '').length < 9) { errEl.textContent = 'Enter a valid phone number.'; return; }
     btn.disabled = true; btn.textContent = 'Requesting…';
-    const { error } = await getSb().from('bookings').insert({
-      service_id: selectedService, slot_id: selectedSlot.id,
-      full_name: name, company, email, phone
-    });
+    let error = null;
+    try {
+      ({ error } = await getSb().from('bookings').insert({
+        service_id: selectedService, slot_id: selectedSlot.id,
+        full_name: name, company, email, phone
+      }));
+    } catch (e) { error = e; }
     if (error) {
-      errEl.textContent = 'Something went wrong. Please email info@oakandpixel.co.za directly.';
+      errEl.innerHTML = 'That did not go through. Please try again, or <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline">message us on WhatsApp</a>.';
       btn.disabled = false; btn.textContent = 'Request This Session';
       return;
     }
-    await getSb().from('available_slots').update({ is_booked: true }).eq('id', selectedSlot.id);
+    // The slot is marked as booked by a database trigger (migrations/028), because the public key may not edit slots.
     showPhase(4);
   }
 
@@ -3973,6 +4009,7 @@ if(false)(function(){
     $('p3-back')?.addEventListener('click', () => showPhase(2));
     $('p3-submit')?.addEventListener('click', submitBooking);
     $('booking-done')?.addEventListener('click', closeModal);
+    $('contact-book')?.addEventListener('click', () => window.openBookingModal());
   });
 })();
 </script>
