@@ -1404,6 +1404,9 @@ footer{
   #pixel-dimension, #scroll-zoom { height: 100vw; min-height: 380px; }
 }
 
+/* hide page scrollbar (scrolling still works) */
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 /* ─── CONVERSION REDESIGN ────────────────────────────── */
 :root{--mist-text:#6A6A63;--emerald-d:#124A2E}
 section[id]{scroll-margin-top:72px}
@@ -1754,6 +1757,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
     </div>
   </div>
 </aside>
+
+<section id="pixel-dimension">
+  <canvas id="pixel-canvas-3d"></canvas>
+  <div class="pixel-dim-text" id="pdt">
+    <div class="pdt-eyebrow">Digital Precision</div>
+    <h2 class="pdt-headline">
+      Every pixel,<br><em>intentional.</em>
+    </h2>
+    <p class="pdt-sub">Architecture-grade thinking · Editorial-grade aesthetics</p>
+  </div>
+</section>
 
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
@@ -2377,6 +2391,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up.</p></details>
       <details class="faq-item"><summary>Where are you based and who do you work with?</summary><p>We are based in Randburg, Gauteng and build websites for service businesses across South Africa. Everything can be done online, by phone or on WhatsApp.</p></details>
     </div>
+  </div>
+</section>
+
+<section id="scroll-zoom">
+  <div class="sz-mark-wrap" id="sz-mark">
+    <div class="sz-giant-mark" id="sz-giant">
+      <div class="gsq gsq-tl"></div>
+      <div class="gsq gsq-tr"></div>
+      <div class="gsq gsq-bl"></div>
+      <div class="gsq gsq-br"></div>
+    </div>
+  </div>
+  <div class="sz-text reveal">
+    <div class="sz-eyebrow">Our Standard</div>
+    <h2 class="sz-headline">
+      Built to last.<br>
+      Designed to <em>lead.</em>
+    </h2>
+    <div class="sz-rule"></div>
+    <p class="sz-body">
+      The standard isn't set by what's average — it's defined by what's possible. Every engagement we take on is treated as if our own reputation depends on it. Because it does.
+    </p>
   </div>
 </section>
 
