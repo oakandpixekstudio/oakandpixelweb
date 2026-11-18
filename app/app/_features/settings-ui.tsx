@@ -32,9 +32,9 @@ export const formatWhen = (iso: string) => new Date(iso).toLocaleString("en-ZA",
 export function SettingsStyles() {
   return <style jsx global>{`
     .settings-pane-card{min-width:0}
-    .sp-body{display:grid;gap:18px}
+    .sp-body{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
     .sp-note{margin:0;color:var(--muted);font-size:12px}
-    .sp-section{display:grid;gap:4px}
+    .sp-section{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
     .sp-section>h3{margin:0 0 6px;font:400 17px var(--font-display)}
     .sp-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
     .sp-row:last-child{border-bottom:0}.sp-row small{display:block;color:var(--muted);margin-top:3px;font-size:12px;line-height:1.4}.sp-row b{font-weight:500}
@@ -59,8 +59,8 @@ export function SettingsStyles() {
     .sp-matrix th:first-child,.sp-matrix td:first-child{text-align:left;padding-left:4px}.sp-matrix td{height:44px;border-bottom:1px solid var(--line);text-align:center}
     .sp-stage{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius-sm)}.sp-stage i.dot{width:12px;height:12px;border-radius:50%;flex:none}
     .sp-stage .grow{flex:1;min-width:0;display:grid}.sp-stage small{color:var(--muted)}
-    .sp-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-    .sp-card{border:1px solid var(--line);border-radius:var(--radius-md);padding:16px;display:grid;gap:10px;align-content:start}.sp-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+    .sp-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;align-items:stretch;width:100%}
+    .sp-card{border:1px solid var(--line);border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}.sp-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.sp-card .sp-desc{flex:1 1 auto;min-height:3em}.sp-card>.button{margin-top:auto;width:100%}
     .sp-card header{display:flex;align-items:center;gap:12px}.sp-card header b{display:block}
     .sp-icon{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--green-soft);color:var(--green);flex:none}
     .sp-code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;background:color-mix(in srgb,var(--text) 6%,transparent);padding:8px 10px;border-radius:8px;overflow-wrap:anywhere}

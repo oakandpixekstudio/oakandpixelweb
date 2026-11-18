@@ -146,9 +146,9 @@ const INTEGRATIONS: Integration[] = [
   { id: "slack", name: "Slack", category: "Messaging", description: "Post new leads and paid invoices to a channel.", icon: Hash },
   { id: "payfast", name: "PayFast", category: "Payments & accounting", description: "Let clients pay invoices by card or instant EFT.", icon: CreditCard },
   { id: "xero", name: "Xero", category: "Payments & accounting", description: "Sync invoices and payments with your accounting.", icon: Calculator },
-  { id: "supabase", name: "Supabase", category: "Data & websites", description: "Read bookings and enquiries from the public website.", icon: Database },
-  { id: "vercel", name: "Vercel", category: "Data & websites", description: "Show the deploy status of client websites.", icon: Globe },
-  { id: "zapier", name: "Zapier", category: "Automation", description: "Connect to thousands of other apps.", icon: Workflow },
+  { id: "supabase", name: "Supabase", category: "Data, websites & automation", description: "Read bookings and enquiries from the public website.", icon: Database },
+  { id: "vercel", name: "Vercel", category: "Data, websites & automation", description: "Show the deploy status of client websites.", icon: Globe },
+  { id: "zapier", name: "Zapier", category: "Data, websites & automation", description: "Connect to thousands of other apps.", icon: Workflow },
 ];
 
 export function IntegrationsPanel() {
@@ -168,8 +168,7 @@ export function IntegrationsPanel() {
     {categories.map(category => <div className="sp-section" key={category}><h3>{category}</h3>
       <div className="sp-cards">{INTEGRATIONS.filter(i => i.category === category).map(i => { const Icon = i.icon; const on = connected[i.id]; return <div className="sp-card" key={i.id}>
         <header><span className="sp-icon"><Icon size={19}/></span><div><b style={{ fontWeight: 500 }}>{i.name}</b>{on ? <span className="badge green">Connected</span> : <span className="badge">Not connected</span>}</div></header>
-        <p>{i.description}</p>
-        {on && <p>Connected {formatWhen(on)}</p>}
+        <p className="sp-desc">{i.description}{on && <><br/>Connected {formatWhen(on)}</>}</p>
         {on ? <button type="button" className="button" onClick={() => void disconnect(i)}>Disconnect</button> : <button type="button" className="button primary" onClick={() => void connect(i)}>Connect</button>}
       </div>; })}</div></div>)}
   </Pane>;

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { CircleAlert, CircleCheck, Info, TriangleAlert, X } from "lucide-react";
 
@@ -19,11 +19,15 @@ export function useDialogs(): DialogApi {
 
 const toastIcons = { success: CircleCheck, error: CircleAlert, info: Info } as const;
 
+const noop = () => () => {};
+
 /** CRM-styled replacements for window.confirm and window.alert. */
 export function DialogProvider({ children }: { children: React.ReactNode }) {
   const [pending, setPending] = useState<{ options: ConfirmOptions; resolve: (value: boolean) => void } | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
   const nextId = useRef(1);
+  // false while the server renders and during hydration, then true: the portal below must not exist on the first client render.
+  const mounted = useSyncExternalStore(noop, () => true, () => false);
 
   const confirm = useCallback((options: ConfirmOptions) => new Promise<boolean>(resolve => setPending({ options, resolve })), []);
   const settle = useCallback((value: boolean) => { setPending(current => { current?.resolve(value); return null; }); }, []);
@@ -46,7 +50,7 @@ export function DialogProvider({ children }: { children: React.ReactNode }) {
 
   return <DialogContext.Provider value={api}>
     {children}
-    {typeof document !== "undefined" && createPortal(<>
+    {mounted && createPortal(<>
       {pending && <div className="modal-backdrop dialog-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) settle(false); }}>
         <div className="modal dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby={pending.options.message ? "dialog-message" : undefined}>
           <span className={`dialog-icon ${danger ? "danger" : ""}`}>{danger ? <TriangleAlert size={22}/> : <Info size={22}/>}</span>
