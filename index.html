@@ -1523,6 +1523,152 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+/* ─── RESTRAINED / COMPACT PASS (contact form untouched) ─── */
+:root{--measure:1040px}
+nav{height:60px;padding:0 2.5rem}
+.nav-links{gap:1.8rem}
+.nav-links a{font-size:.7rem}
+.nav-cta{font-size:.68rem;padding:.42rem 1.1rem}
+section[id]{scroll-margin-top:60px}
+.container{max-width:var(--measure);padding:0 2.5rem}
+.label{font-size:.62rem;margin-bottom:1rem}
+.btn-primary{padding:.65rem 1.5rem;font-size:.7rem}
+.btn-ghost{font-size:.7rem;padding:.65rem .9rem}
+/* hero */
+#hero{min-height:86vh;padding-top:60px}
+.hero-inner{max-width:1100px;padding:3rem 2.5rem 3.5rem;gap:2.5rem}
+.hero-eyebrow{margin-bottom:1.5rem;font-size:.62rem}
+.hero-headline{font-size:clamp(2.4rem,4.4vw,3.9rem);font-weight:300;line-height:1.08}
+.hero-sub{font-size:.95rem;max-width:440px;margin-top:1.25rem;line-height:1.65}
+.hero-actions{margin-top:1.75rem}
+.hero-proof{margin-top:1.5rem;font-size:.8rem}
+.hero-visual{height:400px}
+/* trust bar */
+.trustbar{padding:1.5rem 0}
+.trustbar-inner{gap:1.5rem}
+.trust-item{border-left:1px solid rgba(255,255,255,.18);padding-left:.9rem}
+.trust-item strong{font-size:1.05rem}
+.trust-item span{font-size:.75rem}
+/* section rhythm */
+#benefits,#services,#pricing,#work,#about,#standards,#faq{padding:5rem 0}
+.reviews{padding:4.5rem 0}
+#care{padding:4rem 0!important}
+#care h2{font-size:clamp(1.8rem,3vw,2.5rem)!important;margin-bottom:1rem!important}
+#care p{font-size:.88rem!important;margin-bottom:2rem!important}
+#care span{font-size:.62rem!important;padding:.4rem .8rem!important}
+.benefits-headline,.services-headline,.pricing-headline,.work-headline,.about-headline,.standards-headline,.reviews-headline,.faq-headline{font-size:clamp(1.8rem,3vw,2.5rem);line-height:1.15}
+.benefits-head{margin-bottom:2.5rem;max-width:560px}
+.benefits-sub,.services-sub,.pricing-sub,.standards-body,.faq-sub{font-size:.88rem;line-height:1.7}
+.benefits-grid{gap:2rem 2.5rem}
+.benefit{padding-top:1.1rem}
+.benefit h3{font-size:1.25rem;margin-bottom:.5rem}
+.benefit p{font-size:.86rem;line-height:1.65}
+/* services */
+.services-sub{margin-bottom:2.5rem}
+.service-card{padding:1.75rem 1.6rem}
+.service-art{height:76px;margin-bottom:1.1rem}
+.service-num{margin-bottom:1rem}
+.service-name{font-size:1.2rem;margin-bottom:.5rem}
+.service-desc{font-size:.82rem;line-height:1.6}
+/* pricing: smaller, clearly separated */
+.pricing-head{margin-bottom:2.5rem;gap:3rem}
+.pricing-grid{gap:1.5rem;max-width:960px;margin:0 auto}
+.pricing-card{padding:1.6rem 1.5rem;min-height:0}
+.pricing-kicker{font-size:.58rem;margin-bottom:.6rem}
+.pricing-name{font-size:1.5rem;margin-bottom:.5rem}
+.pricing-fit{font-size:.8rem;min-height:0;line-height:1.55}
+.pricing-price{margin:1.1rem 0 1rem;padding-top:1rem}
+.pricing-setup{font-size:1.7rem}
+.pricing-month{font-size:.78rem;margin-top:.4rem}
+.pricing-list{gap:.55rem;margin-bottom:1.4rem}
+.pricing-list li{font-size:.8rem;line-height:1.5}
+.pricing-card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(10,10,9,.07)}
+.pricing-help{margin-top:2rem;font-size:.85rem;justify-content:center}
+.pricing-note{font-size:.72rem;margin:1.25rem auto 0;text-align:center}
+.plan-tag{font-size:.62rem;font-weight:400;letter-spacing:.08em;padding:.2rem .65rem;margin-bottom:.9rem;background:transparent;border:1px solid var(--silk);color:var(--slate)}
+.plan-tag-start,.plan-tag-best{background:transparent;border:1px solid #cfcbc3;color:var(--slate)}
+.plan-tag-popular{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+/* Growth: near-black, fine accents only */
+.pricing-card.featured{
+  background:#111110;color:var(--white);border:1px solid #2a2a27;border-top:2px solid var(--emerald-l);
+  box-shadow:0 18px 44px rgba(10,10,9,.22);margin:-.6rem 0;padding-top:2.2rem;padding-bottom:2.2rem;
+}
+.pricing-card.featured:hover{box-shadow:0 22px 50px rgba(10,10,9,.3);border-color:#2a2a27;border-top-color:var(--emerald-l)}
+.pricing-card.featured .plan-tag-popular{color:#d3b27a;border-color:rgba(184,149,90,.6)}
+.pricing-card.featured .pricing-kicker{color:rgba(255,255,255,.6)}
+.pricing-card.featured .pricing-month{color:rgba(255,255,255,.6)}
+.pricing-card.featured .pricing-price{border-top-color:rgba(255,255,255,.12)}
+.pricing-card.featured .pricing-list li::before{background:var(--emerald-l);width:5px;height:5px}
+.pricing-card.featured .btn-primary{background:var(--white);color:var(--black);font-weight:400}
+.pricing-card.featured .btn-primary:hover{background:var(--silk)}
+.pricing-list li::before{background:var(--emerald);width:5px;height:5px;flex-basis:5px}
+/* reviews */
+.reviews-head{margin-bottom:2rem}
+.reviews-score-num{font-size:2.3rem}
+.review-card{padding:1.6rem 1.5rem;gap:.9rem}
+.review-quote{font-size:1.05rem!important;line-height:1.5}
+.partner-strip{margin-top:2.5rem;padding-top:1.5rem}
+.partner-logo{width:200px;height:72px}
+/* CTA band: dark, thin accent line instead of a big green slab */
+#cta-band{background:var(--graphite);padding:3.25rem 0;border-top:1px solid var(--emerald)}
+#cta-band h2{font-size:clamp(1.5rem,2.4vw,2.1rem);margin-bottom:.5rem}
+#cta-band p{font-size:.88rem}
+.btn-light{background:var(--white);color:var(--black);font-weight:400}
+.btn-light:hover{background:var(--silk)}
+/* process */
+.work-header{margin-bottom:2.5rem}
+.work-img{height:200px}
+.work-item:nth-child(1) .work-img{min-height:400px}
+.work-item:nth-child(3) .work-img-inner{background:linear-gradient(135deg,#1a1a18 0%,#2a2a27 100%)}
+.work-meta{padding:1.25rem 1.4rem 1.5rem}
+.work-title{font-size:1.25rem}
+.work-item:nth-child(1) .work-title{font-size:1.5rem}
+.work-desc{font-size:.84rem}
+.process-num{font-size:4.5rem;left:1.25rem}
+.work-item:nth-child(1) .process-num{font-size:9rem;top:1.5rem}
+/* about, standards, faq */
+.about-grid{gap:4rem}
+.about-headline{margin-bottom:1.5rem}
+.about-body{font-size:.88rem;line-height:1.7;margin-bottom:1.25rem}
+.about-sig{font-size:1.15rem;margin-top:1.5rem}
+.stat-card{padding:1.5rem 1.25rem}
+.stat-num{font-size:2.4rem}
+.stat-label{font-size:.64rem}
+.about-stats{margin-bottom:1.5rem}
+.about-panel{padding:1.5rem}
+.panel-quote{font-size:1.05rem;margin-bottom:1rem}
+.standards-intro{gap:3rem;margin-bottom:2.5rem}
+.std-card{padding:1.75rem 1.5rem}
+.std-name{font-size:1.15rem}
+.std-desc{font-size:.8rem;line-height:1.65}
+.std-card::after{left:1.5rem;right:1.5rem}
+.faq-inner{gap:3.5rem}
+.faq-item summary{font-size:1.1rem;padding:1.05rem 2rem 1.05rem 0}
+.faq-item summary::after{top:.9rem;font-size:1.35rem}
+.faq-item p{font-size:.86rem;padding-bottom:1.2rem;line-height:1.7}
+footer{padding:2rem 2.5rem}
+@media (max-width:1024px){
+  .container{padding:0 2rem}
+  .hero-inner{padding:2.5rem 2rem 3rem}
+  .pricing-grid{max-width:460px;gap:1.25rem}
+  .pricing-card.featured{margin:0}
+}
+@media (max-width:768px){
+  nav{padding:0 1.25rem;height:56px}
+  #hero{min-height:0;padding-top:56px}
+  .container{padding:0 1.25rem}
+  .hero-inner{padding:2rem 1.25rem 2.5rem}
+  .hero-headline{font-size:clamp(2.1rem,9vw,2.7rem)}
+  .hero-sub{font-size:.92rem}
+  #benefits,#services,#pricing,#work,#about,#standards,#faq{padding:3.25rem 0}
+  .reviews{padding:3.25rem 0}
+  #care{padding:3rem 0!important}
+  .benefits-grid{gap:1.5rem}
+  .pricing-grid{max-width:none}
+  .pricing-card{padding:1.5rem 1.25rem}
+  #cta-band{padding:2.5rem 0}
+  .work-img{height:190px;min-height:190px!important}
+}
 </style>
 <script type="application/ld+json">
 {
