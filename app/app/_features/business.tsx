@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Bell, Blocks, Building2, CalendarDays, Check, CheckCircle2, ChevronLeft, ChevronRight, CircleDollarSign, ClipboardList, Database, Download, FileText, Layers, ExternalLink, Mail, MapPin, Pencil, Plus, Receipt, ScrollText, Send, ShieldCheck, SlidersHorizontal, Tag, Trash2, TrendingUp, Upload, Users, type LucideIcon } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { AnimatedValue, KpiCard, Money, PageHero, Panel, SearchBox, StatusBadge, useRowLink } from "@/_components/shared";
+import { AnimatedValue, BrandMark, KpiCard, Money, PageHero, Panel, SearchBox, StatusBadge, useRowLink } from "@/_components/shared";
 import { Select, DateRangePicker } from "@/_components/controls";
 import { useDemoData } from "@/_providers/demo-data-provider";
 import { useDialogs } from "@/_components/dialogs";
@@ -127,7 +127,7 @@ export function SettingsView(){
           </div>
         </form>
         <div className="settings-side">
-          <Panel title="Organisation Branding"><div className="brand-preview"><span className="brand-mark"><i/><i/><i/><i/></span><span>Oak &amp; Pixel</span></div><div className="logo-row"><p>Recommended: PNG or SVG, at least 600 × 200px.</p><button className="button"><Upload size={15}/>Change Logo</button></div></Panel>
+          <Panel title="Organisation Branding"><div className="brand-preview"><BrandMark/><span>Oak &amp; Pixel</span></div><div className="logo-row"><p>Recommended: PNG or SVG, at least 600 × 200px.</p><button className="button"><Upload size={15}/>Change Logo</button></div></Panel>
           <Panel title="Brand Colours"><div className="swatches">{[["Primary","#00B26B"],["Secondary","#0B1E2B"],["Neutral","#94A3B8"],["Background","#F6F8FA"]].map(([n,c])=><div key={n}><i style={{background:c}}/><span>{n}<small>{c}</small></span></div>)}</div></Panel>
           <Panel title="Plan & Usage" action={<span className="badge green">Growth</span>}><div className="usage"><div><span><Users size={17}/>Users<small>24 / 30</small></span><i><em style={{width:"80%"}}/></i></div><div><span><Database size={17}/>Storage<small>128 GB / 250 GB</small></span><i><em style={{width:"51%"}}/></i></div></div><p className="usage-note">Plan and usage figures are demonstration values.</p><button type="button" className="button" style={{width:"100%",marginTop:10}} onClick={async()=>{if(await confirm({title:"Reset demo data?",message:"All demonstration changes in this browser will be cleared and the sample data restored.",confirmLabel:"Reset data",tone:"danger"})){reset();toast("Demo data reset")}}}>Reset Demo Data</button></Panel>
         </div></>

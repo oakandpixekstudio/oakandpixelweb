@@ -6,7 +6,16 @@ import { motion } from "motion/react";
 import { ChartNoAxesColumn, ChevronLeft, ChevronRight, Diamond, Grip, LayoutGrid, Leaf, List, Search, Square, Waves, type LucideIcon } from "lucide-react";
 
 export function BrandMark({ className = "" }: { className?: string }) {
-  return <span className={`brand-mark ${className}`} aria-hidden="true"><i/><i/><i/><i/></span>;
+  return <span className={`brand-mark ${className}`} aria-hidden="true">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="11" height="11" fill="var(--mark-ink)"/>
+      <rect x="16" y="1" width="11" height="11" fill="#1A5C3A"/>
+      <rect x="1" y="16" width="11" height="11" fill="#9B9B94" opacity=".4"/>
+      <rect x="16" y="16" width="11" height="11" fill="var(--mark-ink)"/>
+      <rect x="5" y="5" width="3" height="3" fill="var(--mark-dot)" opacity=".5"/>
+      <rect x="20" y="20" width="3" height="3" fill="#1A5C3A" opacity=".8"/>
+    </svg>
+  </span>;
 }
 
 export function PageHero({ eyebrow, title, subtitle, children }: { eyebrow: string; title: string; subtitle: string; children?: React.ReactNode }) {

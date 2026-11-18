@@ -1,4 +1,4 @@
-import { ChartNoAxesColumn, FileText, Folder, Funnel, Layers, LayoutGrid, List, Mail, Settings, UserPlus } from "lucide-react";
+import { ChartNoAxesColumn, FileText, Folder, Funnel, Layers, LayoutGrid, List, Mail, Search, Settings, UserPlus } from "lucide-react";
 
 export const navigation = [
   { label: "CORE", items: [
@@ -15,6 +15,9 @@ export const navigation = [
   { label: "BUSINESS", items: [
     { href: "/invoices", label: "Invoices", icon: Layers },
     { href: "/reports", label: "Reports", icon: ChartNoAxesColumn },
+  ]},
+  { label: "WEBSITE AUDIT", items: [
+    { href: "/website-audit", label: "Website Audit", icon: Search },
   ]},
   { label: "SETTINGS", items: [
     { href: "/settings", label: "Settings", icon: Settings },
