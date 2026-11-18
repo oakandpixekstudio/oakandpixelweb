@@ -114,17 +114,23 @@ export function ComposeModal({ init, onClose, onSubmit }: { init: ComposeInit; o
         {dragging && <div className="drop-hint">Drop files to attach</div>}
       </div>
       <div className="modal-footer compose-foot">
-        <button type="button" className="button primary" onClick={() => submit("send")}><Send size={16}/>Send</button>
-        <button type="button" className={`button ${scheduling ? "outline" : ""}`} onClick={() => setScheduling(v => !v)}><Clock size={16}/>Send later</button>
-        <input ref={picker} type="file" multiple hidden onChange={e => { if (e.target.files) addFiles(e.target.files); e.target.value = ""; }}/>
-        <button type="button" className="icon-button" aria-label="Attach files" title="Attach files" onClick={() => picker.current?.click()}><Paperclip size={17}/></button>
-        <button type="button" className="icon-button" aria-label="Insert signature" title="Insert signature" onClick={() => editor.current?.insertHtml(buildSignatureHtml({ ...signature, enabled: true }))}><PenLine size={17}/></button>
-        <Select aria-label="Insert template" value="" style={{ minWidth: 170 }} onChange={e => { const template = templates.find(t => t.id === e.target.value); if (!template) return; editor.current?.insertHtml(textToHtml(template.body)); if (!subject.trim() && template.type === "Email") setSubject(template.name); }}>
-          <option value="">Insert template</option>{templates.filter(t => t.type === "Email").map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-        </Select>
+        <div className="rte-group" role="group" aria-label="Send">
+          <button type="button" className="button primary" onClick={() => submit("send")}><Send size={16}/>Send</button>
+          <button type="button" className={`button ${scheduling ? "outline" : ""}`} onClick={() => setScheduling(v => !v)}><Clock size={16}/>Send later</button>
+        </div>
+        <div className="rte-group" role="group" aria-label="Insert">
+          <input ref={picker} type="file" multiple hidden onChange={e => { if (e.target.files) addFiles(e.target.files); e.target.value = ""; }}/>
+          <button type="button" className="icon-button" aria-label="Attach files" title="Attach files" onClick={() => picker.current?.click()}><Paperclip size={17}/></button>
+          <button type="button" className="icon-button" aria-label="Insert signature" title="Insert signature" onClick={() => editor.current?.insertHtml(buildSignatureHtml({ ...signature, enabled: true }))}><PenLine size={17}/></button>
+          <Select aria-label="Insert template" value="" style={{ minWidth: 170 }} onChange={e => { const template = templates.find(t => t.id === e.target.value); if (!template) return; editor.current?.insertHtml(textToHtml(template.body)); if (!subject.trim() && template.type === "Email") setSubject(template.name); }}>
+            <option value="">Insert template</option>{templates.filter(t => t.type === "Email").map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+          </Select>
+        </div>
         <span style={{ flex: 1 }}/>
-        <button type="button" className="button" onClick={() => submit("draft")}><Save size={16}/>Save draft</button>
-        <button type="button" className="icon-button" aria-label="Discard" title="Discard" onClick={requestClose}><Trash2 size={17}/></button>
+        <div className="rte-group" role="group" aria-label="Draft">
+          <button type="button" className="button" onClick={() => submit("draft")}><Save size={16}/>Save draft</button>
+          <button type="button" className="icon-button" aria-label="Discard" title="Discard" onClick={requestClose}><Trash2 size={17}/></button>
+        </div>
       </div>
       <p className="compose-note">Demonstration: messages are stored in this browser only. No email is delivered.</p>
     </div>

@@ -415,12 +415,13 @@ svg.lucide * { vector-effect: non-scaling-stroke; }
 .suggest-list button:hover { background: color-mix(in srgb, var(--text) 6%, transparent); }
 .suggest-list small { color: var(--muted); }
 .rte { margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
-.rte-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding: 6px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--text) 3%, transparent); }
+.rte-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 8px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--text) 3%, transparent); }
 .rte-btn { width: 32px; height: 32px; display: inline-grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: color-mix(in srgb, var(--text) 80%, transparent); }
 .rte-btn:hover { background: color-mix(in srgb, var(--text) 8%, transparent); color: var(--text); }
 .rte-btn.active { background: color-mix(in srgb, var(--text) 12%, transparent); color: var(--green); }
 .rte-btn:disabled { opacity: .4; }
-.rte-sep { width: 1px; height: 20px; background: var(--line); margin: 0 6px; }
+/* Related tools sit together in a group; groups wrap as whole units, never mid-group. */
+.rte-group { display: inline-flex; align-items: center; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: 10px; background: color-mix(in srgb, var(--text) 2.5%, transparent); flex: 0 0 auto; }
 .rte-toolbar .select-root { min-width: 0; width: 128px; }
 .rte-toolbar .select-root.narrow { width: 98px; }
 .rte-toolbar .select-trigger { min-height: 32px; font-size: 12.5px; border-color: transparent; background: transparent; padding: 0 8px; }
