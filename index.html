@@ -1794,6 +1794,25 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
 @media (max-width:1024px){#hero{min-height:100svh}.hero-inner{margin:auto 0}}
 @media (max-width:768px){#pixel-dimension{height:100svh;min-height:480px}#hero{min-height:100svh;padding-top:56px}}
 .pricing-help{justify-content:flex-start}
+/* ─── SERVICES: compact, text-only ─── */
+#services{padding:3.5rem 0 3rem}
+#services .label{margin-bottom:.75rem}
+.services-headline{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:1.75rem;font-weight:300}
+.services-grid{grid-template-columns:repeat(3,1fr);gap:0 2.5rem;border-top:1px solid rgba(255,255,255,.14)}
+.service-card,.service-card:hover,.service-card.reveal,.service-card.reveal.visible,.service-card.reveal.visible:hover{
+  background:none;border:0;border-bottom:1px solid rgba(255,255,255,.14);box-shadow:none;
+  transform:none;padding:1.1rem 0 1.15rem;min-height:0;cursor:default}
+.service-card::before,.service-card::after{display:none}
+.service-name{font-size:1.15rem;margin:0 0 .3rem;color:#fff}
+.service-desc,.service-card:hover .service-desc{font-size:.84rem;line-height:1.55;color:rgba(255,255,255,.68);margin:0}
+@media (max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:768px){
+  #services{padding:2.25rem 0 1.75rem}
+  .services-headline{margin-bottom:1.1rem}
+  .services-grid{grid-template-columns:1fr}
+  .service-card,.service-card.reveal,.service-card.reveal.visible{padding:.8rem 0 .85rem}
+  .service-name{font-size:1.05rem}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -2060,67 +2079,30 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   <div class="container">
     <div class="label reveal">What is included</div>
     <h2 class="services-headline reveal reveal-delay-1">
-      Everything your website<br>needs to win business
+      Everything your website needs
     </h2>
-    <p class="services-sub reveal reveal-delay-2">What goes into every website we build.</p>
     <div class="services-grid" id="public-services-grid">
       <div class="service-card reveal">
-        <div class="service-num">01</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="40" y="10" width="132" height="92" rx="3" fill="rgba(255,255,255,.03)"/><line x1="40" y1="26" x2="172" y2="26"/><circle cx="50" cy="18" r="2"/><circle cx="58" cy="18" r="2"/><circle cx="66" cy="18" r="2"/>
-<rect x="50" y="34" width="64" height="36" fill="rgba(61,153,102,.12)"/><line x1="50" y1="34" x2="114" y2="70"/><line x1="114" y1="34" x2="50" y2="70"/>
-<rect x="50" y="78" width="30" height="16"/><rect x="86" y="78" width="30" height="16"/><rect x="122" y="78" width="40" height="16"/></g>
-<g stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"><line x1="124" y1="40" x2="162" y2="40"/><line x1="124" y1="49" x2="154" y2="49"/><line x1="124" y1="58" x2="160" y2="58"/></g>
-<circle cx="204" cy="28" r="8" fill="#3D9966"/><circle cx="204" cy="52" r="8" fill="#B8955A"/><circle cx="204" cy="76" r="8" fill="rgba(255,255,255,.7)"/></svg>
         <div class="service-name">Custom Design</div>
         <p class="service-desc">A layout built around your brand, never a template.</p>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-num">02</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="24" y="18" width="128" height="74" rx="3" fill="rgba(255,255,255,.03)"/><line x1="14" y1="98" x2="162" y2="98" stroke-linecap="round"/>
-<rect x="34" y="28" width="108" height="22" fill="rgba(61,153,102,.12)"/><rect x="34" y="58" width="50" height="26"/><rect x="92" y="58" width="50" height="26"/>
-<rect x="172" y="28" width="46" height="74" rx="8" fill="rgba(255,255,255,.04)"/><rect x="180" y="40" width="30" height="20" fill="rgba(61,153,102,.14)"/><line x1="180" y1="70" x2="210" y2="70"/><line x1="180" y1="79" x2="202" y2="79"/><line x1="188" y1="33" x2="202" y2="33" stroke-linecap="round"/></g></svg>
         <div class="service-name">Mobile-First Build</div>
         <p class="service-desc">Looks and works properly on every phone, tablet and desktop.</p>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-num">03</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="46" y="10" width="148" height="94" rx="3" fill="rgba(255,255,255,.03)"/><line x1="46" y1="34" x2="194" y2="34"/><line x1="76" y1="10" x2="76" y2="2" stroke-linecap="round"/><line x1="164" y1="10" x2="164" y2="2" stroke-linecap="round"/></g>
-<text x="58" y="26" fill="rgba(255,255,255,.38)" font-family="DM Mono, monospace" font-size="8" letter-spacing="2">BOOK A TIME</text>
-<rect x="58" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="124" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="50" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="58" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="68" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="58" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="80" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="102" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="124" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="146" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/><rect x="168" y="86" width="10" height="10" rx="1" stroke="rgba(255,255,255,.38)"/>
-<rect x="124" y="68" width="10" height="10" rx="1" fill="#3D9966" stroke="#7FD1A2"/>
-<circle cx="190" cy="92" r="15" fill="#161614" stroke="#B8955A" stroke-width="1.6"/><path d="M190 83v9l6 4" stroke="#B8955A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="service-name">Online Booking</div>
         <p class="service-desc">Let clients book a time straight from your site, synced to your calendar.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-num">04</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="30" y="12" width="100" height="88" rx="3" fill="rgba(255,255,255,.03)"/>
-<rect x="42" y="26" width="76" height="14" rx="1"/><rect x="42" y="48" width="76" height="14" rx="1"/></g>
-<rect x="42" y="72" width="40" height="16" rx="2" fill="rgba(61,153,102,.25)" stroke="#3D9966"/>
-<path d="M142 56h30m-8 -8l8 8-8 8" stroke="#7FD1A2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-<g stroke="#B8955A" stroke-width="1.5" stroke-linejoin="round"><rect x="184" y="38" width="44" height="32" rx="3" fill="rgba(184,149,90,.1)"/><path d="M184 41l22 17 22 -17"/></g>
-<circle cx="226" cy="36" r="5" fill="#3D9966"/></svg>
         <div class="service-name">Lead Capture</div>
         <p class="service-desc">Forms and landing pages that turn visitors into enquiries.</p>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-num">05</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2" stroke-linecap="round"><line x1="30" y1="14" x2="30" y2="96"/><line x1="30" y1="96" x2="156" y2="96"/><line x1="30" y1="60" x2="156" y2="60" stroke-dasharray="3 5" stroke="rgba(255,255,255,.18)"/></g>
-<path d="M30 90C52 86 64 74 82 70S112 56 128 40S146 24 156 18L156 96L30 96Z" fill="rgba(61,153,102,.15)"/>
-<path d="M30 90C52 86 64 74 82 70S112 56 128 40S146 24 156 18" stroke="#7FD1A2" stroke-width="2.2" stroke-linecap="round"/>
-<circle cx="156" cy="18" r="4" fill="#7FD1A2"/>
-<circle cx="196" cy="46" r="22" stroke="#B8955A" stroke-width="2.2" fill="rgba(184,149,90,.08)"/><line x1="212" y1="62" x2="228" y2="80" stroke="#B8955A" stroke-width="5" stroke-linecap="round"/>
-<text x="184" y="50" fill="#B8955A" font-family="DM Mono, monospace" font-size="11" letter-spacing="1">#1</text></svg>
         <div class="service-name">SEO &amp; Speed</div>
         <p class="service-desc">Fast pages and a search-friendly structure, so customers can find you.</p>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-num">06</div>
-        <svg class="service-art" viewBox="0 0 240 112" fill="none" aria-hidden="true"><g stroke="rgba(255,255,255,.38)" stroke-width="1.2"><rect x="24" y="14" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/><rect x="24" y="44" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/><rect x="24" y="74" width="96" height="24" rx="2" fill="rgba(255,255,255,.03)"/></g>
-<g fill="#7FD1A2"><circle cx="36" cy="26" r="2.5"/><circle cx="36" cy="56" r="2.5"/><circle cx="36" cy="86" r="2.5"/></g>
-<g stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"><line x1="50" y1="26" x2="104" y2="26"/><line x1="50" y1="56" x2="92" y2="56"/><line x1="50" y1="86" x2="100" y2="86"/></g>
-<path d="M180 12L210 24V54C210 76 196 90 180 98C164 90 150 76 150 54V24Z" stroke="#B8955A" stroke-width="1.8" fill="rgba(184,149,90,.08)" stroke-linejoin="round"/>
-<path d="M168 54l9 9 16-18" stroke="#7FD1A2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="service-name">Hosting &amp; Care</div>
         <p class="service-desc">Hosting, security, backups and monthly updates, all handled for you.</p>
       </div>
