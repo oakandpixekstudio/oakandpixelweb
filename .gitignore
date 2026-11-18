@@ -1,6 +1,6 @@
-package.json
+/package.json
 !api/package.json
-package-lock.json
+/package-lock.json
 node_modules/
 
 # Git worktrees
@@ -21,3 +21,7 @@ playwright/.cache/
 .env
 .env.*
 !.env.example
+
+# The CRM in app/ needs its own manifest and lockfile
+!app/package.json
+!app/package-lock.json
