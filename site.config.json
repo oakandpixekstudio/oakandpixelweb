@@ -62,6 +62,11 @@
       "summary": "A fully bespoke website with everything in Growth plus custom design, advanced animations, e-commerce or client portal functionality, advanced integrations, unlimited content updates, monthly optimisation reviews, and a dedicated account lead. Pricing is from R55,000 setup plus R6,500/month."
     },
     {
+      "name": "CRM Plan",
+      "tag": "New",
+      "summary": "A private CRM built around how you work: clients, projects, pipeline, invoices and email, with your branding and your data. From R45,000 setup plus R4,500 per month, quoted to your scope. Limited to 2 clients."
+    },
+    {
       "name": "Website Scoping Call",
       "summary": "A free conversation to match the right website plan to your business, page requirements, integrations, and support needs."
     }

@@ -1779,14 +1779,11 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   .benefits-sub,.standards-body,.about-stats,.about-body + .about-body{display:none}
   .standards-headline{font-size:1.7rem}
   .about-grid{gap:0}
-  .pricing-list li:nth-child(n+4){display:none}
-  .pricing-list.open li{display:flex}
   .pricing-more{align-self:flex-start;margin:-.6rem 0 1.1rem;padding:.3rem 0;font-size:.8rem;color:var(--emerald);border-bottom:1px solid currentColor;background:none}
   .pricing-card.featured .pricing-more{color:#fff}
   .pricing-card{padding:1.25rem 1.1rem}
   .pricing-help{margin-top:1.25rem}
 }
-@media (min-width:769px){.pricing-more{display:none}}
 /* ─── STRAIGHT TO THE POINT ─── */
 #pixel-dimension{height:100vh;height:100svh;min-height:480px}
 #hero{min-height:100vh;min-height:100svh;padding-top:60px;justify-content:center}
@@ -1813,6 +1810,75 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   .service-card,.service-card.reveal,.service-card.reveal.visible{padding:.8rem 0 .85rem}
   .service-name{font-size:1.05rem}
 }
+/* ─── ZOOM IN A LITTLE + WIDER PLAN CARDS ─── */
+:root{--measure:1160px}
+@media (min-width:1025px){html{font-size:17px}}
+.hero-inner{max-width:1200px}
+#pricing .container{max-width:1240px}
+#pricing{padding:4.5rem 0}
+.pricing-head{margin-bottom:2rem}
+#pricing .pricing-grid{max-width:none;gap:1.5rem;align-items:stretch}
+.pricing-card{padding:1.4rem 1.6rem 1.5rem;border-radius:2px}
+.pricing-card .plan-tag{margin-bottom:.7rem}
+.pricing-fit{font-size:.84rem;line-height:1.5}
+.pricing-price{margin:.9rem 0;padding-top:.9rem}
+.pricing-setup{font-size:1.9rem}
+.pricing-list{gap:.4rem;margin-bottom:1.2rem}
+.pricing-list li{font-size:.82rem;line-height:1.45}
+.pricing-card.featured{margin:-.4rem 0;padding-top:1.8rem;padding-bottom:1.9rem}
+.pricing-card .btn-primary{padding:.7rem 1.2rem}
+.pricing-card.pricing-crm{display:grid;grid-template-columns:1.15fr 1.5fr auto;gap:2.25rem;align-items:center;margin-top:1.5rem;padding:1.4rem 1.75rem;border-left:2px solid var(--emerald);background:var(--white)}
+.pricing-crm .pricing-name{margin-bottom:.4rem}
+.pricing-crm .pricing-list{margin:0;grid-template-columns:1fr 1fr;gap:.45rem 1.5rem}
+.crm-buy{min-width:200px}
+.crm-buy .pricing-price{border-top:0;margin:0 0 .8rem;padding:0}
+.crm-buy .btn-primary{width:100%;justify-content:center}
+.app-choice:last-child{grid-column:1/-1}
+@media (max-width:1024px){
+  #pricing .pricing-grid{max-width:520px;margin:0 auto}
+  .pricing-card.pricing-crm{grid-template-columns:1fr;gap:1.1rem;max-width:520px;margin:1.5rem auto 0}
+  .pricing-crm .pricing-list{grid-template-columns:1fr}
+  .pricing-card.featured{margin:0}
+}
+@media (max-width:768px){#pricing{padding:3rem 0}.pricing-card.pricing-crm{padding:1.25rem 1.1rem}}
+/* ─── PROCESS: compact 4-across ─── */
+#work{padding:3.5rem 0}
+.work-header{margin-bottom:1.4rem}
+.work-headline{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:300}
+.work-grid{grid-template-columns:repeat(4,1fr);gap:1rem}
+.work-item,.work-item:nth-child(1){grid-row:auto;border:1px solid var(--silk)}
+.work-img,.work-item:nth-child(1) .work-img{height:104px;min-height:0!important}
+.work-item:nth-child(1) .work-img-inner{background:linear-gradient(135deg,#1a1a18,#26332b)}
+.process-num,.work-item:nth-child(1) .process-num{font-size:2rem;left:.8rem;top:.3rem}
+.work-tag{display:none}
+.work-meta{padding:.85rem 1rem 1.05rem}
+.work-title,.work-item:nth-child(1) .work-title{font-size:1.15rem;margin-bottom:.25rem}
+.work-desc{font-size:.8rem;line-height:1.5;margin:0}
+@media (max-width:1024px){.work-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:768px){
+  #work{padding:2.25rem 0}
+  .work-grid{grid-template-columns:1fr;gap:.6rem}
+  .work-item{display:grid;grid-template-columns:92px 1fr;align-items:stretch}
+  .work-img,.work-item:nth-child(1) .work-img{display:block;height:auto;min-height:84px!important}
+  .process-num,.work-item:nth-child(1) .process-num{font-size:1.5rem;left:.5rem;top:.2rem}
+  .work-meta{padding:.7rem .9rem}
+}
+/* plan cards: first 3 features, rest on request (all screen sizes) */
+.pricing-grid .pricing-list li:nth-child(n+4){display:none}
+.pricing-grid .pricing-list.open li{display:flex}
+.pricing-more{align-self:flex-start;margin:-.2rem 0 1rem;padding:.2rem 0;font-size:.78rem;color:var(--emerald);border-bottom:1px solid currentColor;background:none;cursor:pointer}
+.pricing-card.featured .pricing-more{color:#fff}
+.pricing-card{min-height:0}
+.pricing-card .btn-primary{margin-top:auto}
+.fit-rest{display:none}
+.pricing-card .pricing-kicker{margin-bottom:.4rem}
+.pricing-card .pricing-name{margin-bottom:.3rem}
+.pricing-card .btn-primary{margin-top:auto}
+.pricing-price{margin:.7rem 0 .8rem;padding-top:.7rem}
+.pricing-list{margin-bottom:.9rem}
+.pricing-card.pricing-crm .fit-rest{display:inline}
+.work-item:nth-child(4){grid-column:auto}
+.work-item:nth-child(4) .work-img{height:104px}
 </style>
 <script type="application/ld+json">
 {
@@ -1869,6 +1935,14 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "name": "CRM Plan",
+              "description": "A private CRM built around how you work: clients, projects, pipeline, invoices and email, with your branding and your data. From R45,000 setup plus R4,500 per month, quoted to your scope. Limited to 2 clients."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
               "name": "Digital Experience Scope",
               "description": "A free scoping conversation to match the right website plan to your business, page requirements, integrations, and support needs."
             }
@@ -1885,7 +1959,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
           "name": "How much does a website cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. The setup fee covers the design and build; the monthly fee covers hosting, care and support."
+            "text": "Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. A private CRM is from R45,000 setup plus R4,500 per month. The setup fee covers the design and build; the monthly fee covers hosting, care and support."
           }
         },
         {
@@ -1901,7 +1975,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
           "name": "Which plan should I choose?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Send us a message and we will recommend one."
+            "text": "Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Choose CRM for one private place to run clients, projects, invoices and email. Not sure? Send us a message and we will recommend one."
           }
         },
         {
@@ -1917,7 +1991,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
           "name": "Why do you only take ten clients at a time?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up."
+            "text": "So every website gets real attention. We take three Signature, four Growth and three Premium website clients at a time, plus two CRM clients. When all ten slots are full, applications close until capacity opens up."
           }
         }
       ]
@@ -2120,7 +2194,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         </h2>
       </div>
       <p class="pricing-sub reveal reveal-delay-2">
-        We work with a maximum of ten clients: three Signature, four Growth and three Premium. Each plan is a once-off build plus monthly hosting and support.
+        We work with a maximum of ten website clients: three Signature, four Growth and three Premium, plus two CRM clients. Each plan is a once-off build plus monthly hosting and support.
       </p>
     </div>
     <div class="pricing-grid">
@@ -2128,7 +2202,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <span class="plan-tag plan-tag-start">Best to start</span>
         <div class="pricing-kicker">3 client slots</div>
         <h3 class="pricing-name">Signature</h3>
-        <p class="pricing-fit"><strong>A professional website, done properly.</strong> A custom-designed site that presents your business well and turns visitors into enquiries.</p>
+        <p class="pricing-fit"><strong>A professional website, done properly.</strong><span class="fit-rest"> A custom-designed site that presents your business well and turns visitors into enquiries.</span></p>
         <div class="pricing-price">
           <div class="pricing-setup" data-price-field="setup">R12,500</div>
           <div class="pricing-month" data-price-field="monthly">setup + R1,800/month</div>
@@ -2146,7 +2220,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <span class="plan-tag plan-tag-popular">Most Popular</span>
         <div class="pricing-kicker">4 client slots</div>
         <h3 class="pricing-name">Growth</h3>
-        <p class="pricing-fit"><strong>Turn your website into a lead engine.</strong> A larger site with booking, payments and the SEO groundwork to bring in new customers.</p>
+        <p class="pricing-fit"><strong>Turn your website into a lead engine.</strong><span class="fit-rest"> A larger site with booking, payments and the SEO groundwork to bring in new customers.</span></p>
         <div class="pricing-price">
           <div class="pricing-setup" data-price-field="setup">R25,000</div>
           <div class="pricing-month" data-price-field="monthly">setup + R3,200/month</div>
@@ -2165,7 +2239,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <span class="plan-tag plan-tag-best">Best results</span>
         <div class="pricing-kicker">3 client slots</div>
         <h3 class="pricing-name">Premium</h3>
-        <p class="pricing-fit"><strong>A website built around your business.</strong> A fully bespoke site with custom features, e-commerce or integrations, shaped around how your organisation operates.</p>
+        <p class="pricing-fit"><strong>A website built around your business.</strong><span class="fit-rest"> A fully bespoke site with custom features, e-commerce or integrations, shaped around how your organisation operates.</span></p>
         <div class="pricing-price">
           <div class="pricing-setup" data-price-field="setup">R55,000+</div>
           <div class="pricing-month" data-price-field="monthly">setup + R6,500/month</div>
@@ -2180,9 +2254,32 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <a href="#contact" class="btn-primary">Get Premium</a>
       </article>
     </div>
+    <article class="pricing-card pricing-crm reveal" data-plan="CRM">
+      <div class="crm-main">
+        <span class="plan-tag plan-tag-start">New</span>
+        <div class="pricing-kicker">2 client slots</div>
+        <h3 class="pricing-name">CRM</h3>
+        <p class="pricing-fit"><strong>Run your whole business in one place.</strong><span class="fit-rest"> A private CRM built around how you work, with your branding and your data.</span></p>
+      </div>
+      <ul class="pricing-list">
+        <li>Clients, contacts and a sales pipeline</li>
+        <li>Projects, tasks and team roles</li>
+        <li>Quotes, invoices and payment tracking</li>
+        <li>Email, templates and reports</li>
+        <li>Your branding, secure sign-in and backups</li>
+        <li>Managed hosting, updates and priority support</li>
+      </ul>
+      <div class="crm-buy">
+        <div class="pricing-price">
+          <div class="pricing-setup" data-price-field="setup">From R45,000</div>
+          <div class="pricing-month" data-price-field="monthly">setup + R4,500/month</div>
+        </div>
+        <a href="#contact" class="btn-primary">Get CRM</a>
+      </div>
+    </article>
     <div class="pricing-help reveal"><span>Not sure which plan fits?</span><a href="#contact" class="btn-ghost">Tell us what you need</a></div>
     <p class="pricing-note reveal reveal-delay-3">
-      Once all ten slots are taken, applications close until space opens. Premium is quoted to your scope.
+      Once all slots are taken, applications close until space opens. Premium and CRM are quoted to your scope.
     </p>
   </div>
 </section>
@@ -2426,11 +2523,11 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
       <p class="faq-sub reveal reveal-delay-2">Still unsure? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> and we will reply personally.</p>
     </div>
     <div class="faq-list">
-      <details class="faq-item"><summary>How much does a website cost?</summary><p>Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. The setup fee covers the design and build; the monthly fee covers hosting, care and support.</p></details>
+      <details class="faq-item"><summary>How much does a website cost?</summary><p>Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. A private CRM is from R45,000 setup plus R4,500 per month. The setup fee covers the design and build; the monthly fee covers hosting, care and support.</p></details>
       <details class="faq-item"><summary>What does the monthly fee cover?</summary><p>Managed hosting, domain management, SSL, backups, security, monthly content updates (2 on Signature, 5 on Growth, unlimited on Premium) and support. You never need to find a separate developer to keep your site running.</p></details>
-      <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Send us a message and we will recommend one.</p></details>
+      <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Choose CRM for one private place to run clients, projects, invoices and email. Not sure? Send us a message and we will recommend one.</p></details>
       <details class="faq-item"><summary>Can customers book or pay through the website?</summary><p>Yes. Growth includes online booking with calendar integration and payment gateway or CRM integration using your own software. Premium adds e-commerce and client portal functionality.</p></details>
-      <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up.</p></details>
+      <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium website clients at a time, plus two CRM clients. When all ten slots are full, applications close until capacity opens up.</p></details>
     </div>
   </div>
 </section>
@@ -2506,6 +2603,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
               <label class="app-choice"><input type="radio" name="plan" value="Signature Plan (R12,500 setup + R1,800/month)"><span><b>Signature</b><small>R12,500 + R1,800/month</small></span></label>
               <label class="app-choice"><input type="radio" name="plan" value="Growth Plan (R25,000 setup + R3,200/month)"><span><b>Growth</b><small>R25,000 + R3,200/month &middot; Most popular</small></span></label>
               <label class="app-choice"><input type="radio" name="plan" value="Premium Plan (from R55,000 setup + R6,500/month)"><span><b>Premium</b><small>From R55,000 + R6,500/month</small></span></label>
+              <label class="app-choice"><input type="radio" name="plan" value="CRM (from R45,000 setup + R4,500/month)"><span><b>CRM</b><small>From R45,000 + R4,500/month</small></span></label>
               <label class="app-choice"><input type="radio" name="plan" value="Not sure yet"><span><b>Not sure yet</b><small>Recommend one for me</small></span></label>
             </div>
             <span class="app-error" id="app-err-plan" role="alert"></span>
@@ -3260,7 +3358,7 @@ document.addEventListener('mousemove',e=>{
 // ── PRICING: collapse long lists on phones ──────────────────
 (function(){
   document.querySelectorAll('.pricing-list').forEach(function(list){
-    if(list.children.length<=3) return;
+    if(list.children.length<=3 || list.closest('.pricing-crm')) return;
     var b=document.createElement('button');
     b.type='button'; b.className='pricing-more'; b.textContent='See everything included';
     b.setAttribute('aria-expanded','false');
