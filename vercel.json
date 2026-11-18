@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/app", "destination": "/__not-found" },
+    { "source": "/app/:path*", "destination": "/__not-found" }
+  ]
+}
