@@ -1787,6 +1787,13 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   .pricing-help{margin-top:1.25rem}
 }
 @media (min-width:769px){.pricing-more{display:none}}
+/* ─── STRAIGHT TO THE POINT ─── */
+#pixel-dimension{height:100vh;height:100svh;min-height:480px}
+#hero{min-height:100vh;min-height:100svh;padding-top:60px;justify-content:center}
+.hero-inner{padding-top:2rem;padding-bottom:2rem}
+@media (max-width:1024px){#hero{min-height:100svh}.hero-inner{margin:auto 0}}
+@media (max-width:768px){#pixel-dimension{height:100svh;min-height:480px}#hero{min-height:100svh;padding-top:56px}}
+.pricing-help{justify-content:flex-start}
 </style>
 <script type="application/ld+json">
 {
@@ -1872,18 +1879,10 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         },
         {
           "@type": "Question",
-          "name": "Why is there a monthly fee on top of the build?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A website is not a once-off job. Hosting, security, backups and regular updates are what keep it fast, safe and current. We bundle them into one predictable monthly price instead of billing you for every small request."
-          }
-        },
-        {
-          "@type": "Question",
           "name": "Which plan should I choose?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Book a free call and we will recommend one."
+            "text": "Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Send us a message and we will recommend one."
           }
         },
         {
@@ -2028,14 +2027,14 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <em>customers.</em>
       </h1>
       <p class="hero-sub">
-        Oak &amp; Pixel designs, launches, hosts and looks after fast, beautiful websites for service businesses across South Africa. One monthly plan, nothing to manage, from R12,500 setup.
+        We design, launch, host and look after fast, beautiful websites for South African service businesses. From R12,500.
       </p>
       <div class="hero-actions">
-        <a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-primary">
-          Book a free discovery call
+        <a href="#pricing" class="btn-primary">
+          See plans &amp; pricing
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        <a href="#pricing" class="btn-ghost">See plans &amp; pricing</a>
+        <a href="#contact" class="btn-ghost">Get a free quote</a>
       </div>
       <div class="hero-proof">
         <a class="hero-proof-rating" href="#reviews">
@@ -2053,42 +2052,9 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   </div>
   </section>
 
-<section class="trustbar" aria-label="Why businesses choose Oak &amp; Pixel">
-  <div class="container trustbar-inner">
-    <div class="trust-item"><strong>5.0 ★ on Google</strong><span>Rated by the clients we have built for</span></div>
-    <div class="trust-item"><strong>Fully managed</strong><span>Hosting, SSL, backups and updates included</span></div>
-    <div class="trust-item"><strong>Mobile-first</strong><span>Fast on every phone, tablet and desktop</span></div>
-    <div class="trust-item"><strong>10 client slots</strong><span>Limited, so every website gets our full attention</span></div>
-  </div>
-</section>
 
-<section id="benefits">
-  <div class="container">
-    <div class="benefits-head">
-      <div class="label reveal">Why it pays off</div>
-      <h2 class="benefits-headline reveal reveal-delay-1">A website that works as hard as you do</h2>
-      <p class="benefits-sub reveal reveal-delay-2">Most business websites look fine and do nothing. Ours are designed around one job: turning visitors into paying customers.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit reveal">
-        <h3>Look as good as you are</h3>
-        <p>People judge your business in seconds. A custom design built around your brand makes you look established and trustworthy from the first scroll.</p>
-      </div>
-      <div class="benefit reveal reveal-delay-1">
-        <h3>Turn visitors into enquiries</h3>
-        <p>Clear calls to action, lead forms, WhatsApp and online booking make it easy for customers to get in touch, so your website earns its keep.</p>
-      </div>
-      <div class="benefit reveal reveal-delay-2">
-        <h3>Be found on Google</h3>
-        <p>Fast pages and a search-friendly structure help the right customers find you, and Growth and Premium clients get monthly SEO reporting.</p>
-      </div>
-      <div class="benefit reveal">
-        <h3>Never chase a developer</h3>
-        <p>We host, secure, back up and update your website every month. You run your business; we keep your website sharp.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
+
 
 <section id="services">
   <div class="container">
@@ -2096,9 +2062,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
     <h2 class="services-headline reveal reveal-delay-1">
       Everything your website<br>needs to win business
     </h2>
-    <p class="services-sub reveal reveal-delay-2">
-      Every website we build is designed to look sharp, load fast and win you business. Here is what goes into it.
-    </p>
+    <p class="services-sub reveal reveal-delay-2">What goes into every website we build.</p>
     <div class="services-grid" id="public-services-grid">
       <div class="service-card reveal">
         <div class="service-num">01</div>
@@ -2174,7 +2138,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         </h2>
       </div>
       <p class="pricing-sub reveal reveal-delay-2">
-        Oak &amp; Pixel Studio works with a maximum of ten active clients: three Signature, four Growth, and three Premium engagements. Each plan pairs a once-off website build with monthly hosting, maintenance and support.
+        We work with a maximum of ten clients: three Signature, four Growth and three Premium. Each plan is a once-off build plus monthly hosting and support.
       </p>
     </div>
     <div class="pricing-grid">
@@ -2234,9 +2198,9 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
         <a href="#contact" class="btn-primary">Get Premium</a>
       </article>
     </div>
-    <div class="pricing-help reveal"><span>Not sure which plan fits?</span><a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-ghost">Book a free 30-minute call</a></div>
+    <div class="pricing-help reveal"><span>Not sure which plan fits?</span><a href="#contact" class="btn-ghost">Tell us what you need</a></div>
     <p class="pricing-note reveal reveal-delay-3">
-      We keep capacity limited so every website gets our full attention. Once all ten active client slots are occupied, applications close until capacity becomes available. Premium projects are quoted individually based on scope.
+      Once all ten slots are taken, applications close until space opens. Premium is quoted to your scope.
     </p>
   </div>
 </section>
@@ -2296,18 +2260,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   </div>
 </section>
 
-<section id="cta-band">
-  <div class="container cta-band-inner">
-    <div>
-      <h2 class="reveal">Ready for a website that wins you customers?</h2>
-      <p class="reveal reveal-delay-1">Book a free 30-minute call. We will recommend the right plan, with no obligation and no pressure.</p>
-    </div>
-    <div class="cta-band-actions reveal reveal-delay-2">
-      <a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-primary btn-light">Book a free discovery call</a>
-      <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-ghost-light">Message us on WhatsApp</a>
-    </div>
-  </div>
-</section>
+
 
 <section id="work">
   <div class="container">
@@ -2477,107 +2430,11 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
   </div>
 </section>
 
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-left reveal">
-        <div class="label">Philosophy</div>
-        <h2 class="about-headline">
-          We believe a great website<br>
-          is <strong>carefully built</strong>
-        </h2>
-        <p class="about-body">
-          Oak & Pixel is a web design agency founded on a singular conviction: that business websites deserve better. Not louder. Not flashier. Better — in the way that matters to discerning brands and demanding audiences.
-        </p>
-        <p class="about-body">
-          We operate at the intersection of technology and taste. Every page we design and every line we build carries the weight of genuine craft. We build websites that look exceptional, load fast and turn visitors into enquiries.
-        </p>
-        <div class="about-sig">— Built to last, designed to lead.</div>
-      </div>
-      <div class="about-right reveal reveal-delay-2">
-        <div class="about-stats">
-          <div class="stat-card">
-            <span class="stat-num">3</span>
-            <span class="stat-label">Website plans</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">2026</span>
-            <span class="stat-label">Year founded</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">10</span>
-            <span class="stat-label">Client slots</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Mobile-ready builds</span>
-          </div>
-        </div>
-        <div class="about-panel">
-          <p class="panel-quote">
-            "The benchmark is not what competitors do — it's what exceptional looks like when no constraints are imposed."
-          </p>
-          <p class="panel-attr">Oak & Pixel — Studio Doctrine, 2026</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
-<section id="standards">
-  <div class="container">
-    <div class="standards-intro">
-      <div class="reveal">
-        <div class="label">Why Oak & Pixel</div>
-        <h2 class="standards-headline">
-          The standard<br>
-          is not the average
-        </h2>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <p class="standards-body">
-          We work with a deliberately limited number of clients each year. Not because we can't take on more — but because exceptional work demands genuine investment. Every engagement receives our full attention, our best thinking, and our highest craft.
-        </p>
-      </div>
-    </div>
-    <div class="standards-grid">
-      <div class="std-card reveal">
-        <div class="std-number">01</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" stroke-width="1.2"/><path d="M6 10l3 3 5-5" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <div class="std-name">Precision-Led Design</div>
-        <p class="std-desc">Every visual decision is purposeful. We design with intent — layouts that hold meaning and guide visitors at every screen size.</p>
-      </div>
-      <div class="std-card reveal reveal-delay-1">
-        <div class="std-number">02</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><path d="M10 2l2.5 5H18l-4.3 3.1 1.6 5.4L10 12l-5.3 3.5 1.6-5.4L2 7h5.5Z" stroke-width="1.2"/></svg>
-        </div>
-        <div class="std-name">Strategy Before Pixels</div>
-        <p class="std-desc">We think in outcomes, not outputs. Your website is a business asset — we plan it around what you need it to achieve.</p>
-      </div>
-      <div class="std-card reveal reveal-delay-2">
-        <div class="std-number">03</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="6" rx="1" stroke-width="1.2"/><rect x="11" y="3" width="6" height="6" rx="1" stroke-width="1.2"/><rect x="3" y="11" width="6" height="6" rx="1" stroke-width="1.2"/><rect x="11" y="11" width="6" height="6" rx="1" stroke-width="1.2"/></svg>
-        </div>
-        <div class="std-name">Fast, Clean Builds</div>
-        <p class="std-desc">Websites that load quickly, integrate cleanly and keep performing, without the bloat.</p>
-      </div>
-      <div class="std-card reveal reveal-delay-1">
-        <div class="std-number">04</div>
-        <div class="std-icon">
-          <svg fill="none" viewBox="0 0 20 20"><path d="M4 16V9l6-6 6 6v7H12v-4H8v4H4Z" stroke-width="1.2"/></svg>
-        </div>
-        <div class="std-name">High-Touch Execution</div>
-        <p class="std-desc">You work directly with senior practitioners, not handed off. Our process is transparent, rigorous, and remarkably smooth.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
+
 
 <section id="faq">
   <div class="container faq-inner">
@@ -2589,35 +2446,14 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
     <div class="faq-list">
       <details class="faq-item"><summary>How much does a website cost?</summary><p>Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. The setup fee covers the design and build; the monthly fee covers hosting, care and support.</p></details>
       <details class="faq-item"><summary>What does the monthly fee cover?</summary><p>Managed hosting, domain management, SSL, backups, security, monthly content updates (2 on Signature, 5 on Growth, unlimited on Premium) and support. You never need to find a separate developer to keep your site running.</p></details>
-      <details class="faq-item"><summary>Why is there a monthly fee on top of the build?</summary><p>A website is not a once-off job. Hosting, security, backups and regular updates are what keep it fast, safe and current. We bundle them into one predictable monthly price instead of billing you for every small request.</p></details>
-      <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Book a free call and we will recommend one.</p></details>
+      <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Send us a message and we will recommend one.</p></details>
       <details class="faq-item"><summary>Can customers book or pay through the website?</summary><p>Yes. Growth includes online booking with calendar integration and payment gateway or CRM integration using your own software. Premium adds e-commerce and client portal functionality.</p></details>
       <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up.</p></details>
     </div>
   </div>
 </section>
 
-<section id="scroll-zoom">
-  <div class="sz-mark-wrap" id="sz-mark">
-    <div class="sz-giant-mark" id="sz-giant">
-      <div class="gsq gsq-tl"></div>
-      <div class="gsq gsq-tr"></div>
-      <div class="gsq gsq-bl"></div>
-      <div class="gsq gsq-br"></div>
-    </div>
-  </div>
-  <div class="sz-text reveal">
-    <div class="sz-eyebrow">Our Standard</div>
-    <h2 class="sz-headline">
-      Built to last.<br>
-      Designed to <em>lead.</em>
-    </h2>
-    <div class="sz-rule"></div>
-    <p class="sz-body">
-      The standard isn't set by what's average — it's defined by what's possible. Every engagement we take on is treated as if our own reputation depends on it. Because it does.
-    </p>
-  </div>
-</section>
+
 
 <section id="contact">
   <div class="contact-bg"></div>
@@ -2633,7 +2469,7 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
           that wins you business
         </h2>
         <p class="contact-body">
-          We take on only ten clients at a time so every website gets our full attention. Book a free call, or tell us about your business below and we will recommend the right plan.
+          We take on only ten clients at a time. Tell us about your business and we will recommend the right plan.
         </p>
         <div class="contact-detail">
           <div class="contact-item"><a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a></div>
@@ -2641,8 +2477,6 @@ fieldset.app-step{border:0;padding:0;margin:0;min-width:0}
           <div class="contact-item"><a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">WhatsApp us</a></div>
           <div class="contact-item">Randburg · Gauteng · South Africa</div>
         </div>
-        <button type="button" class="btn-primary contact-cta" id="contact-book">Book a free discovery call</button>
-        <p class="contact-note">Free 30-minute call &middot; No obligation</p>
       </div>
       <div class="contact-right reveal reveal-delay-2">
 
@@ -3689,319 +3523,6 @@ if(false)(function(){
   syncToggle();
 })();
 
-</script>
-
-
-<!-- ── BOOKING MODAL ──────────────────────────────────────── -->
-<div class="booking-overlay" id="booking-overlay" role="dialog" aria-modal="true" aria-label="Book a Discovery Call">
-  <div class="booking-panel" role="dialog" aria-modal="true" aria-label="Book a discovery call">
-
-    <div class="booking-header">
-      <div class="booking-steps">
-        <span class="booking-step active" data-step="1">01</span>
-        <span class="booking-step-line"></span>
-        <span class="booking-step" data-step="2">02</span>
-        <span class="booking-step-line"></span>
-        <span class="booking-step" data-step="3">03</span>
-      </div>
-      <button class="booking-close" id="booking-close" aria-label="Close">&times;</button>
-    </div>
-
-    <!-- Phase 1 — Service -->
-    <div class="booking-phase" id="booking-phase-1">
-      <h2 class="booking-heading">What are you looking to build?</h2>
-      <p class="booking-sub">Select the service you'd like to explore in your discovery session.</p>
-      <div class="booking-services" id="booking-services-grid"></div>
-      <div class="booking-footer">
-        <span></span>
-        <button class="booking-btn-primary" id="p1-next" disabled>Continue</button>
-      </div>
-    </div>
-
-    <!-- Phase 2 — Date & Time -->
-    <div class="booking-phase hidden" id="booking-phase-2">
-      <h2 class="booking-heading">Choose a time</h2>
-      <p class="booking-sub">Select an available date and time for your 30-minute discovery session.</p>
-      <div class="booking-dates-scroll" id="booking-dates-scroll"></div>
-      <div class="booking-slots" id="booking-slots"></div>
-      <div class="booking-footer">
-        <button class="booking-btn-ghost" id="p2-back">Back</button>
-        <button class="booking-btn-primary" id="p2-next" disabled>Continue</button>
-      </div>
-    </div>
-
-    <!-- Phase 3 — Details -->
-    <div class="booking-phase hidden" id="booking-phase-3">
-      <h2 class="booking-heading">Your details</h2>
-      <p class="booking-sub">We'll use these to confirm your session and send a calendar invite.</p>
-      <div class="booking-form">
-        <div class="booking-field">
-          <label for="b-name">Full Name</label>
-          <input type="text" id="b-name" placeholder="Your full name" autocomplete="name">
-        </div>
-        <div class="booking-field">
-          <label for="b-company">Company</label>
-          <input type="text" id="b-company" placeholder="Your business" autocomplete="organization">
-        </div>
-        <div class="booking-field">
-          <label for="b-email">Email</label>
-          <input type="email" id="b-email" placeholder="your@email.com" autocomplete="email">
-        </div>
-        <div class="booking-field">
-          <label for="b-phone">Phone</label>
-          <input type="tel" id="b-phone" placeholder="+27" autocomplete="tel">
-        </div>
-      </div>
-      <p class="booking-error" id="booking-error"></p>
-      <div class="booking-footer">
-        <button class="booking-btn-ghost" id="p3-back">Back</button>
-        <button class="booking-btn-primary" id="p3-submit">Request This Session</button>
-      </div>
-    </div>
-
-    <!-- Success -->
-    <div class="booking-phase hidden" id="booking-success">
-      <div class="booking-success-inner">
-        <div class="booking-success-icon">&#10003;</div>
-        <h2 class="booking-heading">Session Requested</h2>
-        <p class="booking-sub">We've received your request and will confirm within 24 hours.</p>
-        <button class="booking-btn-primary" id="booking-done" style="margin:0 auto;display:block">Done</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<style>
-/* ── BOOKING MODAL ──────────────────────────────────────── */
-.booking-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:9000;opacity:0;pointer-events:none;transition:opacity .3s ease;}
-.booking-overlay.open{opacity:1;pointer-events:all;}
-.booking-panel{background:#161614;border:1px solid rgba(184,149,90,.18);width:min(580px,94vw);max-height:88vh;overflow-y:auto;padding:2.5rem 2.5rem 2rem;position:relative;scrollbar-width:thin;scrollbar-color:rgba(184,149,90,.3) transparent;}
-.booking-panel::-webkit-scrollbar{width:4px}
-.booking-panel::-webkit-scrollbar-thumb{background:rgba(184,149,90,.3);border-radius:2px}
-.booking-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
-.booking-steps{display:flex;align-items:center;gap:.5rem;}
-.booking-step{font-family:var(--font-mono,'DM Mono'),monospace;font-size:.65rem;letter-spacing:.12em;color:rgba(245,244,241,.25);transition:color .3s;}
-.booking-step.active{color:var(--emerald,#1A5C3A);}
-.booking-step.done{color:rgba(26,92,58,.55);}
-.booking-step-line{width:2rem;height:1px;background:rgba(245,244,241,.1);}
-.booking-close{background:none;border:none;color:rgba(245,244,241,.4);font-size:1.5rem;cursor:pointer;line-height:1;padding:.25rem;transition:color .2s;}
-.booking-close:hover{color:var(--off-white,#F5F4F1);}
-.booking-heading{font-family:var(--font-display,'Cormorant Garamond'),serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:400;color:var(--off-white,#F5F4F1);margin:0 0 .5rem;line-height:1.2;}
-.booking-sub{font-family:var(--font-body,'Jost'),sans-serif;font-size:.85rem;color:rgba(245,244,241,.45);margin:0 0 1.75rem;line-height:1.6;}
-.booking-phase.hidden{display:none;}
-.booking-services{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.75rem;}
-@media(max-width:480px){.booking-services{grid-template-columns:1fr;}}
-.booking-service-card{border:1px solid rgba(245,244,241,.1);padding:1rem 1.1rem;cursor:pointer;transition:border-color .2s,background .2s;user-select:none;}
-.booking-service-card:hover{border-color:rgba(26,92,58,.5);}
-.booking-service-card.selected{border-color:var(--emerald,#1A5C3A);background:rgba(26,92,58,.1);}
-.booking-service-name{font-family:var(--font-body,'Jost'),sans-serif;font-size:.82rem;font-weight:500;color:var(--off-white,#F5F4F1);letter-spacing:.02em;}
-.booking-dates-scroll{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.85rem;margin-bottom:1.25rem;scrollbar-width:none;}
-.booking-dates-scroll::-webkit-scrollbar{display:none;}
-.booking-date-card{flex:0 0 auto;border:1px solid rgba(245,244,241,.1);padding:.8rem 1rem;cursor:pointer;text-align:center;min-width:66px;background:rgba(10,10,9,.5);transition:border-color .2s,background .2s;}
-.booking-date-card:hover{border-color:rgba(26,92,58,.5);background:rgba(26,92,58,.05);}
-.booking-date-card.selected{border-color:var(--emerald,#1A5C3A);background:rgba(26,92,58,.12);}
-.booking-date-dow{font-family:var(--font-mono,'DM Mono'),monospace;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:.3rem;}
-.booking-date-num{font-family:var(--font-display,'Cormorant Garamond'),serif;font-size:1.6rem;font-weight:400;color:var(--off-white,#F5F4F1);line-height:1;}
-.booking-date-mon{font-family:var(--font-mono,'DM Mono'),monospace;font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-top:.25rem;}
-.booking-date-card.selected .booking-date-num{color:var(--emerald,#1A5C3A);}
-.booking-date-card.selected .booking-date-dow,.booking-date-card.selected .booking-date-mon{color:rgba(26,92,58,.8);}
-.booking-slots{margin-bottom:1.5rem;min-height:2rem;}
-.booking-slots-label{font-family:var(--font-mono,'DM Mono'),monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:.65rem;}
-.booking-slots-grid{display:flex;flex-wrap:wrap;gap:.5rem;}
-.booking-slot-btn{background:none;border:1px solid rgba(245,244,241,.15);color:rgba(245,244,241,.7);font-family:var(--font-mono,'DM Mono'),monospace;font-size:.68rem;letter-spacing:.06em;padding:.4rem .85rem;cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
-.booking-slot-btn:hover{border-color:rgba(26,92,58,.6);color:var(--off-white,#F5F4F1);}
-.booking-slot-btn.selected{background:var(--emerald,#1A5C3A);border-color:var(--emerald,#1A5C3A);color:#fff;font-weight:600;}
-.booking-slots-empty{font-family:var(--font-body,'Jost'),sans-serif;font-size:.82rem;color:rgba(245,244,241,.3);font-style:italic;}
-.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
-@media(max-width:480px){.booking-form{grid-template-columns:1fr;}}
-.booking-field label{display:block;font-family:var(--font-mono,'DM Mono'),monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:.35rem;}
-.booking-field input{width:100%;background:rgba(245,244,241,.04);border:1px solid rgba(245,244,241,.12);color:var(--off-white,#F5F4F1);font-family:var(--font-body,'Jost'),sans-serif;font-size:.85rem;padding:.65rem .85rem;outline:none;box-sizing:border-box;transition:border-color .2s;}
-.booking-field input:focus{border-color:rgba(26,92,58,.7);}
-.booking-field input::placeholder{color:rgba(245,244,241,.22);}
-.booking-error{font-family:var(--font-body,'Jost'),sans-serif;font-size:.78rem;color:#e07070;min-height:1.1rem;margin-bottom:.5rem;}
-.booking-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(245,244,241,.08);}
-.booking-btn-primary{background:var(--emerald,#1A5C3A);color:#fff;border:none;font-family:var(--font-mono,'DM Mono'),monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.75rem 1.5rem;cursor:pointer;transition:opacity .2s;}
-.booking-btn-primary:hover:not(:disabled){opacity:.85;}
-.booking-btn-primary:disabled{opacity:.35;cursor:default;}
-.booking-btn-ghost{background:none;border:1px solid rgba(245,244,241,.15);color:rgba(245,244,241,.5);font-family:var(--font-mono,'DM Mono'),monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.75rem 1.25rem;cursor:pointer;transition:border-color .2s,color .2s;}
-.booking-btn-ghost:hover{border-color:rgba(245,244,241,.4);color:var(--off-white,#F5F4F1);}
-.booking-success-inner{text-align:center;padding:2.5rem 0;}
-.booking-success-icon{width:52px;height:52px;border:1px solid var(--emerald,#1A5C3A);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.2rem;color:var(--emerald,#1A5C3A);}
-.booking-skel{background:rgba(245,244,241,.05);animation:bk-pulse 1.4s ease infinite;}
-@keyframes bk-pulse{0%,100%{opacity:.4}50%{opacity:.8}}
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-/* ── BOOKING SYSTEM ─────────────────────────────────────── */
-(function () {
-  const SB_URL = 'https://wdbsmcxzhmdkfjoftulm.supabase.co';
-  const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkYnNtY3h6aG1ka2Zqb2Z0dWxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4MDEwMTQsImV4cCI6MjA5NzM3NzAxNH0.xo9x29q_QVmDl81soUI3OMDzJBKmqEme-I6v5IZmeN0';
-  let _sb = null;
-  function getSb() { return _sb || (_sb = supabase.createClient(SB_URL, SB_KEY)); }
-
-  let selectedService = null, selectedDate = null, selectedSlot = null, slotsMap = {};
-  const $ = id => document.getElementById(id);
-
-  function showPhase(n) {
-    ['booking-phase-1','booking-phase-2','booking-phase-3','booking-success'].forEach(id => {
-      const el = $(id); if (el) el.classList.add('hidden');
-    });
-    const target = n === 4 ? $('booking-success') : $('booking-phase-' + n);
-    if (target) target.classList.remove('hidden');
-    document.querySelectorAll('.booking-step').forEach((s, i) => {
-      s.classList.remove('active','done');
-      if (i + 1 === n) s.classList.add('active');
-      else if (i + 1 < n) s.classList.add('done');
-    });
-  }
-
-  window.openBookingModal = async function () {
-    selectedService = null; selectedDate = null; selectedSlot = null; slotsMap = {};
-    $('booking-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    showPhase(1);
-    $('booking-close')?.focus();
-    await loadServices();
-  };
-
-  function closeModal() {
-    $('booking-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  /* Phase 1 — Services */
-  async function loadServices() {
-    const grid = $('booking-services-grid');
-    grid.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;grid-column:1/-1">' +
-      Array(4).fill('<div class="booking-skel" style="height:52px"></div>').join('') + '</div>';
-    let data = null;
-    try { ({ data } = await getSb().from('services').select('id,name').eq('active', true).order('sort_order')); } catch (e) { data = null; }
-    if (!data?.length) {
-      grid.innerHTML = '<p class="booking-slots-empty">We could not load the booking calendar just now.</p>' + '<p class="booking-fallback">Prefer to chat? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or email <a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a>.</p>';
-      return;
-    }
-    grid.innerHTML = data.map(s =>
-      `<div class="booking-service-card" data-id="${s.id}"><span class="booking-service-name">${String(s.name).replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</span></div>`
-    ).join('');
-    grid.querySelectorAll('.booking-service-card').forEach(card => {
-      card.addEventListener('click', () => {
-        grid.querySelectorAll('.booking-service-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        selectedService = card.dataset.id;
-        $('p1-next').disabled = false;
-      });
-    });
-  }
-
-  /* Phase 2 — Dates */
-  const DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-  async function loadAndRenderDates() {
-    const el = $('booking-dates-scroll');
-    el.innerHTML = '<div style="display:flex;gap:.6rem">' +
-      Array(5).fill('<div class="booking-skel" style="height:82px;min-width:66px;flex:0 0 auto"></div>').join('') + '</div>';
-    $('booking-slots').innerHTML = '';
-    const today = new Date().toISOString().split('T')[0];
-    let data = null;
-    try { ({ data } = await getSb().from('available_slots')
-      .select('id,date,start_time').eq('is_booked', false)
-      .gte('date', today).order('date').order('start_time')); } catch (e) { data = null; }
-    slotsMap = {};
-    (data || []).forEach(s => { (slotsMap[s.date] = slotsMap[s.date] || []).push(s); });
-    renderDates();
-  }
-
-  function renderDates() {
-    const el = $('booking-dates-scroll');
-    const dates = Object.keys(slotsMap).sort();
-    if (!dates.length) {
-      el.innerHTML = '<p class="booking-slots-empty">No times are open right now.</p>' + '<p class="booking-fallback">Prefer to chat? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or email <a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a>.</p>';
-      return;
-    }
-    el.innerHTML = dates.map(ds => {
-      const d = new Date(ds + 'T00:00:00');
-      const sel = ds === selectedDate;
-      return `<div class="booking-date-card${sel ? ' selected' : ''}" data-date="${ds}">
-        <div class="booking-date-dow">${DOW[d.getDay()]}</div>
-        <div class="booking-date-num">${d.getDate()}</div>
-        <div class="booking-date-mon">${MON[d.getMonth()]}</div>
-      </div>`;
-    }).join('');
-    el.querySelectorAll('.booking-date-card').forEach(card => {
-      card.addEventListener('click', () => {
-        selectedDate = card.dataset.date;
-        selectedSlot = null;
-        $('p2-next').disabled = true;
-        renderDates();
-        renderSlots();
-      });
-    });
-  }
-
-  function renderSlots() {
-    const el = $('booking-slots');
-    if (!selectedDate) { el.innerHTML = ''; return; }
-    const list = slotsMap[selectedDate] || [];
-    if (!list.length) { el.innerHTML = '<p class="booking-slots-empty">No times available for this date.</p>'; return; }
-    el.innerHTML = '<p class="booking-slots-label">Available times</p><div class="booking-slots-grid">' +
-      list.map(s => {
-        const [h, m] = s.start_time.slice(0,5).split(':').map(Number);
-        const label = `${h === 0 ? 12 : h > 12 ? h - 12 : h}:${String(m).padStart(2,'0')} ${h >= 12 ? 'PM' : 'AM'}`;
-        return `<button class="booking-slot-btn${selectedSlot?.id===s.id?' selected':''}" data-id="${s.id}">${label}</button>`;
-      }).join('') + '</div>';
-    el.querySelectorAll('.booking-slot-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        el.querySelectorAll('.booking-slot-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        selectedSlot = { id: btn.dataset.id };
-        $('p2-next').disabled = false;
-      });
-    });
-  }
-
-  /* Phase 3 — Submit */
-  async function submitBooking() {
-    const name = $('b-name').value.trim(), company = $('b-company').value.trim();
-    const email = $('b-email').value.trim(), phone = $('b-phone').value.trim();
-    const errEl = $('booking-error'), btn = $('p3-submit');
-    errEl.textContent = '';
-    if (!name)    { errEl.textContent = 'Full name is required.'; return; }
-    if (!company) { errEl.textContent = 'Company name is required.'; return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'A valid email is required.'; return; }
-    if (phone.replace(/\D/g, '').length < 9) { errEl.textContent = 'Enter a valid phone number.'; return; }
-    btn.disabled = true; btn.textContent = 'Requesting…';
-    let error = null;
-    try {
-      ({ error } = await getSb().from('bookings').insert({
-        service_id: selectedService, slot_id: selectedSlot.id,
-        full_name: name, company, email, phone
-      }));
-    } catch (e) { error = e; }
-    if (error) {
-      errEl.innerHTML = 'That did not go through. Please try again, or <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline">message us on WhatsApp</a>.';
-      btn.disabled = false; btn.textContent = 'Request This Session';
-      return;
-    }
-    // The slot is marked as booked by a database trigger (migrations/028), because the public key may not edit slots.
-    showPhase(4);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    $('booking-close')?.addEventListener('click', closeModal);
-    $('booking-overlay')?.addEventListener('click', e => { if (e.target === $('booking-overlay')) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-    $('p1-next')?.addEventListener('click', async () => { showPhase(2); await loadAndRenderDates(); });
-    $('p2-back')?.addEventListener('click', () => showPhase(1));
-    $('p2-next')?.addEventListener('click', () => showPhase(3));
-    $('p3-back')?.addEventListener('click', () => showPhase(2));
-    $('p3-submit')?.addEventListener('click', submitBooking);
-    $('booking-done')?.addEventListener('click', closeModal);
-    $('contact-book')?.addEventListener('click', () => window.openBookingModal());
-  });
-})();
 </script>
 
 </body>
