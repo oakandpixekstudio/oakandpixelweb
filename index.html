@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Oak & Pixel Studio is a web design agency in Randburg, South Africa. We design and build fast, refined websites for service-based businesses — with hosting, maintenance and support included.">
+<meta name="description" content="Oak & Pixel is a web design agency in Randburg, South Africa. We design, build, host and maintain fast, beautiful websites that win service businesses more customers. Rated 5.0 on Google. From R12,500.">
 <link rel="canonical" href="https://www.oakandpixel.co.za/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oak & Pixel">
-<meta property="og:title" content="Oak & Pixel - Web Design Agency in Randburg, South Africa">
-<meta property="og:description" content="Oak & Pixel Studio is a web design agency in Randburg, South Africa. We design and build fast, refined websites for service-based businesses — with hosting, maintenance and support included.">
+<meta property="og:title" content="Oak & Pixel - Web Design Agency in South Africa | Websites from R12,500">
+<meta property="og:description" content="Oak & Pixel is a web design agency in Randburg, South Africa. We design, build, host and maintain fast, beautiful websites that win service businesses more customers. Rated 5.0 on Google. From R12,500.">
 <meta property="og:url" content="https://www.oakandpixel.co.za/">
 <meta property="og:image" content="https://www.oakandpixel.co.za/images/oak-pixel-whatsapp-banner-v2.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Oak & Pixel - Web Design Agency in Randburg, South Africa">
-<meta name="twitter:description" content="Oak & Pixel Studio is a web design agency in Randburg, South Africa. We design and build fast, refined websites for service-based businesses — with hosting, maintenance and support included.">
+<meta name="twitter:title" content="Oak & Pixel - Web Design Agency in South Africa | Websites from R12,500">
+<meta name="twitter:description" content="Oak & Pixel is a web design agency in Randburg, South Africa. We design, build, host and maintain fast, beautiful websites that win service businesses more customers. Rated 5.0 on Google. From R12,500.">
 <meta name="twitter:image" content="https://www.oakandpixel.co.za/images/oak-pixel-whatsapp-banner-v2.png">
-<title>Oak & Pixel — Web Design Agency in Randburg, South Africa</title>
+<title>Oak & Pixel — Web Design Agency in South Africa | Websites from R12,500</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -1404,6 +1404,122 @@ footer{
   #pixel-dimension, #scroll-zoom { height: 100vw; min-height: 380px; }
 }
 
+/* ─── CONVERSION REDESIGN ────────────────────────────── */
+:root{--mist-text:#6A6A63;--emerald-d:#124A2E}
+section[id]{scroll-margin-top:72px}
+.label,.pricing-month,.pricing-note,.stat-label,.panel-attr,.partner-label,.reviews-score-meta,.review-src{color:var(--mist-text)}
+.label::before{background:var(--mist-text)}
+#services .label{color:rgba(255,255,255,.7)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--emerald);outline-offset:3px}
+#hero{min-height:calc(100vh - 0px)}
+.hero-inner{padding:5rem 4rem 5rem}
+.hero-headline{font-size:clamp(3.2rem,6vw,5.8rem);font-weight:400;line-height:1.04}
+.hero-sub{max-width:520px;font-size:1.12rem;color:#3a3a36}
+.hero-actions{margin-top:2.5rem}
+.hero-proof{
+  margin-top:2.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  font-size:.88rem;color:var(--slate);
+  opacity:0;animation:fadeUp 1s var(--ease-expo) .9s forwards;
+}
+.hero-proof-rating{display:inline-flex;align-items:center;gap:.6rem}
+.hero-proof-rating strong{font-weight:500;color:var(--black)}
+.hero-proof-sep{width:1px;height:18px;background:var(--silk)}
+.trustbar{background:var(--black);color:var(--white);padding:2.25rem 0}
+.trustbar-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.trust-item{display:flex;flex-direction:column;gap:.3rem;padding-left:1.1rem;border-left:2px solid var(--emerald-l)}
+.trust-item strong{font-family:var(--font-display);font-size:1.35rem;font-weight:500;line-height:1.2}
+.trust-item span{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.5}
+#benefits{padding:8rem 0;background:var(--white)}
+.benefits-head{max-width:640px;margin-bottom:4rem}
+.benefits-headline{font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.25rem}
+.benefits-sub{color:var(--slate);font-size:1.02rem;line-height:1.75}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem 3rem}
+.benefit{border-top:1px solid var(--silk);padding-top:1.5rem}
+.benefit h3{font-family:var(--font-display);font-size:1.65rem;font-weight:500;line-height:1.2;margin-bottom:.75rem}
+.benefit p{color:var(--slate);font-size:.95rem;line-height:1.75}
+/* Plan tags */
+.plan-tag{
+  align-self:flex-start;display:inline-block;margin-bottom:1.25rem;
+  font-family:var(--font-body);font-size:.72rem;font-weight:500;letter-spacing:.06em;
+  padding:.35rem .85rem;border-radius:999px;
+}
+.plan-tag-start{border:1px solid var(--emerald);color:var(--emerald)}
+.plan-tag-popular{background:var(--gold);color:var(--black)}
+.plan-tag-best{background:var(--black);color:var(--white)}
+.pricing-card.featured{
+  background:var(--emerald-d);color:var(--white);border-color:var(--gold);
+  border-top:4px solid var(--gold);
+  box-shadow:0 30px 80px rgba(18,74,46,.28);
+  margin:-1.25rem 0;padding-top:3.4rem;padding-bottom:3.4rem;z-index:2;
+}
+.pricing-card.featured::before{display:none}
+.pricing-card.featured .pricing-kicker{color:rgba(255,255,255,.75)}
+.pricing-card.featured .pricing-name,.pricing-card.featured .pricing-setup{color:var(--white)}
+.pricing-card.featured .pricing-fit,.pricing-card.featured .pricing-list li{color:rgba(255,255,255,.88)}
+.pricing-card.featured .pricing-fit strong{color:var(--white)}
+.pricing-card.featured .pricing-month{color:rgba(255,255,255,.75)}
+.pricing-card.featured .pricing-price{border-top-color:rgba(255,255,255,.2)}
+.pricing-card.featured .pricing-list li::before{background:var(--gold)}
+.pricing-card.featured .btn-primary{background:var(--gold);color:var(--black);font-weight:500}
+.pricing-card.featured .btn-primary:hover{background:#cba76b}
+.pricing-card.featured:hover{box-shadow:0 36px 90px rgba(18,74,46,.4);border-color:var(--gold)}
+.pricing-help{margin-top:3rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.95rem;color:var(--slate)}
+.pricing-help .btn-ghost{border-bottom-color:var(--emerald);color:var(--emerald);padding:.4rem 0}
+.reviews{background:var(--white)}
+.review-card{background:var(--off-white)}
+.partner-logo{background:var(--white)}
+#cta-band{background:var(--emerald-d);color:var(--white);padding:5rem 0}
+.cta-band-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap}
+#cta-band h2{font-family:var(--font-display);font-size:clamp(2rem,3.4vw,3rem);font-weight:400;line-height:1.15;max-width:620px;margin-bottom:.75rem}
+#cta-band p{color:rgba(255,255,255,.8);max-width:520px}
+.cta-band-actions{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+.btn-light{background:var(--gold);color:var(--black);font-weight:500}
+.btn-light:hover{background:#cba76b}
+.btn-ghost-light{color:var(--white);border-bottom-color:rgba(255,255,255,.4)}
+.btn-ghost-light:hover{color:var(--white);border-color:var(--white)}
+#about{padding:8rem 0}
+#faq{padding:8rem 0;background:var(--off-white)}
+.faq-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start}
+.faq-headline{font-family:var(--font-display);font-size:clamp(2.2rem,3.6vw,3.4rem);font-weight:300;line-height:1.1;margin-bottom:1.25rem}
+.faq-sub{color:var(--slate);font-size:.98rem;line-height:1.7}
+.faq-sub a{color:var(--emerald);border-bottom:1px solid currentColor}
+.faq-item{border-bottom:1px solid #d9d5cc}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:1.4rem 2.5rem 1.4rem 0;position:relative;
+  font-family:var(--font-display);font-size:1.35rem;font-weight:500;line-height:1.3;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';position:absolute;right:.25rem;top:1.15rem;font-family:var(--font-body);
+  font-size:1.6rem;font-weight:300;color:var(--emerald);transition:transform .25s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 2.5rem 1.6rem 0;color:var(--slate);font-size:.98rem;line-height:1.75}
+@media (max-width:1024px){
+  #hero{min-height:auto}
+  .hero-inner{padding:4rem 2.5rem 4rem}
+  .trustbar-inner{grid-template-columns:repeat(2,1fr)}
+  .benefits-grid{grid-template-columns:repeat(2,1fr)}
+  .faq-inner{grid-template-columns:1fr;gap:2.5rem}
+  .pricing-card.featured{margin:0}
+}
+@media (max-width:768px){
+  .hero-inner{padding:3rem 1.5rem 3.5rem}
+  .hero-headline{font-size:clamp(2.8rem,12vw,3.8rem)}
+  .hero-sub{font-size:1.02rem}
+  .hero-actions .btn-ghost{padding:.6rem 0}
+  #benefits,#faq,#about{padding:5rem 0}
+  .benefits-grid{grid-template-columns:1fr;gap:2.25rem}
+  #cta-band{padding:4rem 0}
+  .cta-band-actions .btn-primary{width:100%;justify-content:center}
+  .pricing-order-fix{order:0}
+  .pricing-card.featured{order:-1}
+}
+@media (max-width:480px){.trustbar-inner{grid-template-columns:1fr;gap:1.25rem}.trustbar{padding:2rem 0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1468,6 +1584,76 @@ footer{
       }
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://www.oakandpixel.co.za/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a website cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. The setup fee covers the design and build; the monthly fee covers hosting, care and support."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the monthly fee cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Managed hosting, domain management, SSL, backups, security, monthly content updates (2 on Signature, 5 on Growth, unlimited on Premium) and support. You never need to find a separate developer to keep your site running."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is there a monthly fee on top of the build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A website is not a once-off job. Hosting, security, backups and regular updates are what keep it fast, safe and current. We bundle them into one predictable monthly price instead of billing you for every small request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which plan should I choose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Book a free call and we will recommend one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my website work on phones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every website we build is mobile-first and tested on phones, tablets and desktop, because most of your customers will find you on a phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can customers book or pay through the website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Growth includes online booking with calendar integration and payment gateway or CRM integration using your own software. Premium adds e-commerce and client portal functionality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do you only take ten clients at a time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are you based and who do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are based in Randburg, Gauteng and build websites for service businesses across South Africa. Everything can be done online, by phone or on WhatsApp."
+          }
+        }
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://www.oakandpixel.co.za/#website",
       "name": "Oak & Pixel",
@@ -1480,8 +1666,8 @@ footer{
       "@type": "WebPage",
       "@id": "https://www.oakandpixel.co.za/#webpage",
       "url": "https://www.oakandpixel.co.za/",
-      "name": "Oak & Pixel - Web Design Agency in Randburg, South Africa",
-      "description": "Oak & Pixel Studio is a web design agency in Randburg, South Africa. We design and build fast, refined websites for service-based businesses — with hosting, maintenance and support included.",
+      "name": "Oak & Pixel - Web Design Agency in South Africa | Websites from R12,500",
+      "description": "Oak & Pixel is a web design agency in Randburg, South Africa. We design, build, host and maintain fast, beautiful websites that win service businesses more customers. Rated 5.0 on Google. From R12,500.",
       "isPartOf": {
         "@id": "https://www.oakandpixel.co.za/#website"
       },
@@ -1516,14 +1702,14 @@ footer{
     Oak & Pixel
   </a>
   <div class="nav-links">
-    <a href="#about">Studio</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
+    <a href="#reviews">Reviews</a>
     <a href="#work">Process</a>
-    <a href="#standards">Standards</a>
+    <a href="#faq">FAQ</a>
     <a href="brochure.html">Brochure</a>
   </div>
-  <a href="#contact" class="nav-cta">Explore Plans</a>
+  <a href="#contact" class="nav-cta">Get a free quote</a>
   <button class="nav-hamburger" id="mob-toggle" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -1553,15 +1739,15 @@ footer{
     </button>
   </div>
   <div class="mob-drawer-nav">
-    <a href="#about"        class="mob-link">Studio</a>
     <a href="#services"     class="mob-link">Services</a>
     <a href="#pricing"      class="mob-link">Pricing</a>
+    <a href="#reviews"      class="mob-link">Reviews</a>
     <a href="#work"         class="mob-link">Process</a>
-    <a href="#standards"    class="mob-link">Standards</a>
+    <a href="#faq"          class="mob-link">FAQ</a>
     <a href="brochure.html" class="mob-link">Brochure</a>
   </div>
   <div class="mob-drawer-footer">
-    <a href="#contact" class="mob-drawer-cta">Explore Plans</a>
+    <a href="#contact" class="mob-drawer-cta">Get a free quote</a>
     <div class="mob-drawer-contact">
       <span>info@oakandpixel.co.za</span>
       <span>oakandpixel.co.za</span>
@@ -1569,40 +1755,33 @@ footer{
   </div>
 </aside>
 
-<!-- ══════════════ PIXEL DIMENSION ══════════════ -->
-<section id="pixel-dimension">
-  <canvas id="pixel-canvas-3d"></canvas>
-  <div class="pixel-dim-text" id="pdt">
-    <div class="pdt-eyebrow">Digital Precision</div>
-    <h2 class="pdt-headline">
-      Every pixel,<br><em>intentional.</em>
-    </h2>
-    <p class="pdt-sub">Architecture-grade thinking · Editorial-grade aesthetics</p>
-  </div>
-</section>
-
-<!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-eyebrow">Web Design Agency · Randburg</div>
+      <div class="hero-eyebrow">Web design agency · Randburg, South Africa</div>
       <h1 class="hero-headline">
-        Websites built<br>
-        to grow with<br>
-        <em>your business.</em>
+        A website that<br>
+        wins you<br>
+        <em>customers.</em>
       </h1>
       <p class="hero-sub">
-        Oak &amp; Pixel Studio designs, builds and looks after websites for service-based businesses. Refined design, fast performance and ongoing support, so your site keeps working as hard as you do.
+        Oak &amp; Pixel designs, launches, hosts and looks after fast, beautiful websites for service businesses across South Africa. One monthly plan, nothing to manage, from R12,500 setup.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">
-          Explore Plans
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 7h10M8 3l4 4-4 4"/>
-          </svg>
+        <a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-primary">
+          Book a free discovery call
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
-        <a href="#care" class="btn-ghost">How We Work</a>
+        <a href="#pricing" class="btn-ghost">See plans &amp; pricing</a>
+      </div>
+      <div class="hero-proof">
+        <a class="hero-proof-rating" href="#reviews">
+          <span class="review-stars" aria-hidden="true">★★★★★</span>
+          <span><strong>5.0</strong> on Google · 3 reviews</span>
+        </a>
+        <span class="hero-proof-sep" aria-hidden="true"></span>
+        <span>Only 10 client slots open</span>
       </div>
     </div>
     <!-- 3D HERO VISUAL -->
@@ -1610,88 +1789,58 @@ footer{
       <div class="geo-scene" id="geo-scene"></div>
     </div>
   </div>
-  <div class="hero-scroll">
-    Scroll
-    <div class="scroll-line"></div>
+  </section>
+
+<section class="trustbar" aria-label="Why businesses choose Oak &amp; Pixel">
+  <div class="container trustbar-inner">
+    <div class="trust-item"><strong>5.0 ★ on Google</strong><span>Rated by the clients we have built for</span></div>
+    <div class="trust-item"><strong>Fully managed</strong><span>Hosting, SSL, backups and updates included</span></div>
+    <div class="trust-item"><strong>Mobile-first</strong><span>Fast on every phone, tablet and desktop</span></div>
+    <div class="trust-item"><strong>10 client slots</strong><span>Limited, so every website gets our full attention</span></div>
   </div>
 </section>
 
-<!-- ══════════════ ABOUT ══════════════ -->
-<section id="about">
+<section id="benefits">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-left reveal">
-        <div class="label">Philosophy</div>
-        <h2 class="about-headline">
-          We believe a great website<br>
-          is <strong>carefully built</strong>
-        </h2>
-        <p class="about-body">
-          Oak & Pixel is a web design agency founded on a singular conviction: that business websites deserve better. Not louder. Not flashier. Better — in the way that matters to discerning brands and demanding audiences.
-        </p>
-        <p class="about-body">
-          We operate at the intersection of technology and taste. Every page we design and every line we build carries the weight of genuine craft. We build websites that look exceptional, load fast and turn visitors into enquiries.
-        </p>
-        <div class="about-sig">— Built to last, designed to lead.</div>
+    <div class="benefits-head">
+      <div class="label reveal">Why it pays off</div>
+      <h2 class="benefits-headline reveal reveal-delay-1">A website that works as hard as you do</h2>
+      <p class="benefits-sub reveal reveal-delay-2">Most business websites look fine and do nothing. Ours are designed around one job: turning visitors into paying customers.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <h3>Look as good as you are</h3>
+        <p>People judge your business in seconds. A custom design built around your brand makes you look established and trustworthy from the first scroll.</p>
       </div>
-      <div class="about-right reveal reveal-delay-2">
-        <div class="about-stats">
-          <div class="stat-card">
-            <span class="stat-num">3</span>
-            <span class="stat-label">Website plans</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">2026</span>
-            <span class="stat-label">Year founded</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">10</span>
-            <span class="stat-label">Client slots</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Mobile-ready builds</span>
-          </div>
-        </div>
-        <div class="about-panel">
-          <p class="panel-quote">
-            "The benchmark is not what competitors do — it's what exceptional looks like when no constraints are imposed."
-          </p>
-          <p class="panel-attr">Oak & Pixel — Studio Doctrine, 2026</p>
-        </div>
+      <div class="benefit reveal reveal-delay-1">
+        <h3>Turn visitors into enquiries</h3>
+        <p>Clear calls to action, lead forms, WhatsApp and online booking make it easy for customers to get in touch, so your website earns its keep.</p>
+      </div>
+      <div class="benefit reveal reveal-delay-2">
+        <h3>Be found on Google</h3>
+        <p>Fast pages and a search-friendly structure help the right customers find you, and Growth and Premium clients get monthly SEO reporting.</p>
+      </div>
+      <div class="benefit reveal">
+        <h3>Never chase a developer</h3>
+        <p>We host, secure, back up and update your website every month. You run your business; we keep your website sharp.</p>
+      </div>
+      <div class="benefit reveal reveal-delay-1">
+        <h3>One clear monthly price</h3>
+        <p>A once-off build and a fixed monthly plan. You know what you pay, what you get and who to call.</p>
+      </div>
+      <div class="benefit reveal reveal-delay-2">
+        <h3>Senior attention, always</h3>
+        <p>We keep our roster to ten clients, so you work directly with the people building your site, not a ticket queue.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ ONGOING CARE ══════════════ -->
-<section id="care" style="padding:10rem 0;background:var(--off-white);">
-  <div class="container">
-    <div class="label reveal">Ongoing Care</div>
-    <h2 class="reveal reveal-delay-1" style="font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.5rem;">
-      A website that stays<br>sharp long after launch.
-    </h2>
-    <p class="reveal reveal-delay-2" style="color:var(--slate);font-size:.98rem;line-height:1.8;max-width:580px;margin-bottom:3.5rem;">
-      We host, secure, update and improve your website every month, so you never have to chase a developer to keep your business up to date.
-    </p>
-    <div class="reveal reveal-delay-3" style="display:flex;flex-wrap:wrap;gap:.75rem;">
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Website Content</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Services</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Team Members</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Blogs</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Lead Capture</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Bookings</span>
-      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Insights</span>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ SERVICES ══════════════ -->
 <section id="services">
   <div class="container">
-    <div class="label reveal">What You Get</div>
+    <div class="label reveal">What is included</div>
     <h2 class="services-headline reveal reveal-delay-1">
-      Everything your website<br>needs to perform
+      Everything your website<br>needs to win business
     </h2>
     <p class="services-sub reveal reveal-delay-2">
       Every website we build is designed to look sharp, load fast and win you business. Here is what goes into it.
@@ -1761,14 +1910,13 @@ footer{
   </div>
 </section>
 
-<!-- ══════════════ WORK ══════════════ -->
 <section id="pricing">
   <div class="container">
     <div class="pricing-head">
       <div>
-        <div class="label reveal">Website Plans &amp; Pricing</div>
+        <div class="label reveal">Plans &amp; pricing</div>
         <h2 class="pricing-headline reveal reveal-delay-1">
-          Ten client slots.<br>Built for fit.
+          Clear plans.<br>No surprises.
         </h2>
       </div>
       <p class="pricing-sub reveal reveal-delay-2">
@@ -1777,6 +1925,7 @@ footer{
     </div>
     <div class="pricing-grid">
       <article class="pricing-card reveal" data-plan="Signature">
+        <span class="plan-tag plan-tag-start">Best to start</span>
         <div class="pricing-kicker">3 client slots</div>
         <h3 class="pricing-name">Signature</h3>
         <p class="pricing-fit"><strong>A professional website, done properly.</strong> A custom-designed site that presents your business well and turns visitors into enquiries.</p>
@@ -1791,10 +1940,11 @@ footer{
           <li>Managed hosting, domain, SSL and backups</li>
           <li>Up to 2 content updates/month and email support</li>
         </ul>
-        <a href="#contact" class="btn-primary">Apply for Signature</a>
+        <a href="#contact" class="btn-primary">Get Signature</a>
       </article>
       <article class="pricing-card featured reveal reveal-delay-1" data-plan="Growth">
-        <div class="pricing-kicker">4 client slots - Core offering</div>
+        <span class="plan-tag plan-tag-popular">Most Popular</span>
+        <div class="pricing-kicker">4 client slots</div>
         <h3 class="pricing-name">Growth</h3>
         <p class="pricing-fit"><strong>Turn your website into a lead engine.</strong> A larger site with booking, payments and the SEO groundwork to bring in new customers.</p>
         <div class="pricing-price">
@@ -1809,9 +1959,10 @@ footer{
           <li>Payment gateway or CRM integration, plus monthly SEO report</li>
           <li>Up to 5 content updates/month and priority support</li>
         </ul>
-        <a href="#contact" class="btn-primary">Apply for Growth</a>
+        <a href="#contact" class="btn-primary">Get Growth</a>
       </article>
       <article class="pricing-card reveal reveal-delay-2" data-plan="Premium">
+        <span class="plan-tag plan-tag-best">Best results</span>
         <div class="pricing-kicker">3 client slots</div>
         <h3 class="pricing-name">Premium</h3>
         <p class="pricing-fit"><strong>A website built around your business.</strong> A fully bespoke site with custom features, e-commerce or integrations, shaped around how your organisation operates.</p>
@@ -1826,12 +1977,81 @@ footer{
           <li>Advanced integrations and custom features</li>
           <li>Unlimited content updates, monthly optimisation reviews and a dedicated account lead</li>
         </ul>
-        <a href="#contact" class="btn-primary">Apply for Premium</a>
+        <a href="#contact" class="btn-primary">Get Premium</a>
       </article>
     </div>
+    <div class="pricing-help reveal"><span>Not sure which plan fits?</span><a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-ghost">Book a free 30-minute call</a></div>
     <p class="pricing-note reveal reveal-delay-3">
       We keep capacity limited so every website gets our full attention. Once all ten active client slots are occupied, applications close until capacity becomes available. Premium projects are quoted individually based on scope.
     </p>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <div class="label reveal">Client Reviews</div>
+        <h2 class="reviews-headline reveal reveal-delay-1">Rated 5.0 by the businesses we build for</h2>
+      </div>
+      <div class="reviews-score reveal reveal-delay-2">
+        <div class="reviews-score-num">5.0</div>
+        <div>
+          <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <div class="reviews-score-meta">3 Google reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review-card reveal">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“Our company has skyrocketed because of the touch of Oak &amp; Pixel Studio. Efficient and top notch in their own way. Exceptional service I must state.”</blockquote>
+        <figcaption>
+          <div class="review-by">Neo Dan Official</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card reveal reveal-delay-1">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“If you are looking for a serious upgrade just let them touch your business and see wonders… The best in RSA so far.”</blockquote>
+        <figcaption>
+          <div class="review-by">Lgndry Co</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+      <figure class="review-card reveal reveal-delay-2">
+        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
+        <blockquote class="review-quote">“We love they did for us. 🙏🏾”</blockquote>
+        <figcaption>
+          <div class="review-by">Beige Content</div>
+          <div class="review-src">Google review</div>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="reviews-cta reveal">
+      <a class="work-more" href="https://share.google/828UDlN1eClAgx3ou" target="_blank" rel="noopener noreferrer">Read all reviews on Google</a>
+    </div>
+    <div class="partner-strip reveal">
+      <div class="partner-label">Trusted by</div>
+      <div class="partner-logos">
+        <a class="partner-logo" href="https://www.lgndry-co.co.za" target="_blank" rel="noopener noreferrer" aria-label="LGNDRY.Co (opens in a new tab)">
+          <img src="images/lgndry-co-logo.webp" alt="LGNDRY.Co logo" width="280" height="100" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-band">
+  <div class="container cta-band-inner">
+    <div>
+      <h2 class="reveal">Ready for a website that wins you customers?</h2>
+      <p class="reveal reveal-delay-1">Book a free 30-minute call. We will recommend the right plan, with no obligation and no pressure.</p>
+    </div>
+    <div class="cta-band-actions reveal reveal-delay-2">
+      <a href="#contact" onclick="if(window.openBookingModal){openBookingModal();return false;}" class="btn-primary btn-light">Book a free discovery call</a>
+      <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-ghost-light">Message us on WhatsApp</a>
+    </div>
   </div>
 </section>
 
@@ -1840,9 +2060,9 @@ footer{
     <div class="work-header">
       <div>
         <div class="label reveal">Our Process</div>
-        <h2 class="work-headline reveal reveal-delay-1">From brief to launch</h2>
+        <h2 class="work-headline reveal reveal-delay-1">From first call to live in four steps</h2>
       </div>
-      <a href="#contact" class="work-more reveal reveal-delay-2">Start a Project</a>
+      <a href="#contact" class="work-more reveal reveal-delay-2">Start your project</a>
     </div>
     <div class="work-grid">
       <!-- Feature -->
@@ -2000,66 +2220,77 @@ footer{
         </div>
       </div>
     </div>
-    <div class="partner-strip reveal">
-      <div class="partner-label">Brands we've worked with</div>
-      <div class="partner-logos">
-        <a class="partner-logo" href="https://www.lgndry-co.co.za" target="_blank" rel="noopener noreferrer" aria-label="LGNDRY.Co (opens in a new tab)">
-          <img src="images/lgndry-co-logo.webp" alt="LGNDRY.Co logo" width="280" height="100" loading="lazy">
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ══════════════ REVIEWS ══════════════ -->
-<section id="reviews" class="reviews">
+<section id="about">
   <div class="container">
-    <div class="reviews-head">
-      <div>
-        <div class="label reveal">Client Reviews</div>
-        <h2 class="reviews-headline reveal reveal-delay-1">What clients say</h2>
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="label">Philosophy</div>
+        <h2 class="about-headline">
+          We believe a great website<br>
+          is <strong>carefully built</strong>
+        </h2>
+        <p class="about-body">
+          Oak & Pixel is a web design agency founded on a singular conviction: that business websites deserve better. Not louder. Not flashier. Better — in the way that matters to discerning brands and demanding audiences.
+        </p>
+        <p class="about-body">
+          We operate at the intersection of technology and taste. Every page we design and every line we build carries the weight of genuine craft. We build websites that look exceptional, load fast and turn visitors into enquiries.
+        </p>
+        <div class="about-sig">— Built to last, designed to lead.</div>
       </div>
-      <div class="reviews-score reveal reveal-delay-2">
-        <div class="reviews-score-num">5.0</div>
-        <div>
-          <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <div class="reviews-score-meta">3 Google reviews</div>
+      <div class="about-right reveal reveal-delay-2">
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Website plans</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">2026</span>
+            <span class="stat-label">Year founded</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Client slots</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Mobile-ready builds</span>
+          </div>
+        </div>
+        <div class="about-panel">
+          <p class="panel-quote">
+            "The benchmark is not what competitors do — it's what exceptional looks like when no constraints are imposed."
+          </p>
+          <p class="panel-attr">Oak & Pixel — Studio Doctrine, 2026</p>
         </div>
       </div>
     </div>
-    <div class="reviews-grid">
-      <figure class="review-card reveal">
-        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-        <blockquote class="review-quote">“Our company has skyrocketed because of the touch of Oak &amp; Pixel Studio. Efficient and top notch in their own way. Exceptional service I must state.”</blockquote>
-        <figcaption>
-          <div class="review-by">Neo Dan Official</div>
-          <div class="review-src">Google review</div>
-        </figcaption>
-      </figure>
-      <figure class="review-card reveal reveal-delay-1">
-        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-        <blockquote class="review-quote">“If you are looking for a serious upgrade just let them touch your business and see wonders… The best in RSA so far.”</blockquote>
-        <figcaption>
-          <div class="review-by">Lgndry Co</div>
-          <div class="review-src">Google review</div>
-        </figcaption>
-      </figure>
-      <figure class="review-card reveal reveal-delay-2">
-        <span class="review-stars" aria-label="5 out of 5 stars">★★★★★</span>
-        <blockquote class="review-quote">“We love they did for us. 🙏🏾”</blockquote>
-        <figcaption>
-          <div class="review-by">Beige Content</div>
-          <div class="review-src">Google review</div>
-        </figcaption>
-      </figure>
-    </div>
-    <div class="reviews-cta reveal">
-      <a class="work-more" href="https://share.google/828UDlN1eClAgx3ou" target="_blank" rel="noopener noreferrer">Read all reviews on Google</a>
+  </div>
+</section>
+
+<section id="care" style="padding:10rem 0;background:var(--off-white);">
+  <div class="container">
+    <div class="label reveal">Ongoing Care</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:var(--font-display);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:-.01em;margin-bottom:1.5rem;">
+      A website that stays<br>sharp long after launch.
+    </h2>
+    <p class="reveal reveal-delay-2" style="color:var(--slate);font-size:.98rem;line-height:1.8;max-width:580px;margin-bottom:3.5rem;">
+      We host, secure, update and improve your website every month, so you never have to chase a developer to keep your business up to date.
+    </p>
+    <div class="reveal reveal-delay-3" style="display:flex;flex-wrap:wrap;gap:.75rem;">
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Website Content</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Services</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Team Members</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Blogs</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Lead Capture</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Bookings</span>
+      <span style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.1rem;border:1px solid var(--silk);color:var(--slate);background:var(--white);">Insights</span>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ STANDARDS ══════════════ -->
 <section id="standards">
   <div class="container">
     <div class="standards-intro">
@@ -2129,31 +2360,26 @@ footer{
   </div>
 </section>
 
-
-<!-- ══════════════ SCROLL ZOOM ══════════════ -->
-<section id="scroll-zoom">
-  <div class="sz-mark-wrap" id="sz-mark">
-    <div class="sz-giant-mark" id="sz-giant">
-      <div class="gsq gsq-tl"></div>
-      <div class="gsq gsq-tr"></div>
-      <div class="gsq gsq-bl"></div>
-      <div class="gsq gsq-br"></div>
+<section id="faq">
+  <div class="container faq-inner">
+    <div class="faq-head">
+      <div class="label reveal">Questions</div>
+      <h2 class="faq-headline reveal reveal-delay-1">Answers before you ask</h2>
+      <p class="faq-sub reveal reveal-delay-2">Still unsure? <a href="https://wa.me/27750890614" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> and we will reply personally.</p>
     </div>
-  </div>
-  <div class="sz-text reveal">
-    <div class="sz-eyebrow">Our Standard</div>
-    <h2 class="sz-headline">
-      Built to last.<br>
-      Designed to <em>lead.</em>
-    </h2>
-    <div class="sz-rule"></div>
-    <p class="sz-body">
-      The standard isn't set by what's average — it's defined by what's possible. Every engagement we take on is treated as if our own reputation depends on it. Because it does.
-    </p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>How much does a website cost?</summary><p>Signature is R12,500 setup plus R1,800 per month. Growth is R25,000 setup plus R3,200 per month. Premium starts from R55,000 setup plus R6,500 per month and is quoted to your scope. The setup fee covers the design and build; the monthly fee covers hosting, care and support.</p></details>
+      <details class="faq-item"><summary>What does the monthly fee cover?</summary><p>Managed hosting, domain management, SSL, backups, security, monthly content updates (2 on Signature, 5 on Growth, unlimited on Premium) and support. You never need to find a separate developer to keep your site running.</p></details>
+      <details class="faq-item"><summary>Why is there a monthly fee on top of the build?</summary><p>A website is not a once-off job. Hosting, security, backups and regular updates are what keep it fast, safe and current. We bundle them into one predictable monthly price instead of billing you for every small request.</p></details>
+      <details class="faq-item"><summary>Which plan should I choose?</summary><p>Choose Signature if you need a professional website that presents your business well. Choose Growth if you want the website to generate leads, with online booking, a blog and payment or CRM integration. Choose Premium for a fully bespoke build, e-commerce or custom features. Not sure? Book a free call and we will recommend one.</p></details>
+      <details class="faq-item"><summary>Will my website work on phones?</summary><p>Yes. Every website we build is mobile-first and tested on phones, tablets and desktop, because most of your customers will find you on a phone.</p></details>
+      <details class="faq-item"><summary>Can customers book or pay through the website?</summary><p>Yes. Growth includes online booking with calendar integration and payment gateway or CRM integration using your own software. Premium adds e-commerce and client portal functionality.</p></details>
+      <details class="faq-item"><summary>Why do you only take ten clients at a time?</summary><p>So every website gets real attention. We take three Signature, four Growth and three Premium clients at a time. When all ten slots are full, applications close until capacity opens up.</p></details>
+      <details class="faq-item"><summary>Where are you based and who do you work with?</summary><p>We are based in Randburg, Gauteng and build websites for service businesses across South Africa. Everything can be done online, by phone or on WhatsApp.</p></details>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact">
   <div class="contact-bg"></div>
   <div class="container">
@@ -2164,11 +2390,11 @@ footer{
           Begin Here
         </div>
         <h2 class="contact-headline">
-          Let's Build<br>
-          Your Website
+          Let's build a website<br>
+          that wins you business
         </h2>
         <p class="contact-body">
-          We intentionally work with a limited number of businesses so every website gets our full attention. Complete the application below and we'll determine if we're a good fit for one another.
+          We take on only ten clients at a time so every website gets our full attention. Book a free call, or tell us about your business below and we will recommend the right plan.
         </p>
         <div class="contact-detail">
           <div class="contact-item"><a href="mailto:info@oakandpixel.co.za">info@oakandpixel.co.za</a></div>
@@ -2181,7 +2407,7 @@ footer{
             <path d="M2 7h10M8 3l4 4-4 4"/>
           </svg>
         </a>
-        <p style="margin-top:.85rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);">30-min session · No obligation</p>
+        <p style="margin-top:.85rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);">Free 30-minute call · No obligation</p>
       </div>
       <div class="contact-right reveal reveal-delay-2">
 
@@ -2335,7 +2561,6 @@ footer{
   </div>
 </footer>
 
-<!-- ══════════════ WHATSAPP ══════════════ -->
 <div id="whatsapp-btn">
   <div class="wa-tooltip">Chat on WhatsApp</div>
   <!-- ← EDIT: Replace with your WhatsApp number -->
@@ -2348,7 +2573,6 @@ footer{
 </div>
 
 
-<!-- ══════════════ COOKIE MODAL ══════════════ -->
 <div id="cookie-overlay" role="dialog" aria-modal="true" aria-label="Cookie preferences">
   <div id="cookie-modal">
     <button class="cookie-close" id="cookie-close" aria-label="Close">
@@ -2484,7 +2708,6 @@ footer{
   </button>
 </div>
 
-<!-- ══════════════ SCRIPTS ══════════════ -->
 <script>
 // ── CURSOR ─────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
@@ -3571,9 +3794,6 @@ if(false)(function(){
   });
 })();
 </script>
-
-
-
 
 </body>
 </html>

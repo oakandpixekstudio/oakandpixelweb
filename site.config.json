@@ -23,7 +23,7 @@
     {
       "file": "index.html",
       "url": "https://www.oakandpixel.co.za/",
-      "title": "Oak & Pixel - Web Design Agency in Randburg, South Africa",
+      "title": "Oak & Pixel - Web Design Agency in South Africa | Websites from R12,500",
       "priority": "1.0"
     },
     {
@@ -48,14 +48,17 @@
   "services": [
     {
       "name": "Signature Plan",
+      "tag": "Best to start",
       "summary": "A professional custom website up to 5 pages, mobile responsive, with contact and lead forms, basic SEO, hosting and domain management, 2 monthly content updates, and email support. Pricing is R12,500 setup plus R1,800/month."
     },
     {
       "name": "Growth Plan",
+      "tag": "Most Popular",
       "summary": "A larger website built to generate leads, with everything in Signature plus up to 10 pages, landing pages, online booking, blog or CMS, payment or CRM integration, a monthly SEO report, 5 monthly content updates, and priority support. Pricing is R25,000 setup plus R3,200/month."
     },
     {
       "name": "Premium Plan",
+      "tag": "Best results",
       "summary": "A fully bespoke website with everything in Growth plus custom design, advanced animations, e-commerce or client portal functionality, advanced integrations, unlimited content updates, monthly optimisation reviews, and a dedicated account lead. Pricing is from R55,000 setup plus R6,500/month."
     },
     {
