@@ -514,3 +514,5 @@ svg.lucide * { vector-effect: non-scaling-stroke; }
 .unread-pip.on { background: var(--green); }
 .star-btn { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; }
 .star-btn:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+
+.install-app { cursor: pointer; font: inherit; }

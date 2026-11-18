@@ -84,8 +84,10 @@ export function WebsiteAuditView() {
             </div>
             <div className="audit-score">
               <Ring score={result.overall}/>
-              <div className="audit-verdict"><span className={`audit-pill ${tone(result.overall)}`}>{summary.label}</span><p>{summary.text}</p><small>{result.passed} of {result.total} checks passed · responded in {result.responseMs} ms</small></div>
+              <div className="audit-verdict"><span className={`audit-pill ${tone(result.overall)}`}>{summary.label}</span><p>{summary.text}</p><small>{result.passed} of {result.total} checks passed · responded in {result.responseMs} ms</small><small className="audit-source">{result.source === "lighthouse" ? "Scored with Google Lighthouse (mobile) plus security checks" : "Built-in quick check"}</small></div>
             </div>
+            {result.notice && <p className="audit-notice" role="status"><Info size={15}/>{result.notice}</p>}
+            {result.metrics && result.metrics.length > 0 && <div className="audit-metrics">{result.metrics.map(metric => <div key={metric.label}><small>{metric.label}</small><b className={metric.rating}>{metric.value}</b></div>)}</div>}
           </Panel>
           <div className="audit-cats">
             {CATEGORIES.map(category => { const Icon = ICONS[category]; const score = result.scores[category]; return <div key={category} className="audit-cat"><span><Icon size={16}/>{category}</span><b>{score}</b><div className="audit-bar"><i className={tone(score)} style={{ width: `${score}%` }}/></div></div>; })}
@@ -122,6 +124,11 @@ export function WebsiteAuditView() {
       .audit-verdict{display:grid;gap:8px;min-width:200px;flex:1}.audit-verdict p{margin:0}.audit-verdict small{color:var(--muted)}
       .audit-pill{justify-self:start;padding:4px 12px;border-radius:8px;font-weight:600;font-size:13px}
       .audit-pill.good{background:var(--green-soft);color:var(--green)}.audit-pill.ok{background:rgba(224,160,42,.16);color:#e0a02a}.audit-pill.bad{background:rgba(217,83,79,.16);color:#e5736f}
+      .audit-source{font-size:11px}
+      .audit-notice{display:flex;gap:8px;align-items:flex-start;margin:16px 0 0;padding:10px 12px;border-radius:var(--radius-sm);background:rgba(224,160,42,.12);color:#e0a02a;font-size:13px}.audit-notice svg{flex:none;margin-top:2px}
+      .audit-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-top:18px}
+      .audit-metrics>div{border:1px solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;display:grid;gap:4px}.audit-metrics small{color:var(--muted);font-size:11px}.audit-metrics b{font-weight:600}
+      .audit-metrics b.good{color:var(--green)}.audit-metrics b.ok{color:#e0a02a}.audit-metrics b.bad{color:#e5736f}
       .audit-cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
       .audit-cat{border:1px solid var(--line);background:var(--panel);border-radius:var(--radius-md);padding:12px;display:grid;gap:8px;min-width:0}
       .audit-cat span{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted)}.audit-cat b{font:400 26px var(--font-display)}

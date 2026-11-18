@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { navigation } from "@/_config/navigation";
 import { BrandMark } from "@/_components/shared";
+import { InstallButton } from "@/_components/install-button";
 import { NotificationIcon } from "@/_components/notification-icon";
 import { useDemoData } from "@/_providers/demo-data-provider";
 import { DialogProvider } from "@/_components/dialogs";
@@ -76,6 +77,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="topbar-spacer"/>
         <div className="date-display"><CalendarDays size={18}/><span>Tue, 17 Nov 2026</span></div>
         <div className="topbar-menus" ref={menuRoot}>
+        <InstallButton/>
         <a className="view-site desktop-only" href="https://www.oakandpixel.co.za" target="_blank" rel="noopener noreferrer"><ExternalLink size={16}/><span>View website</span></a>
         <button className="button primary desktop-only" onClick={()=>setNewOpen(true)}><Plus size={18}/> New <ChevronDown size={16}/></button>
         <div className="profile-wrap">

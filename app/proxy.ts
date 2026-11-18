@@ -12,7 +12,7 @@ import { SESSION_COOKIE, verifySession } from "./app/_lib/gate";
  *
  * Visitors without a valid session are sent to the styled /sign-in page.
  */
-const PUBLIC_PATHS = ["/sign-in", "/api/login", "/api/logout"];
+const PUBLIC_PATHS = ["/sign-in", "/api/login", "/api/logout", "/manifest.webmanifest", "/sw.js"];
 const PUBLIC_PREFIXES = ["/images/"];
 
 const harden = (response: NextResponse) => {
