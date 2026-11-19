@@ -1244,7 +1244,7 @@ insert into crm.services (name, description, setup_fee, monthly_fee, active, sor
   ('Signature Plan', 'Custom website up to 5 pages, mobile responsive, contact forms, basic SEO, hosting and 2 monthly content updates.', 12500, 1800, true, 1),
   ('Growth Plan', 'Up to 10 pages, landing pages, online booking, blog or CMS, integrations, monthly SEO report and priority support.', 25000, 3200, true, 2),
   ('Premium Plan', 'Fully bespoke design, advanced animation, e-commerce or client portal, unlimited updates and a dedicated account lead.', 55000, 6500, true, 3),
-  ('CRM Plan', 'A private CRM for clients, projects, pipeline, invoices and email, with your branding. Limited to 2 clients.', 60000, 10000, true, 4),
+  ('CRM Plan', 'A private CRM for clients, projects, pipeline, invoices and email, with your branding. Limited to 3 clients.', 60000, 10000, true, 4),
   ('Website Scoping Call', 'A free conversation to match the right plan to the business.', 0, 0, true, 5)
 on conflict (lower(name)) do nothing;
 
